@@ -21,15 +21,13 @@ if (process.env.NODE_ENV === 'development') {
       historyApiFallback: true,
     }));
 
-    app.use(webpackHotMiddleware(compiler, {
-      reload: true,
-    }));
+    app.use(webpackHotMiddleware(compiler));
   
     app.use(express.static(project.paths.public()));
  
     app.use('*', (req, res, next) => {
       const filename = path.join(compiler.outputPath, 'index.html');
-      console.log(compiler);
+
       compiler.outputFileSystem.readFile(filename, (err, result) => {
         if (err) {
           return next(err);

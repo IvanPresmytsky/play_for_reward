@@ -5,7 +5,7 @@ const APP_ENTRY = project.paths.client('app.js');
 
 const devWebpackConfig = {
   devtool: project.compiler_devtool,
-  entry: ['webpack-hot-middleware/client', APP_ENTRY],
+  entry: ['webpack/hot/dev-server', 'webpack-hot-middleware/client', APP_ENTRY],
   mode: 'development',
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
