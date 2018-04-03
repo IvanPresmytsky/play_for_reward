@@ -1,0 +1,27 @@
+{
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-css-modules"
+  ],
+  "plugins": [
+    "stylelint-order"
+  ],
+  "rules": {
+    "order/order": [
+      "custom-properties",
+      "declarations"
+    ],
+    "order/properties-order": [[
+      "composes"
+    ], {
+      unspecified: "bottomAlphabetical"
+    }],
+    "function-comma-space-after": "always-single-line",
+    "selector-pseudo-element-colon-notation": "single",
+    "declaration-block-no-duplicate-properties": [true, {
+      "ignore": "consecutive-duplicates",
+    }],
+    "number-leading-zero": "never",
+    "color-hex-case": "upper"
+  },
+}
