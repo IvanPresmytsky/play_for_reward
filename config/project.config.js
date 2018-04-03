@@ -27,11 +27,14 @@ config.globals = {
   __TEST__: config.env === 'test',
 };
 
+/* eslint prefer-rest-params:0 */
+// project config utilities
+// utility for project paths resolving
 function base() {
   const args = [config.path_base].concat([].slice.call(arguments));
   return path.resolve(...args);
 }
-  
+
 config.paths = {
   base,
   client : base.bind(null, config.dir_client),

@@ -1,7 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const project = require('./project.config');
 
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
@@ -12,7 +12,7 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 
 const MiniCssExtractPluginConfig = new MiniCssExtractPlugin({
   filename: '[name].css',
-  chunkFilename: '[id].css'
+  chunkFilename: '[id].css',
 });
 
 const baseWebpackConfig = {
@@ -21,10 +21,10 @@ const baseWebpackConfig = {
       new UglifyJsPlugin({
         cache: true,
         parallel: true,
-        sourceMap: true
+        sourceMap: true,
       }),
-      new OptimizeCSSAssetsPlugin({})
-    ]
+      new OptimizeCSSAssetsPlugin({}),
+    ],
   },
   output: {
     path: project.paths.dist(),
@@ -47,7 +47,7 @@ const baseWebpackConfig = {
       }, {
         test: /\.css$/,
         use: [
-          MiniCssExtractPlugin.loader, 
+          MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
@@ -56,9 +56,9 @@ const baseWebpackConfig = {
               localIdentName: '[name]__[local]_[hash:base64:5]',
             },
           },
-          'postcss-loader'
-        ]
-      }
+          'postcss-loader',
+        ],
+      },
     ],
   },
   resolve: {
@@ -69,8 +69,8 @@ const baseWebpackConfig = {
   },
   plugins: [
     HtmlWebpackPluginConfig,
-    MiniCssExtractPluginConfig
-  ]
+    MiniCssExtractPluginConfig,
+  ],
 };
 
 module.exports = baseWebpackConfig;

@@ -9,7 +9,7 @@ const devWebpackConfig = {
   mode: 'development',
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-  ]
-}
+  ],
+};
 
 module.exports = devWebpackConfig;

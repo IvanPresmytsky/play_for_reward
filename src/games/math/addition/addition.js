@@ -7,7 +7,7 @@ export class Addition extends Component {
       <div className={style.addition}>
         <h1>Addition</h1>
       </div>
-    )
+    );
   }
 }
 

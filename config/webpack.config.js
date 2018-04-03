@@ -9,6 +9,7 @@ const { __DEV__, __PROD__ } = project.globals;
 function createConfig() {
   if (__DEV__) return merge(baseConfig, devConfig);
   if (__PROD__) return merge(baseConfig, prodConfig);
+  return merge(baseConfig, devConfig);
 }
 
 module.exports = createConfig();
