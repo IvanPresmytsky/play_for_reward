@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { hot } from 'react-hot-loader';
+import DigitsPanel from '../common/digitsPanel/digitsPanel';
 import style from './addition.css';
 
 export class Addition extends Component {
@@ -9,18 +10,15 @@ export class Addition extends Component {
       firstDigit: this.getDigit(),
       isCorrectSolution: false,
       secondDigit: this.getDigit(),
-      userInput: '',
+      userInput: '0',
       total: 0,
     };
     this.getTotal = this.getTotal.bind(this);
     this.onSolveClick = this.onSolveClick.bind(this);
     this.checkSolution = this.checkSolution.bind(this);
     this.onDigitClick = this.onDigitClick.bind(this);
-  }
-
-  renderDigits() {
-    return Array.from(Array(10).keys())
-      .map(digit => <button id={digit} key={digit} onClick={this.onDigitClick}>{digit}</button>);
+    this.onRemoveBtnClick = this.onRemoveBtnClick.bind(this);
+    this.validateInput = this.validateInput.bind(this);
   }
 
   getDigit() {
@@ -36,10 +34,28 @@ export class Addition extends Component {
     this.setState({ isCorrectSolution: solution === Number(this.state.userInput) });
   }
 
+  validateInput(userInput) {
+    return userInput.length > 1 && userInput[0] === '0'
+      ? userInput.slice(1, userInput.length)
+      : userInput;
+  }
+
   onDigitClick(e) {
     e.preventDefault();
-    const digit = e.target.id;
-    this.setState({ userInput: this.state.userInput + digit });
+    const digit = e.target && e.target.id;
+    const { userInput } = this.state;
+    const newUserInput = this.validateInput(userInput + digit);
+    this.setState({ userInput: newUserInput });
+  }
+
+  onRemoveBtnClick(e) {
+    e.preventDefault();
+    const { userInput } = this.state;
+    const newUserInput = userInput.length > 1
+      ? this.state.userInput.slice(0, userInput.length - 1)
+      : 0;
+
+    this.setState({ userInput: newUserInput });
   }
 
   onSolveClick(e) {
@@ -72,7 +88,10 @@ export class Addition extends Component {
         <div>
           {this.state.isCorrectSolution.toString()}
         </div>
-        {this.renderDigits()}
+        <DigitsPanel
+          digitHandler={this.onDigitClick}
+          removeBtnClickHandler={this.onRemoveBtnClick}
+        />
       </div>
     );
   }
