@@ -13,14 +13,24 @@ export class Addition extends Component {
       firstDigit: this.getDigit(),
       isCorrectSolution: false,
       secondDigit: this.getDigit(),
+      score: 0,
       userInput: '0',
     };
-    this.getTotal = this.getTotal.bind(this);
-    this.onSolveClick = this.onSolveClick.bind(this);
     this.checkSolution = this.checkSolution.bind(this);
+    this.getTotal = this.getTotal.bind(this);
+    this.resetSession = this.resetSession.bind(this);
+    this.onSolveClick = this.onSolveClick.bind(this);
     this.onDigitClick = this.onDigitClick.bind(this);
     this.onRemoveBtnClick = this.onRemoveBtnClick.bind(this);
     this.validateInput = this.validateInput.bind(this);
+  }
+
+  resetSession() {
+    this.setState({
+      firstDigit: this.getDigit(),
+      secondDigit: this.getDigit(),
+      userInput: '0',
+    });
   }
 
   getDigit() {
@@ -33,7 +43,17 @@ export class Addition extends Component {
 
   checkSolution() {
     const solution = this.getTotal();
-    this.setState({ isCorrectSolution: solution === Number(this.state.userInput) });
+    const {
+      score,
+      userInput,
+    } = this.state;
+
+    const isCorrectSolution = solution === Number(userInput);
+    const newScore = isCorrectSolution
+      ? (score + 1)
+      : (score - 1);
+
+    this.setState({ isCorrectSolution, score: newScore });
   }
 
   validateInput(userInput) {
@@ -63,12 +83,14 @@ export class Addition extends Component {
   onSolveClick(e) {
     e.preventDefault();
     this.checkSolution();
+    this.resetSession();
   }
 
   render() {
     const {
       firstDigit,
       isCorrectSolution,
+      score,
       secondDigit,
       userInput,
     } = this.state;
@@ -78,6 +100,8 @@ export class Addition extends Component {
         <h2>Addition game</h2>
         <StatePanel
           isCorrectSolution={isCorrectSolution}
+          hasSolution={userInput === '0'}
+          score={score}
         />
         <GameDisplay
           firstDigit={firstDigit}

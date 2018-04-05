@@ -2,11 +2,16 @@
   align-items: center;
   background: gainsboro;
   display: flex;
+  justify-content: space-around;
   width: 100%;
 }
 
 .solutionDisplay {
   font-size: 30px;
+}
+
+.solutionHidden {
+  visibility: hidden;
 }
 
 .solutionText {
@@ -20,4 +25,14 @@
 
 .incorrectSolution {
   color: red;
+}
+
+.scoreContainer {
+  align-items: center;
+  display: flex;
+}
+
+.scoreText {
+  color: green;
+  font-size: 30px;
 }
