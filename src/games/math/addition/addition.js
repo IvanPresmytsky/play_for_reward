@@ -4,6 +4,7 @@ import operations from '../common/constants/operations';
 import DigitsPanel from '../common/digitsPanel/digitsPanel';
 import GameDisplay from '../common/gameDisplay/gameDisplay';
 import style from './addition.css';
+import { StatePanel } from '../common/statePanel/statePanel';
 
 export class Addition extends Component {
   constructor() {
@@ -67,21 +68,23 @@ export class Addition extends Component {
   render() {
     const {
       firstDigit,
+      isCorrectSolution,
       secondDigit,
       userInput,
     } = this.state;
+
     return (
       <div className={style.addition}>
         <h2>Addition game</h2>
+        <StatePanel
+          isCorrectSolution={isCorrectSolution}
+        />
         <GameDisplay
           firstDigit={firstDigit}
           operation={operations.addition.name}
           secondDigit={secondDigit}
           total={userInput}
         />
-        <div>
-          {this.state.isCorrectSolution.toString()}
-        </div>
         <DigitsPanel
           digitBtnHandler={this.onDigitClick}
           removeBtnClickHandler={this.onRemoveBtnClick}

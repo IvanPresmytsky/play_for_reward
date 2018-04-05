@@ -47,7 +47,8 @@ const baseWebpackConfig = {
       }, {
         test: /\.css$/,
         use: [
-          MiniCssExtractPlugin.loader,
+          // MiniCssExtractPlugin.loader,
+          'style-loader',
           {
             loader: 'css-loader',
             options: {
