@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { hot } from 'react-hot-loader';
+import operations from '../common/constants/operations';
 import DigitsPanel from '../common/digitsPanel/digitsPanel';
+import GameDisplay from '../common/gameDisplay/gameDisplay';
 import style from './addition.css';
 
 export class Addition extends Component {
@@ -11,7 +13,6 @@ export class Addition extends Component {
       isCorrectSolution: false,
       secondDigit: this.getDigit(),
       userInput: '0',
-      total: 0,
     };
     this.getTotal = this.getTotal.bind(this);
     this.onSolveClick = this.onSolveClick.bind(this);
@@ -64,33 +65,27 @@ export class Addition extends Component {
   }
 
   render() {
+    const {
+      firstDigit,
+      secondDigit,
+      userInput,
+    } = this.state;
     return (
       <div className={style.addition}>
         <h2>Addition game</h2>
-        <div className={style.firstDigit}>
-          {this.state.firstDigit}
-        </div>
-        <div>
-          {'+'}
-        </div>
-        <div className={style.secondDigit}>
-          {this.state.secondDigit}
-        </div>
-        <div>
-          {'='}
-        </div>
-        <div className={style.total}>
-          {this.state.userInput}
-        </div>
-        <button className={style.solveBtn} onClick={this.onSolveClick}>
-          {'Solve'}
-        </button>
+        <GameDisplay
+          firstDigit={firstDigit}
+          operation={operations.addition.name}
+          secondDigit={secondDigit}
+          total={userInput}
+        />
         <div>
           {this.state.isCorrectSolution.toString()}
         </div>
         <DigitsPanel
-          digitHandler={this.onDigitClick}
+          digitBtnHandler={this.onDigitClick}
           removeBtnClickHandler={this.onRemoveBtnClick}
+          solveBtnHandler={this.onSolveClick}
         />
       </div>
     );

@@ -1,14 +1,14 @@
 import React from 'react';
 import style from './digit.css';
 
-export const Digit = ({ digit, digitHandler }) => (
+export const DigitBtn = ({ digit, digitBtnHandler }) => (
     <button
-      className={style.digit}
+      className={style.digitBtn}
       id={digit}
-      onClick={digitHandler}
+      onClick={digitBtnHandler}
     >
       {digit}
     </button>
 );
 
-export default Digit;
+export default DigitBtn;

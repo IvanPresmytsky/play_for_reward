@@ -1,0 +1,12 @@
+.operationContainer {
+  align-items: center;
+  background: aquamarine;
+  display: flex;
+  height: 100px;
+  width: 100px;
+}
+
+.operation {
+  font-size: 40px;
+  font-weight: bold;
+}
