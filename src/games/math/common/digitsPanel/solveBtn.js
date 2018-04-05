@@ -3,7 +3,7 @@ import style from './solveBtn.css';
 
 export const SolveBtn = ({ clickHandler }) => (
   <button
-    className={style.removeBtn}
+    className={style.solveBtn}
     onClick={clickHandler}
   >
     Solve
