@@ -4,7 +4,7 @@ import operations from '../common/constants/operations';
 import DigitsPanel from '../common/digitsPanel/digitsPanel';
 import GameDisplay from '../common/gameDisplay/gameDisplay';
 import style from './addition.css';
-import { StatePanel } from '../common/statePanel/statePanel';
+import { StatusBar } from '../common/statusBar/statusBar';
 
 export class Addition extends Component {
   constructor() {
@@ -14,14 +14,18 @@ export class Addition extends Component {
       isCorrectSolution: false,
       secondDigit: this.getDigit(),
       score: 0,
+      initialTime: 20,
       userInput: '0',
     };
     this.checkSolution = this.checkSolution.bind(this);
     this.getTotal = this.getTotal.bind(this);
+    this.initTimer = this.initTimer.bind(this);
     this.resetSession = this.resetSession.bind(this);
+    this.onStartSessionClick = this.onStartSessionClick.bind(this);
     this.onSolveClick = this.onSolveClick.bind(this);
     this.onDigitClick = this.onDigitClick.bind(this);
     this.onRemoveBtnClick = this.onRemoveBtnClick.bind(this);
+    this.setTimer = this.setTimer.bind(this);
     this.validateInput = this.validateInput.bind(this);
   }
 
@@ -62,6 +66,29 @@ export class Addition extends Component {
       : userInput;
   }
 
+  initTimer() {
+    const { initialTime } = this.state;
+    this.setState({ time: initialTime });
+  }
+
+  setTimer() {
+    const { time } = this.state;
+    const newTime = time - 1;
+
+    if (time > 0) {
+      this.setState({ time: newTime });
+    } else {
+      window.clearInterval(this.timer);
+    }
+  }
+
+  onStartSessionClick(e) {
+    e.preventDefault();
+    const { time } = this.state;
+    if (!time) this.initTimer();
+    this.timer = window.setInterval(this.setTimer, 1000);
+  }
+
   onDigitClick(e) {
     e.preventDefault();
     const digit = e.target && e.target.id;
@@ -89,19 +116,24 @@ export class Addition extends Component {
   render() {
     const {
       firstDigit,
+      initialTime,
       isCorrectSolution,
       score,
       secondDigit,
+      time,
       userInput,
     } = this.state;
 
     return (
       <div className={style.addition}>
         <h2>Addition game</h2>
-        <StatePanel
+        <StatusBar
+          initialTime={initialTime}
           isCorrectSolution={isCorrectSolution}
           hasSolution={userInput === '0'}
           score={score}
+          startSessionBtnHandler={this.onStartSessionClick}
+          time={time}
         />
         <GameDisplay
           firstDigit={firstDigit}

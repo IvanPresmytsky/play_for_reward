@@ -1,8 +1,8 @@
-.statePanel {
+.statusBar {
   align-items: center;
   background: gainsboro;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 100%;
 }
 
