@@ -1,0 +1,16 @@
+.button {
+  outline: none;
+}
+
+.button_red {
+  background: red;
+}
+
+.button_green {
+  background: green;
+}
+
+.button_digit {
+  height: 50px;
+  width: 50px;
+}

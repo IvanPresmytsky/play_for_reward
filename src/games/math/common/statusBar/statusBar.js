@@ -1,8 +1,9 @@
-import classnames from 'classnames';
 import React from 'react';
+import Button from '../button/button';
+import ScoreDisplay from './scoreDisplay';
 import SessionTimer from './sessionTimer';
+import SolutionDisplay from './solutionDisplay';
 import style from './statusBar.css';
-import StartSessionBtn from './startSessionBtn';
 
 export const StatusBar = ({
   initialTime,
@@ -11,32 +12,23 @@ export const StatusBar = ({
   score,
   startSessionBtnHandler,
   time,
-}) => {
-  const solutionTextClasses = classnames(style.solutionText, {
-    [style.solutionHidden]: !hasSolution,
-    [style.correctSolution]: isCorrectSolution,
-    [style.incorrectSolution]: !isCorrectSolution,
-  });
-
-  return (
+}) => (
     <div className={style.statusBar}>
-      <StartSessionBtn clickHandler={startSessionBtnHandler} />
+      <Button
+        clickHandler={startSessionBtnHandler}
+        mods={['green']}
+        text="Start"
+      />
       <SessionTimer
         initialTime={initialTime}
         time={time}
       />
-      <div className={style.solutionDisplay}>
-        <span className={solutionTextClasses}>
-          {isCorrectSolution ? 'Correct' : 'Incorrect'}
-        </span>
-      </div>
-      <div className={style.scoreContainer}>
-        <span className={style.scoreText}>
-          {`Score: ${score}`}
-        </span>
-      </div>
+      <SolutionDisplay
+        isCorrectSolution={isCorrectSolution}
+        hasSolution={hasSolution}
+      />
+      <ScoreDisplay score={score} />
     </div>
-  );
-};
+);
 
 export default StatusBar;

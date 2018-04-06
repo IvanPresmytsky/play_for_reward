@@ -1,24 +1,26 @@
 import React from 'react';
-import DigitBtn from './digit';
-import RemoveBtn from './removeBtn';
-import SolveBtn from './solveBtn';
+import Button from '../button/button';
 
 import style from './digitsPanel.css';
 
 export const DigitsPanel = ({ digitBtnHandler, removeBtnClickHandler, solveBtnHandler }) => {
   const digits = Array.from(Array(10).keys())
-    .map(digit => <DigitBtn digit={digit} digitBtnHandler={digitBtnHandler} key={digit} />);
+    .map(digit => <Button clickHandler={digitBtnHandler} id={digit} key={digit} mods={['digit']} text={digit} />);
 
   return (
     <div className={style.digitsPanel}>
       {digits}
-      <SolveBtn
+      <Button
         clickHandler={solveBtnHandler}
         key="solveBtn"
+        mods={['green']}
+        text={'Solve'}
       />
-      <RemoveBtn
+      <Button
         clickHandler={removeBtnClickHandler}
         key="removeBtn"
+        mods={['red']}
+        text={'Remove'}
       />
     </div>
   );
