@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { hot } from 'react-hot-loader';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { generateDigits } from '../actions/mathActions';
 import operations from '../common/constants/operations';
 import DigitsPanel from '../common/digitsPanel/digitsPanel';
 import GameDisplay from '../common/gameDisplay/gameDisplay';
@@ -10,9 +13,7 @@ export class Addition extends Component {
   constructor() {
     super();
     this.state = {
-      firstDigit: this.getDigit(),
       isCorrectSolution: false,
-      secondDigit: this.getDigit(),
       score: 0,
       initialTime: 20,
       userInput: '0',
@@ -30,15 +31,10 @@ export class Addition extends Component {
   }
 
   resetSession() {
+    this.props.generateDigits();
     this.setState({
-      firstDigit: this.getDigit(),
-      secondDigit: this.getDigit(),
       userInput: '0',
     });
-  }
-
-  getDigit() {
-    return Math.floor(Math.random() * 5) + 1;
   }
 
   getTotal() {
@@ -115,11 +111,9 @@ export class Addition extends Component {
 
   render() {
     const {
-      firstDigit,
       initialTime,
       isCorrectSolution,
       score,
-      secondDigit,
       time,
       userInput,
     } = this.state;
@@ -136,9 +130,7 @@ export class Addition extends Component {
           time={time}
         />
         <GameDisplay
-          firstDigit={firstDigit}
           operation={operations.addition.name}
-          secondDigit={secondDigit}
           total={userInput}
         />
         <DigitsPanel
@@ -151,4 +143,12 @@ export class Addition extends Component {
   }
 }
 
-export default hot(module)(Addition);
+const mapStateToProps = state => ({
+
+});
+
+const mapDispatchToProps = dispatch => ({
+  generateDigits: bindActionCreators(generateDigits, dispatch),
+});
+
+export default hot(module)(connect(mapStateToProps, mapDispatchToProps)(Addition));
