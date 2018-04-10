@@ -2,19 +2,26 @@ import React, { Component } from 'react';
 import { hot } from 'react-hot-loader';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { addScore, checkSolution, generateDigits, getTotal, removeScore, startGame } from '../actions/mathActions';
 import operations from '../common/constants/operations';
 import DigitsPanel from '../common/digitsPanel/digitsPanel';
 import GameDisplay from '../common/gameDisplay/gameDisplay';
-import style from './addition.css';
 import { StatusBar } from '../common/statusBar/statusBar';
+import { 
+  addScore,
+  changeInput,
+  checkSolution,
+  clearUserInput,
+  generateDigits,
+  getTotal,
+  removeScore,
+  removeUserInput,
+  startGame } from '../actions/mathActions';
+  
+import style from './addition.css';
 
 export class Addition extends Component {
   constructor() {
     super();
-    this.state = {
-      userInput: '0',
-    };
 
     this.checkSolution = this.checkSolution.bind(this);
     this.resetSession = this.resetSession.bind(this);
@@ -22,42 +29,21 @@ export class Addition extends Component {
     this.onSolveClick = this.onSolveClick.bind(this);
     this.onDigitClick = this.onDigitClick.bind(this);
     this.onRemoveBtnClick = this.onRemoveBtnClick.bind(this);
-    this.validateInput = this.validateInput.bind(this);
   }
 
   resetSession() {
     this.props.generateDigits();
     this.props.getTotal();
-    this.setState({
-      userInput: '0',
-    });
+    this.props.clearUserInput();
   }
 
   checkSolution() {
     const {
-      userInput,
-    } = this.state;
-
-    const {
-      addScore,
       checkSolution,
-      isCorrectSolution,
-      removeScore,
+      userInput,
     } = this.props;
 
     checkSolution(Number(userInput));
-
-    if(isCorrectSolution) {
-      addScore();
-    } else {
-      removeScore();
-    }  
-  }
-
-  validateInput(userInput) {
-    return userInput.length > 1 && userInput[0] === '0'
-      ? userInput.slice(1, userInput.length)
-      : userInput;
   }
 
   onStartSessionClick(e) {
@@ -68,39 +54,41 @@ export class Addition extends Component {
   onDigitClick(e) {
     e.preventDefault();
     const digit = e.target && e.target.id;
-    const { userInput } = this.state;
-    const newUserInput = this.validateInput(userInput + digit);
-    this.setState({ userInput: newUserInput });
+    this.props.changeInput(digit);
   }
 
   onRemoveBtnClick(e) {
     e.preventDefault();
-    const { userInput } = this.state;
-    const newUserInput = userInput.length > 1
-      ? this.state.userInput.slice(0, userInput.length - 1)
-      : 0;
-
-    this.setState({ userInput: newUserInput });
+    this.props.removeUserInput();
   }
 
   onSolveClick(e) {
     e.preventDefault();
+
+    const {
+      addScore,
+      isCorrectSolution,
+      removeScore,
+    } = this.props;
+
     this.checkSolution();
+
+    if (isCorrectSolution) {
+      addScore();
+    } else {
+      removeScore();
+    } 
+
     this.resetSession();
   }
 
   render() {
     const {
-      initialTime,
-      time,
-      userInput,
-    } = this.state;
-
-    const {
       gameStarted,
       hasSolution,
       isCorrectSolution,
       score,
+      userInput,
     } = this.props;
 
     return (
@@ -115,7 +103,7 @@ export class Addition extends Component {
         />
         <GameDisplay
           operation={operations.addition.name}
-          total={userInput}
+          userInput={userInput}
         />
         <DigitsPanel
           digitBtnHandler={this.onDigitClick}
@@ -133,14 +121,18 @@ const mapStateToProps = state => ({
   hasSolution: state.math.hasSolution,
   total: state.math.total,
   score: state.math.score,
+  userInput: state.math.userInput,
 });
 
 const mapDispatchToProps = dispatch => ({
   addScore: bindActionCreators(addScore, dispatch),
+  changeInput: bindActionCreators(changeInput, dispatch),
   checkSolution: bindActionCreators(checkSolution, dispatch),
+  clearUserInput: bindActionCreators(clearUserInput, dispatch),
   generateDigits: bindActionCreators(generateDigits, dispatch),
   getTotal: bindActionCreators(getTotal, dispatch),
   removeScore: bindActionCreators(removeScore, dispatch),
+  removeUserInput: bindActionCreators(removeUserInput, dispatch),
   startGame: bindActionCreators(startGame, dispatch),
 });
 

@@ -9,7 +9,7 @@ import style from './gameDisplay.css';
 
 export const GameDisplay = ({
   operation,
-  total,
+  userInput,
   ...props,
 }) => (
     <div className={style.gameDisplay}>
@@ -26,7 +26,7 @@ export const GameDisplay = ({
         operation={operations.equality.name}
       />
       <Total
-        total={total}
+        total={userInput}
       />
     </div>
 );

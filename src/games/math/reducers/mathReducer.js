@@ -11,6 +11,7 @@ const initialState = {
   secondDigit: 0,
   score: 0,
   total: 0,
+  userInput: '',
 };
 
 export function getDigit(level) {
@@ -25,12 +26,39 @@ export function getTotal(firstDigit, secondDigit, operation) {
   return null;
 }
 
+export function validateInput(userInput) {
+  return userInput.length > 1 && userInput[0] === '0'
+    ? userInput.slice(1, userInput.length)
+    : userInput;
+}
+
+export function removeUserInput(userInput) {
+  return userInput.length > 1
+    ? this.state.userInput.slice(0, userInput.length - 1)
+    : '';
+} 
+
 export function mathRouter(state = initialState, action) {
   switch (action.type) {
     case mathActions.ADD_SCORE:
       return {
         ...state,
         score: state.score + 1
+      }
+    case mathActions.CHANGE_INPUT:
+      return {
+        ...state,
+        userInput: validateInput(state.userInput + action.userInput)
+      }
+    case mathActions.REMOVE_USER_INPUT:
+      return {
+        ...state,
+        userInput: removeUserInput(state.userInput)
+      }
+    case mathActions.CLEAR_USER_INPUT:
+      return {
+        ...state,
+        userInput: '',
       }
     case mathActions.REMOVE_SCORE:
       return {
