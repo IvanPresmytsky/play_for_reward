@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { hot } from 'react-hot-loader';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { generateDigits } from '../actions/mathActions';
+import { addScore, checkSolution, generateDigits, getTotal, removeScore, startGame } from '../actions/mathActions';
 import operations from '../common/constants/operations';
 import DigitsPanel from '../common/digitsPanel/digitsPanel';
 import GameDisplay from '../common/gameDisplay/gameDisplay';
@@ -13,47 +13,45 @@ export class Addition extends Component {
   constructor() {
     super();
     this.state = {
-      isCorrectSolution: false,
-      score: 0,
-      initialTime: 20,
       userInput: '0',
     };
+
     this.checkSolution = this.checkSolution.bind(this);
-    this.getTotal = this.getTotal.bind(this);
-    this.initTimer = this.initTimer.bind(this);
     this.resetSession = this.resetSession.bind(this);
     this.onStartSessionClick = this.onStartSessionClick.bind(this);
     this.onSolveClick = this.onSolveClick.bind(this);
     this.onDigitClick = this.onDigitClick.bind(this);
     this.onRemoveBtnClick = this.onRemoveBtnClick.bind(this);
-    this.setTimer = this.setTimer.bind(this);
     this.validateInput = this.validateInput.bind(this);
   }
 
   resetSession() {
     this.props.generateDigits();
+    this.props.getTotal();
     this.setState({
       userInput: '0',
     });
   }
 
-  getTotal() {
-    return this.state.firstDigit + this.state.secondDigit;
-  }
-
   checkSolution() {
-    const solution = this.getTotal();
     const {
-      score,
       userInput,
     } = this.state;
 
-    const isCorrectSolution = solution === Number(userInput);
-    const newScore = isCorrectSolution
-      ? (score + 1)
-      : (score - 1);
+    const {
+      addScore,
+      checkSolution,
+      isCorrectSolution,
+      removeScore,
+    } = this.props;
 
-    this.setState({ isCorrectSolution, score: newScore });
+    checkSolution(Number(userInput));
+
+    if(isCorrectSolution) {
+      addScore();
+    } else {
+      removeScore();
+    }  
   }
 
   validateInput(userInput) {
@@ -62,27 +60,9 @@ export class Addition extends Component {
       : userInput;
   }
 
-  initTimer() {
-    const { initialTime } = this.state;
-    this.setState({ time: initialTime });
-  }
-
-  setTimer() {
-    const { time } = this.state;
-    const newTime = time - 1;
-
-    if (time > 0) {
-      this.setState({ time: newTime });
-    } else {
-      window.clearInterval(this.timer);
-    }
-  }
-
   onStartSessionClick(e) {
     e.preventDefault();
-    const { time } = this.state;
-    if (!time) this.initTimer();
-    this.timer = window.setInterval(this.setTimer, 1000);
+    this.props.startGame()
   }
 
   onDigitClick(e) {
@@ -112,22 +92,26 @@ export class Addition extends Component {
   render() {
     const {
       initialTime,
-      isCorrectSolution,
-      score,
       time,
       userInput,
     } = this.state;
+
+    const {
+      gameStarted,
+      hasSolution,
+      isCorrectSolution,
+      score,
+    } = this.props;
 
     return (
       <div className={style.addition}>
         <h2>Addition game</h2>
         <StatusBar
-          initialTime={initialTime}
+          gameStarted={gameStarted}
           isCorrectSolution={isCorrectSolution}
-          hasSolution={userInput === '0'}
+          hasSolution={userInput}
           score={score}
           startSessionBtnHandler={this.onStartSessionClick}
-          time={time}
         />
         <GameDisplay
           operation={operations.addition.name}
@@ -144,11 +128,20 @@ export class Addition extends Component {
 }
 
 const mapStateToProps = state => ({
-
+  gameStarted: state.math.gameStarted,
+  isCorrectSolution: state.math.isCorrectSolution,
+  hasSolution: state.math.hasSolution,
+  total: state.math.total,
+  score: state.math.score,
 });
 
 const mapDispatchToProps = dispatch => ({
+  addScore: bindActionCreators(addScore, dispatch),
+  checkSolution: bindActionCreators(checkSolution, dispatch),
   generateDigits: bindActionCreators(generateDigits, dispatch),
+  getTotal: bindActionCreators(getTotal, dispatch),
+  removeScore: bindActionCreators(removeScore, dispatch),
+  startGame: bindActionCreators(startGame, dispatch),
 });
 
 export default hot(module)(connect(mapStateToProps, mapDispatchToProps)(Addition));

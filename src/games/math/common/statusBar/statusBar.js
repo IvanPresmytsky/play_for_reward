@@ -6,12 +6,11 @@ import SolutionDisplay from './solutionDisplay';
 import style from './statusBar.css';
 
 export const StatusBar = ({
-  initialTime,
+  gameStarted,
   isCorrectSolution,
   hasSolution,
   score,
   startSessionBtnHandler,
-  time,
 }) => (
     <div className={style.statusBar}>
       <Button
@@ -20,8 +19,7 @@ export const StatusBar = ({
         text="Start"
       />
       <SessionTimer
-        initialTime={initialTime}
-        time={time}
+        gameStarted={gameStarted}
       />
       <SolutionDisplay
         isCorrectSolution={isCorrectSolution}
