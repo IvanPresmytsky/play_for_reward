@@ -7,13 +7,12 @@ import DigitsPanel from '../common/digitsPanel/digitsPanel';
 import GameDisplay from '../common/gameDisplay/gameDisplay';
 import { StatusBar } from '../common/statusBar/statusBar';
 import { 
-  addScore,
   changeInput,
   checkSolution,
   clearUserInput,
   generateDigits,
   getTotal,
-  removeScore,
+  handleScore,
   removeUserInput,
   startGame } from '../actions/mathActions';
   
@@ -65,20 +64,8 @@ export class Addition extends Component {
   onSolveClick(e) {
     e.preventDefault();
 
-    const {
-      addScore,
-      isCorrectSolution,
-      removeScore,
-    } = this.props;
-
     this.checkSolution();
-
-    if (isCorrectSolution) {
-      addScore();
-    } else {
-      removeScore();
-    } 
-
+    this.props.handleScore();
     this.resetSession();
   }
 
@@ -125,13 +112,12 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  addScore: bindActionCreators(addScore, dispatch),
   changeInput: bindActionCreators(changeInput, dispatch),
   checkSolution: bindActionCreators(checkSolution, dispatch),
   clearUserInput: bindActionCreators(clearUserInput, dispatch),
   generateDigits: bindActionCreators(generateDigits, dispatch),
   getTotal: bindActionCreators(getTotal, dispatch),
-  removeScore: bindActionCreators(removeScore, dispatch),
+  handleScore: bindActionCreators(handleScore, dispatch),
   removeUserInput: bindActionCreators(removeUserInput, dispatch),
   startGame: bindActionCreators(startGame, dispatch),
 });

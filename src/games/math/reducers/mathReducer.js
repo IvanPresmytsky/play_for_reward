@@ -34,16 +34,16 @@ export function validateInput(userInput) {
 
 export function removeUserInput(userInput) {
   return userInput.length > 1
-    ? this.state.userInput.slice(0, userInput.length - 1)
+    ? userInput.slice(0, userInput.length - 1)
     : '';
 } 
 
 export function mathRouter(state = initialState, action) {
   switch (action.type) {
-    case mathActions.ADD_SCORE:
+    case mathActions.HANDLE_SCORE:
       return {
         ...state,
-        score: state.score + 1
+        score: state.isCorrectSolution ? (state.score + 1) : (state.score - 1),
       }
     case mathActions.CHANGE_INPUT:
       return {
@@ -59,11 +59,6 @@ export function mathRouter(state = initialState, action) {
       return {
         ...state,
         userInput: '',
-      }
-    case mathActions.REMOVE_SCORE:
-      return {
-        ...state,
-        score: state.score - 1
       }
     case mathActions.GENERATE_DIGITS:     
       return {
