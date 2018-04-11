@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { hot } from 'react-hot-loader';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import operations from '../common/constants/operations';
 import DigitsPanel from '../common/digitsPanel/digitsPanel';
 import GameDisplay from '../common/gameDisplay/gameDisplay';
@@ -116,4 +116,4 @@ const mapDispatchToProps = dispatch => ({
   startGame: bindActionCreators(startGame, dispatch),
 });
 
-export default hot(module)(connect(mapStateToProps, mapDispatchToProps)(Addition));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Addition));
