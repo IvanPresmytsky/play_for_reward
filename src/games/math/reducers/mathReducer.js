@@ -45,7 +45,7 @@ export function mathRouter(state = initialState, action) {
         ...state,
         score: state.isCorrectSolution ? (state.score + 1) : (state.score - 1),
       }
-    case mathActions.CHANGE_INPUT:
+    case mathActions.CHANGE_USER_INPUT:
       return {
         ...state,
         userInput: validateInput(state.userInput + action.userInput)
@@ -74,7 +74,7 @@ export function mathRouter(state = initialState, action) {
     case mathActions.CHECK_SOLUTION:
       return {
         ...state,
-        isCorrectSolution: state.total === action.solution,
+        isCorrectSolution: state.total === Number(action.solution),
         hasSolution: true,
       }
     case mathActions.START_GAME:

@@ -2,13 +2,14 @@
   font-size: 30px;
 }
 
-.solutionHidden {
-  visibility: hidden;
-}
-
 .solutionText {
   font-size: 30px;
   font-weight: bold;
+  visibility: hidden;
+}
+
+.solutionVisible {
+  visibility: visible;
 }
 
 .correctSolution {

@@ -4,7 +4,7 @@ export const mathActions = {
   GENERATE_DIGITS: 'GENERATE_DIGITS',
   GET_TOTAL: 'GET_TOTAL',
   START_GAME: 'START_GAME',
-  CHANGE_INPUT: 'CHANGE_INPUT',
+  CHANGE_USER_INPUT: 'CHANGE_INPUT',
   REMOVE_USER_INPUT: 'REMOVE_USER_INPUT',
   CLEAR_USER_INPUT: 'CLEAR_USER_INPUT',
 };
@@ -30,8 +30,8 @@ export const startGame = () => ({
   type: mathActions.START_GAME,
 });
 
-export const changeInput = (userInput) => ({
-  type: mathActions.CHANGE_INPUT,
+export const changeUserInput = (userInput) => ({
+  type: mathActions.CHANGE_USER_INPUT,
   userInput
 });
 

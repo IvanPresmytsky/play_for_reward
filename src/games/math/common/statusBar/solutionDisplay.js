@@ -4,7 +4,7 @@ import style from './solutionDisplay.css';
 
 export const SolutionDisplay = ({ isCorrectSolution, hasSolution }) => {
   const solutionTextClasses = classnames(style.solutionText, {
-    [style.solutionHidden]: !hasSolution,
+    [style.solutionVisible]: hasSolution,
     [style.correctSolution]: isCorrectSolution,
     [style.incorrectSolution]: !isCorrectSolution,
   });

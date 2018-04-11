@@ -7,7 +7,7 @@ import DigitsPanel from '../common/digitsPanel/digitsPanel';
 import GameDisplay from '../common/gameDisplay/gameDisplay';
 import { StatusBar } from '../common/statusBar/statusBar';
 import { 
-  changeInput,
+  changeUserInput,
   checkSolution,
   clearUserInput,
   generateDigits,
@@ -22,7 +22,6 @@ export class Addition extends Component {
   constructor() {
     super();
 
-    this.checkSolution = this.checkSolution.bind(this);
     this.resetSession = this.resetSession.bind(this);
     this.onStartSessionClick = this.onStartSessionClick.bind(this);
     this.onSolveClick = this.onSolveClick.bind(this);
@@ -30,19 +29,14 @@ export class Addition extends Component {
     this.onRemoveBtnClick = this.onRemoveBtnClick.bind(this);
   }
 
+  componentDidMount() {
+    this.resetSession();
+  }
+
   resetSession() {
     this.props.generateDigits();
     this.props.getTotal();
     this.props.clearUserInput();
-  }
-
-  checkSolution() {
-    const {
-      checkSolution,
-      userInput,
-    } = this.props;
-
-    checkSolution(Number(userInput));
   }
 
   onStartSessionClick(e) {
@@ -53,7 +47,7 @@ export class Addition extends Component {
   onDigitClick(e) {
     e.preventDefault();
     const digit = e.target && e.target.id;
-    this.props.changeInput(digit);
+    this.props.changeUserInput(digit);
   }
 
   onRemoveBtnClick(e) {
@@ -64,7 +58,7 @@ export class Addition extends Component {
   onSolveClick(e) {
     e.preventDefault();
 
-    this.checkSolution();
+    this.props.checkSolution(this.props.userInput);
     this.props.handleScore();
     this.resetSession();
   }
@@ -84,7 +78,7 @@ export class Addition extends Component {
         <StatusBar
           gameStarted={gameStarted}
           isCorrectSolution={isCorrectSolution}
-          hasSolution={userInput}
+          hasSolution={hasSolution}
           score={score}
           startSessionBtnHandler={this.onStartSessionClick}
         />
@@ -112,7 +106,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  changeInput: bindActionCreators(changeInput, dispatch),
+  changeUserInput: bindActionCreators(changeUserInput, dispatch),
   checkSolution: bindActionCreators(checkSolution, dispatch),
   clearUserInput: bindActionCreators(clearUserInput, dispatch),
   generateDigits: bindActionCreators(generateDigits, dispatch),
