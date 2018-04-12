@@ -1,5 +1,5 @@
 import { hot } from 'react-hot-loader';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import React, { Component } from 'react';
 import Addition from '../games/math/addition/addition';
 
@@ -12,6 +12,7 @@ export class App extends Component {
         <h1>Play for reward</h1>
         <Switch>
           <Route path="/game" component={Addition} />
+          <Redirect from="/" to="/game" />
         </Switch>
       </div>
     );
