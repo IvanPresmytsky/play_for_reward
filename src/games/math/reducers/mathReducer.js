@@ -38,7 +38,7 @@ export function removeUserInput(userInput) {
     : '';
 } 
 
-export function mathRouter(state = initialState, action) {
+export function mathReducer(state = initialState, action) {
   switch (action.type) {
     case mathActions.HANDLE_SCORE:
       return {
@@ -87,4 +87,4 @@ export function mathRouter(state = initialState, action) {
   }
 }
 
-export default mathRouter;
+export default mathReducer;

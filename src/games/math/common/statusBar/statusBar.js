@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '../button/button';
+import Button from '../../../../common/button/button';
 import ScoreDisplay from './scoreDisplay';
 import SessionTimer from './sessionTimer';
 import SolutionDisplay from './solutionDisplay';
