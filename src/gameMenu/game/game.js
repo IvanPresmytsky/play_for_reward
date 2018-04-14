@@ -1,14 +1,14 @@
 import React from 'react';
-import Button from '../common/button/button';
+import Button from '../../common/button/button';
 import style from './game.css';
 
-export const Game = ({ game, clickHandler }) => (
+export const Game = ({ item, clickHandler }) => (
   <div className={style.game}>
     <Button
       className={style.gameBtn}
-      id={game}
+      id={item}
       clickHandler={clickHandler}
-      text={game}
+      text={item}
     />
   </div>
 );

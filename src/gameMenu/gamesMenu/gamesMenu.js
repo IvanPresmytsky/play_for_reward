@@ -3,19 +3,18 @@ import { withRouter } from 'react-router';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { setCurrentGame } from './actions/menuActions';
-import GameList from './gamesList';
-import history from '../store/history';
-import Menu from './common/menu/menu';
-
-import style from './gamesMenu.css';
+import { setCurrentGame } from '../actions/menuActions';
+import history from '../../store/history';
+import Menu from '../common/menu/menu';
+import List from '../common/list/list';
+import Game from '../game/game';
 
 export const GamesMenu = ({ ...props }) => {
   const onGameClick = (e) => {
     e.preventDefault();
     const gameId = e.target && e.target.id;
     props.setCurrentGame(gameId);
-    history.push(`/${props.currentCategory}/${gameId}`);
+    history.push(`/games/${props.currentCategory}/${gameId}`);
   };
 
   return (
@@ -23,9 +22,10 @@ export const GamesMenu = ({ ...props }) => {
       subTitle="Choose the game"
       title="Games list"
     >
-      <GameList
+      <List
         clickHandler={onGameClick}
-        games={props.games}
+        Component={Game}
+        items={props.games}
       />
     </Menu>
   );
