@@ -31,17 +31,17 @@ export class SessionTimer extends Component {
 
   componentDidMount() {
     const { time } = this.state;
-//    console.log(this.props);
- //   if (this.nextProps.gameStarted) {
-      if (!time) this.initTimer();
-      this.timer = window.setInterval(this.setTimer, 1000);
-//    }
+    //    console.log(this.props);
+    //   if (this.nextProps.gameStarted) {
+    if (!time) this.initTimer();
+    this.timer = window.setInterval(this.setTimer, 1000);
+    //    }
   }
 
   componentWillUnmount() {
     window.clearInterval(this.timer);
   }
-/*
+  /*
   componentWillReceiveProps(nextProps) {
     const { time } = this.state;
     console.log(this.props);
@@ -65,6 +65,6 @@ export class SessionTimer extends Component {
       </div>
     );
   }
-};
+}
 
 export default SessionTimer;

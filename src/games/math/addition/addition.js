@@ -6,7 +6,7 @@ import operations from '../common/constants/operations';
 import DigitsPanel from '../common/digitsPanel/digitsPanel';
 import GameDisplay from '../common/gameDisplay/gameDisplay';
 import { StatusBar } from '../common/statusBar/statusBar';
-import { 
+import {
   changeUserInput,
   checkSolution,
   clearUserInput,
@@ -14,8 +14,9 @@ import {
   getTotal,
   handleScore,
   removeUserInput,
-  startGame } from '../actions/mathActions';
-  
+  startGame,
+} from '../actions/mathActions';
+
 import style from './addition.css';
 
 export class Addition extends Component {
@@ -41,7 +42,7 @@ export class Addition extends Component {
 
   onStartSessionClick(e) {
     e.preventDefault();
-    this.props.startGame()
+    this.props.startGame();
   }
 
   onDigitClick(e) {

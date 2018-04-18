@@ -2,13 +2,13 @@ export const menuActions = {
   SET_CURRENT_CATEGORY: 'SET_CURRENT_CATEGORY',
   SET_CURRENT_GAME: 'SET_CURRENT_GAME',
 };
-  
-export const setCurrentCategory = (category) => ({
+
+export const setCurrentCategory = categoryId => ({
   type: menuActions.SET_CURRENT_CATEGORY,
-  category,
+  categoryId,
 });
-  
-export const setCurrentGame = (game) => ({
+
+export const setCurrentGame = gameId => ({
   type: menuActions.SET_CURRENT_GAME,
-  game,
+  gameId,
 });

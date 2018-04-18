@@ -1,5 +1,4 @@
 import React from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Digit from './digit';
 import Total from './total';
@@ -10,7 +9,7 @@ import style from './gameDisplay.css';
 export const GameDisplay = ({
   operation,
   userInput,
-  ...props,
+  ...props
 }) => (
     <div className={style.gameDisplay}>
       <Digit
@@ -36,8 +35,4 @@ const mapStateToProps = state => ({
   secondDigit: state.math.secondDigit,
 });
 
-const mapDispatchToProps = dispatch => ({
-
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(GameDisplay);
+export default connect(mapStateToProps, null)(GameDisplay);

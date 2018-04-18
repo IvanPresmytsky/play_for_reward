@@ -1,25 +1,47 @@
 import { menuActions } from '../actions/menuActions';
 
 const initialState = {
-  currentCategory: 'math',
-  currentGame: '',
+  categories: [
+    {
+      id: 'math',
+      name: 'math',
+      description: 'math games',
+    },
+  ],
+  games: [
+    {
+      id: 'addition',
+      name: 'addition',
+      description: 'add digits to get correct result',
+    },
+  ],
+  currentCategory: {
+    id: 'math',
+    name: 'math',
+    description: 'math games',
+  },
+  currentGame: null,
 };
-  
+
+export function getItemById(list, id) {
+  return list.find(item => item.id === id);
+}
+
 export function menuReducer(state = initialState, action) {
   switch (action.type) {
     case menuActions.SET_CURRENT_CATEGORY:
       return {
         ...state,
-        currrentCategory: action.category,
-      }
+        currrentCategory: getItemById(state.categories, action.categoryId),
+      };
     case menuActions.SET_CURRENT_GAME:
       return {
         ...state,
-        currentGame: action.game,
-      }
+        currentGame: getItemById(state.games, action.gameId),
+      };
     default:
       return state;
   }
 }
-  
+
 export default menuReducer;

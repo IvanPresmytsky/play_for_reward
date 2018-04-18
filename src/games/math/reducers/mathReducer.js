@@ -36,7 +36,7 @@ export function removeUserInput(userInput) {
   return userInput.length > 1
     ? userInput.slice(0, userInput.length - 1)
     : '';
-} 
+}
 
 export function mathReducer(state = initialState, action) {
   switch (action.type) {
@@ -44,44 +44,44 @@ export function mathReducer(state = initialState, action) {
       return {
         ...state,
         score: state.isCorrectSolution ? (state.score + 1) : (state.score - 1),
-      }
+      };
     case mathActions.CHANGE_USER_INPUT:
       return {
         ...state,
-        userInput: validateInput(state.userInput + action.userInput)
-      }
+        userInput: validateInput(state.userInput + action.userInput),
+      };
     case mathActions.REMOVE_USER_INPUT:
       return {
         ...state,
-        userInput: removeUserInput(state.userInput)
-      }
+        userInput: removeUserInput(state.userInput),
+      };
     case mathActions.CLEAR_USER_INPUT:
       return {
         ...state,
         userInput: '',
-      }
-    case mathActions.GENERATE_DIGITS:     
+      };
+    case mathActions.GENERATE_DIGITS:
       return {
         ...state,
         firstDigit: getDigit(state.level),
         secondDigit: getDigit(state.level),
-      }
+      };
     case mathActions.GET_TOTAL:
       return {
         ...state,
-        total: getTotal(state.firstDigit, state.secondDigit, state.operation)
-      }
+        total: getTotal(state.firstDigit, state.secondDigit, state.operation),
+      };
     case mathActions.CHECK_SOLUTION:
       return {
         ...state,
         isCorrectSolution: state.total === Number(action.solution),
         hasSolution: true,
-      }
+      };
     case mathActions.START_GAME:
       return {
         ...state,
         gameStarted: true,
-      }
+      };
     default:
       return state;
   }

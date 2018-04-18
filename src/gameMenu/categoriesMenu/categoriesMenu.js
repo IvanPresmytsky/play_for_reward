@@ -16,7 +16,7 @@ export const CategoriesMenu = ({ ...props }) => {
     props.setCurrentCategory(categoryId);
     history.push(`/games/${categoryId}`);
   };
-  console.log(props.categories);
+
   return (
     <Menu
       subTitle="Choose the category"
@@ -32,11 +32,11 @@ export const CategoriesMenu = ({ ...props }) => {
 };
 
 const mapStateToProps = state => ({
-  categories: state.games.categories,
+  categories: state.menu.categories,
 });
 
 const mapDispatchToProps = dispatch => ({
-  setCurrentCategory: bindActionCreators(setCurrentCategory , dispatch),
+  setCurrentCategory: bindActionCreators(setCurrentCategory, dispatch),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CategoriesMenu));

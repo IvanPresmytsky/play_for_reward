@@ -14,7 +14,7 @@ export const GamesMenu = ({ ...props }) => {
     e.preventDefault();
     const gameId = e.target && e.target.id;
     props.setCurrentGame(gameId);
-    history.push(`/games/${props.currentCategory}/${gameId}`);
+    history.push(`/games/${props.currentCategory.name}/${gameId}/preview`);
   };
 
   return (
@@ -34,7 +34,7 @@ export const GamesMenu = ({ ...props }) => {
 const mapStateToProps = state => ({
   currentCategory: state.menu.currentCategory,
   currentGame: state.menu.currentGame,
-  games: state.games.games,
+  games: state.menu.games,
 });
 
 const mapDispatchToProps = dispatch => ({

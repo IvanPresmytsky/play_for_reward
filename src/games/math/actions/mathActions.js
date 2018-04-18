@@ -10,10 +10,10 @@ export const mathActions = {
 };
 
 export const generateDigits = () => ({
-  type: mathActions.GENERATE_DIGITS
+  type: mathActions.GENERATE_DIGITS,
 });
 
-export const checkSolution = (solution) => ({
+export const checkSolution = solution => ({
   type: mathActions.CHECK_SOLUTION,
   solution,
 });
@@ -30,9 +30,9 @@ export const startGame = () => ({
   type: mathActions.START_GAME,
 });
 
-export const changeUserInput = (userInput) => ({
+export const changeUserInput = userInput => ({
   type: mathActions.CHANGE_USER_INPUT,
-  userInput
+  userInput,
 });
 
 export const removeUserInput = () => ({
