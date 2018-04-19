@@ -3,8 +3,9 @@ import operations from '../common/constants/operations';
 
 const initialState = {
   firstDigit: 0,
-  gameStarted: false,
   isCorrectSolution: false,
+  isGameFinished: false,
+  isGameStarted: false,
   hasSolution: false,
   level: 10,
   operation: operations.addition.name,
@@ -80,7 +81,14 @@ export function mathReducer(state = initialState, action) {
     case mathActions.START_GAME:
       return {
         ...state,
-        gameStarted: true,
+        isGameStarted: true,
+        isGameFinished: false,
+      };
+    case mathActions.FINISH_GAME:
+      return {
+        ...state,
+        isGameFinished: true,
+        isGameStarted: false,
       };
     default:
       return state;

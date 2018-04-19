@@ -7,6 +7,7 @@ export const mathActions = {
   CHANGE_USER_INPUT: 'CHANGE_INPUT',
   REMOVE_USER_INPUT: 'REMOVE_USER_INPUT',
   CLEAR_USER_INPUT: 'CLEAR_USER_INPUT',
+  FINISH_GAME: 'FINISH_GAME',
 };
 
 export const generateDigits = () => ({
@@ -41,4 +42,8 @@ export const removeUserInput = () => ({
 
 export const clearUserInput = () => ({
   type: mathActions.CLEAR_USER_INPUT,
+});
+
+export const finishGame = () => ({
+  type: mathActions.FINISH_GAME,
 });

@@ -1,12 +1,17 @@
 import classnames from 'classnames';
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import history from '../../../../store/history';
+
+import { finishGame, startGame } from '../../actions/mathActions';
 import style from './sessionTimer.css';
 
 export class SessionTimer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      initialTime: 20,
+      initialTime: 10,
     };
 
     this.initTimer = this.initTimer.bind(this);
@@ -16,6 +21,7 @@ export class SessionTimer extends Component {
   initTimer() {
     const { initialTime } = this.state;
     this.setState({ time: initialTime });
+    this.props.startGame();
   }
 
   setTimer() {
@@ -26,31 +32,21 @@ export class SessionTimer extends Component {
       this.setState({ time: newTime });
     } else {
       window.clearInterval(this.timer);
+      this.props.finishGame();
+      history.push(`/games/${this.props.currentCategory.name}/${this.props.currentGame.name}/statistic`);
     }
   }
 
   componentDidMount() {
     const { time } = this.state;
-    //    console.log(this.props);
-    //   if (this.nextProps.gameStarted) {
     if (!time) this.initTimer();
     this.timer = window.setInterval(this.setTimer, 1000);
-    //    }
   }
 
   componentWillUnmount() {
     window.clearInterval(this.timer);
   }
-  /*
-  componentWillReceiveProps(nextProps) {
-    const { time } = this.state;
-    console.log(this.props);
-    if (this.nextProps.gameStarted) {
-      if (!time) this.initTimer();
-      this.timer = window.setInterval(this.setTimer, 1000);
-    }
-  }
-*/
+
   render() {
     const { initialTime, time } = this.state;
     const timeClasses = classnames(style.time, {
@@ -67,4 +63,14 @@ export class SessionTimer extends Component {
   }
 }
 
-export default SessionTimer;
+const mapStateToProps = state => ({
+  currentCategory: state.menu.currentCategory,
+  currentGame: state.menu.currentGame,
+});
+
+const mapDispatchToProps = dispatch => ({
+  finishGame: bindActionCreators(finishGame, dispatch),
+  startGame: bindActionCreators(startGame, dispatch),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SessionTimer);
