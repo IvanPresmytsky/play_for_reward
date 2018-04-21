@@ -1,5 +1,6 @@
 import { mathActions } from '../actions/mathActions';
 import operations from '../common/constants/operations';
+import gameStatistic from '../../../gameMenu/gameStatistic/gameStatistic';
 
 const initialState = {
   firstDigit: 0,
@@ -13,6 +14,7 @@ const initialState = {
   score: 0,
   total: 0,
   userInput: '',
+  gameStatistic: [],
 };
 
 export function getDigit(level) {
@@ -37,6 +39,15 @@ export function removeUserInput(userInput) {
   return userInput.length > 1
     ? userInput.slice(0, userInput.length - 1)
     : '';
+}
+
+export function recordSession(state) {
+  return {
+    condition: `${state.firstDigit} ${orerations[state.operation].symbol} ${state.secondDigit}`,
+    correctSolution: !state.isCorrectSolution && state.total,
+    isCorrectSolution: state.isCorrectSolution,
+    solution: state.userInput,
+  }
 }
 
 export function mathReducer(state = initialState, action) {
@@ -90,6 +101,10 @@ export function mathReducer(state = initialState, action) {
         isGameFinished: true,
         isGameStarted: false,
       };
+    case mathActions.RECORD_SESSION:
+      const data = recordSession(state);
+      state.gameStatistic.push(data);
+      return state;
     default:
       return state;
   }

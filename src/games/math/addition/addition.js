@@ -13,6 +13,7 @@ import {
   generateDigits,
   getTotal,
   handleScore,
+  recordSession,
   removeUserInput,
   startGame,
 } from '../actions/mathActions';
@@ -58,9 +59,16 @@ export class Addition extends Component {
 
   onSolveClick(e) {
     e.preventDefault();
+    const {
+      checkSolution,
+      handleScore,
+      recordSession,
+      userInput,
+    } = this.props;
 
-    this.props.checkSolution(this.props.userInput);
-    this.props.handleScore();
+    checkSolution(userInput);
+    handleScore();
+    recordSession();
     this.resetSession();
   }
 
@@ -113,6 +121,7 @@ const mapDispatchToProps = dispatch => ({
   generateDigits: bindActionCreators(generateDigits, dispatch),
   getTotal: bindActionCreators(getTotal, dispatch),
   handleScore: bindActionCreators(handleScore, dispatch),
+  recordSession: bindActionCreators(recordSession, dispatch),
   removeUserInput: bindActionCreators(removeUserInput, dispatch),
   startGame: bindActionCreators(startGame, dispatch),
 });

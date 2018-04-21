@@ -38,6 +38,7 @@ export const GameStatistic = ({ ...props }) => {
 const mapStateToProps = state => ({
   currentCategory: state.menu.currentCategory,
   currentGame: state.menu.currentGame,
+  gameStatistic: state.math.gameStatistic,
 });
 
 export default withRouter(connect(mapStateToProps, null)(GameStatistic));
