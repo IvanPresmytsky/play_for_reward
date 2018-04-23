@@ -2,20 +2,20 @@ import React from 'react';
 
 import style from './statisticItem.css';
 
-export const StatisticItem = ({ condition, correctSolution, date, isCorrectSolution, solution }) => (
+export const StatisticItem = ({ data }) => (
   <div className={style.StatisticItem}>
     <span className={style.date}>
-      {`${date}: `}
+      {`duration: ${data.duration} sec `}
     </span>
     <span className={style.condition}>
-      {condition}
+      {data.condition}
     </span>
     <span> = </span>
     <span className={style.solution}>
-      {` ${solution}`}
+      {` ${data.solution}`}
     </span>
     <span className={style.correctSolution}>
-      {!isCorrectSolution && ` ${correctSolution}` }
+      {!data.isCorrectSolution && ` ${data.correctSolution}` }
     </span>
   </div>
 );

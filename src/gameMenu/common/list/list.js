@@ -6,7 +6,7 @@ export const List = ({ clickHandler, Component, items }) => (
       {items.map(item => (
         <Component
           clickHandler={clickHandler}
-          item={item.name}
+          data={item}
           key={item.id}
         />))}
     </div>

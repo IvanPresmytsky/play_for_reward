@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import history from '../../store/history';
 import Button from '../../common/button/button';
+import List from '../common/list/list';
 import StatisticItem from './statisicItem';
 
 import style from './gameStatistic.css';
@@ -22,16 +23,10 @@ export const GameStatistic = ({ ...props }) => {
   return (
     <div className={style.gameStatistic}>
       <h3 className={style.title}>{`${props.currentGame.name} statistic`}</h3>
-      {props.gameStatistic.map(item => (
-         <StatisticItem
-          condition={item.condition}
-          correctSolution={item.correctSolution}
-          date={item.id}
-          isCorrectSolution={item.isCorrectSolution}
-          key={item.id}
-          solution={item.solution}
-         />
-      ))}
+      <List
+        Component={StatisticItem}
+        items={props.gameStatistic}
+      />
       <Button
         className={style.playBtn}
         clickHandler={onPlayBtnClick}

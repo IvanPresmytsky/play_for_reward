@@ -11,6 +11,7 @@ const initialState = {
   operation: operations.addition.name,
   secondDigit: 0,
   score: 0,
+  sessionTime: 0,
   total: 0,
   userInput: '',
   gameStatistic: [],
@@ -40,12 +41,13 @@ export function removeUserInput(userInput) {
     : '';
 }
 
-export function recordSession(state) {
+export function recordSession(state, timeStamp) {
   return {
     condition: `${state.firstDigit} ${operations[state.operation].symbol} ${state.secondDigit}`,
     correctSolution: !state.isCorrectSolution && state.total,
     isCorrectSolution: state.isCorrectSolution,
-    id: Date.now(),
+    id: timeStamp,
+    duration: parseFloat(((timeStamp - state.sessionTime) / 1000).toFixed(1)),
     solution: state.userInput,
   };
 }
@@ -94,6 +96,7 @@ export function mathReducer(state = initialState, action) {
         ...state,
         isGameStarted: true,
         isGameFinished: false,
+        sessionTime: Date.now(),
       };
     case mathActions.FINISH_GAME:
       return {
@@ -101,10 +104,16 @@ export function mathReducer(state = initialState, action) {
         isGameFinished: true,
         isGameStarted: false,
       };
-    case mathActions.RECORD_SESSION:
-      const data = recordSession(state);
+    case mathActions.RECORD_SESSION: {
+      const timeStamp = Date.now();
+      const data = recordSession(state, timeStamp);
       state.gameStatistic.push(data);
-      return state;
+
+      return {
+        ...state,
+        sessionTime: timeStamp,
+      };
+    }
     default:
       return state;
   }

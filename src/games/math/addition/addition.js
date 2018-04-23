@@ -59,16 +59,10 @@ export class Addition extends Component {
 
   onSolveClick(e) {
     e.preventDefault();
-    const {
-      checkSolution,
-      handleScore,
-      recordSession,
-      userInput,
-    } = this.props;
 
-    checkSolution(userInput);
-    handleScore();
-    recordSession();
+    this.props.checkSolution(this.props.userInput);
+    this.props.handleScore();
+    this.props.recordSession();
     this.resetSession();
   }
 

@@ -2,13 +2,13 @@ import React from 'react';
 import Button from '../../common/button/button';
 import style from './category.css';
 
-export const Category = ({ item, clickHandler }) => (
+export const Category = ({ data, clickHandler }) => (
   <div className={style.category}>
     <Button
       className={style.categoryBtn}
-      id={item}
+      id={data.id}
       clickHandler={clickHandler}
-      text={item}
+      text={data.name}
     />
   </div>
 );

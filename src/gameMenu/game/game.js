@@ -2,13 +2,13 @@ import React from 'react';
 import Button from '../../common/button/button';
 import style from './game.css';
 
-export const Game = ({ item, clickHandler }) => (
+export const Game = ({ data, clickHandler }) => (
   <div className={style.game}>
     <Button
       className={style.gameBtn}
-      id={item}
+      id={data.id}
       clickHandler={clickHandler}
-      text={item}
+      text={data.name}
     />
   </div>
 );
