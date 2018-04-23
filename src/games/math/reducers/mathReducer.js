@@ -1,6 +1,5 @@
 import { mathActions } from '../actions/mathActions';
 import operations from '../common/constants/operations';
-import gameStatistic from '../../../gameMenu/gameStatistic/gameStatistic';
 
 const initialState = {
   firstDigit: 0,
@@ -43,11 +42,12 @@ export function removeUserInput(userInput) {
 
 export function recordSession(state) {
   return {
-    condition: `${state.firstDigit} ${orerations[state.operation].symbol} ${state.secondDigit}`,
+    condition: `${state.firstDigit} ${operations[state.operation].symbol} ${state.secondDigit}`,
     correctSolution: !state.isCorrectSolution && state.total,
     isCorrectSolution: state.isCorrectSolution,
+    id: Date.now(),
     solution: state.userInput,
-  }
+  };
 }
 
 export function mathReducer(state = initialState, action) {

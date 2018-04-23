@@ -7,7 +7,7 @@ export const List = ({ clickHandler, Component, items }) => (
         <Component
           clickHandler={clickHandler}
           item={item.name}
-          key={item.name}
+          key={item.id}
         />))}
     </div>
 );

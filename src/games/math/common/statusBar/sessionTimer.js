@@ -11,7 +11,7 @@ export class SessionTimer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      initialTime: 10,
+      initialTime: 20,
     };
 
     this.initTimer = this.initTimer.bind(this);
