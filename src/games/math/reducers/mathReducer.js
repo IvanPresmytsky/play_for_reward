@@ -12,6 +12,7 @@ const initialState = {
   operation: operations.addition.name,
   secondDigit: 0,
   score: 0,
+  scoreToNextLevel: 10,
   sessionTime: 0,
   total: 0,
   userInput: '',
@@ -54,13 +55,28 @@ export function recordSession(state, timeStamp) {
   };
 }
 
+export function setLevel(state) {
+  const isNextLevel = state.scoreToNextLevel === 0;
+  const newLevel = isNextLevel ? state.level + 1 : state.level;
+  return newLevel;
+}
+
+export function setScoreToNextLevel(state) {
+  const isNextLevel = state.scoreToNextLevel === 0;
+  if (isNextLevel) return 10 * ((state.level / 10) + 1);
+  return state.isCorrectSolution ? state.scoreToNextLevel - 1 : state.scoreToNextLevel + 2;
+}
+
 export function mathReducer(state = initialState, action) {
   switch (action.type) {
-    case mathActions.HANDLE_SCORE:
+    case mathActions.HANDLE_SCORE: {
       return {
         ...state,
+        level: setLevel(state),
         score: state.isCorrectSolution ? (state.score + 1) : (state.score - 2),
+        scoreToNextLevel: setScoreToNextLevel(state),
       };
+    }
     case mathActions.CHANGE_USER_INPUT:
       return {
         ...state,
