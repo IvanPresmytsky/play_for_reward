@@ -65,6 +65,7 @@ export class Addition extends Component {
       gameStarted,
       hasSolution,
       isCorrectSolution,
+      level,
       score,
       userInput,
     } = this.props;
@@ -76,6 +77,7 @@ export class Addition extends Component {
           gameStarted={gameStarted}
           isCorrectSolution={isCorrectSolution}
           hasSolution={hasSolution}
+          level={level}
           score={score}
         />
         <GameDisplay
@@ -96,6 +98,7 @@ const mapStateToProps = state => ({
   gameStarted: state.math.gameStarted,
   isCorrectSolution: state.math.isCorrectSolution,
   hasSolution: state.math.hasSolution,
+  level: state.math.level,
   total: state.math.total,
   score: state.math.score,
   userInput: state.math.userInput,

@@ -8,7 +8,7 @@ const initialState = {
   isGameFinished: false,
   isGameStarted: false,
   hasSolution: false,
-  level: 10,
+  level: 1,
   operation: operations.addition.name,
   secondDigit: 0,
   score: 0,
