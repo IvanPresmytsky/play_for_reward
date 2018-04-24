@@ -25,7 +25,6 @@ export class Addition extends Component {
     super();
 
     this.resetSession = this.resetSession.bind(this);
-    this.onStartSessionClick = this.onStartSessionClick.bind(this);
     this.onSolveClick = this.onSolveClick.bind(this);
     this.onDigitClick = this.onDigitClick.bind(this);
     this.onRemoveBtnClick = this.onRemoveBtnClick.bind(this);
@@ -39,11 +38,6 @@ export class Addition extends Component {
     this.props.generateDigits();
     this.props.getTotal();
     this.props.clearUserInput();
-  }
-
-  onStartSessionClick(e) {
-    e.preventDefault();
-    this.props.startGame();
   }
 
   onDigitClick(e) {
@@ -83,7 +77,6 @@ export class Addition extends Component {
           isCorrectSolution={isCorrectSolution}
           hasSolution={hasSolution}
           score={score}
-          startSessionBtnHandler={this.onStartSessionClick}
         />
         <GameDisplay
           operation={operations.addition.name}

@@ -8,6 +8,7 @@ export const mathActions = {
   REMOVE_USER_INPUT: 'REMOVE_USER_INPUT',
   CLEAR_USER_INPUT: 'CLEAR_USER_INPUT',
   FINISH_GAME: 'FINISH_GAME',
+  RECORD_GAME: 'RECORD_GAME',
   RECORD_SESSION: 'RECORD_SESSION',
 };
 
@@ -52,4 +53,10 @@ export const finishGame = () => ({
 export const recordSession = sessionData => ({
   type: mathActions.RECORD_SESSION,
   sessionData,
+});
+
+export const recordGame = (category, game) => ({
+  type: mathActions.RECORD_GAME,
+  category,
+  game,
 });

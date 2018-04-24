@@ -1,7 +1,9 @@
 import React from 'react';
 import { withRouter } from 'react-router';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import { recordGame } from '../../games/math/actions/mathActions';
 import history from '../../store/history';
 import Button from '../../common/button/button';
 import List from '../common/list/list';
@@ -13,11 +15,13 @@ export const GameStatistic = ({ ...props }) => {
   const onPlayBtnClick = (e) => {
     e.preventDefault();
     history.push(`/games/${props.currentCategory.name}/${props.currentGame.name}/game`);
+    props.recordGame(props.currentCategory.name, props.currentGame.name);
   };
 
   const onExitBtnClick = (e) => {
     e.preventDefault();
     history.push('/games');
+    props.recordGame(props.currentCategory.name, props.currentGame.name);
   };
 
   return (
@@ -47,4 +51,8 @@ const mapStateToProps = state => ({
   gameStatistic: state.math.gameStatistic,
 });
 
-export default withRouter(connect(mapStateToProps, null)(GameStatistic));
+const mapDispatchToProps = dispatch => ({
+  recordGame: bindActionCreators(recordGame, dispatch),
+});
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(GameStatistic));

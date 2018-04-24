@@ -1,5 +1,4 @@
 import React from 'react';
-import Button from '../../../../common/button/button';
 import ScoreDisplay from './scoreDisplay';
 import SessionTimer from './sessionTimer';
 import SolutionDisplay from './solutionDisplay';
@@ -10,14 +9,8 @@ export const StatusBar = ({
   isCorrectSolution,
   hasSolution,
   score,
-  startSessionBtnHandler,
 }) => (
     <div className={style.statusBar}>
-      <Button
-        clickHandler={startSessionBtnHandler}
-        mods={['green']}
-        text="Start"
-      />
       <SessionTimer
         gameStarted={gameStarted}
       />

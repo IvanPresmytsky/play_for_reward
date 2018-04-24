@@ -1,3 +1,4 @@
+import dateformat from 'dateformat';
 import { mathActions } from '../actions/mathActions';
 import operations from '../common/constants/operations';
 
@@ -15,6 +16,7 @@ const initialState = {
   total: 0,
   userInput: '',
   gameStatistic: [],
+  mainStatistic: {},
 };
 
 export function getDigit(level) {
@@ -44,7 +46,7 @@ export function removeUserInput(userInput) {
 export function recordSession(state, timeStamp) {
   return {
     condition: `${state.firstDigit} ${operations[state.operation].symbol} ${state.secondDigit}`,
-    correctSolution: !state.isCorrectSolution && state.total,
+    correctSolution: !state.isCorrectSolution ? state.total : null,
     isCorrectSolution: state.isCorrectSolution,
     id: timeStamp,
     duration: parseFloat(((timeStamp - state.sessionTime) / 1000).toFixed(1)),
@@ -57,7 +59,7 @@ export function mathReducer(state = initialState, action) {
     case mathActions.HANDLE_SCORE:
       return {
         ...state,
-        score: state.isCorrectSolution ? (state.score + 1) : (state.score - 1),
+        score: state.isCorrectSolution ? (state.score + 1) : (state.score - 2),
       };
     case mathActions.CHANGE_USER_INPUT:
       return {
@@ -112,6 +114,21 @@ export function mathReducer(state = initialState, action) {
       return {
         ...state,
         sessionTime: timeStamp,
+      };
+    }
+    case mathActions.RECORD_GAME: {
+      const date = dateformat(new Date(Date.now()), 'isoDateTime');
+
+      state.mainStatistic[date] = {
+        category: action.category,
+        game: action.game,
+        statistic: state.gameStatistic,
+      };
+
+      return {
+        ...state,
+        sessionTime: 0,
+        gameStatistic: [],
       };
     }
     default:
