@@ -8,6 +8,7 @@ import GameDisplay from '../common/gameDisplay/gameDisplay';
 import { StatusBar } from '../common/statusBar/statusBar';
 import {
   changeUserInput,
+  checkLevel,
   checkSolution,
   clearUserInput,
   generateDigits,
@@ -56,6 +57,7 @@ export class Addition extends Component {
 
     this.props.checkSolution(this.props.userInput);
     this.props.handleScore();
+    this.props.checkLevel();
     this.props.recordSession();
     this.resetSession();
   }
@@ -106,6 +108,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   changeUserInput: bindActionCreators(changeUserInput, dispatch),
+  checkLevel: bindActionCreators(checkLevel, dispatch),
   checkSolution: bindActionCreators(checkSolution, dispatch),
   clearUserInput: bindActionCreators(clearUserInput, dispatch),
   generateDigits: bindActionCreators(generateDigits, dispatch),

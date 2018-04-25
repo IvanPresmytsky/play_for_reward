@@ -6,6 +6,7 @@ export const mathActions = {
   START_GAME: 'START_GAME',
   CHANGE_USER_INPUT: 'CHANGE_INPUT',
   REMOVE_USER_INPUT: 'REMOVE_USER_INPUT',
+  CHECK_LEVEL: 'CHECK_LEVEL',
   CLEAR_USER_INPUT: 'CLEAR_USER_INPUT',
   FINISH_GAME: 'FINISH_GAME',
   RECORD_GAME: 'RECORD_GAME',
@@ -59,4 +60,8 @@ export const recordGame = (category, game) => ({
   type: mathActions.RECORD_GAME,
   category,
   game,
+});
+
+export const checkLevel = () => ({
+  type: mathActions.CHECK_LEVEL,
 });

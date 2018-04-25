@@ -51,20 +51,20 @@ export function recordSession(state, timeStamp) {
     isCorrectSolution: state.isCorrectSolution,
     id: timeStamp,
     duration: parseFloat(((timeStamp - state.sessionTime) / 1000).toFixed(1)),
+    level: state.level,
+    score: state.score,
     solution: state.userInput,
   };
 }
 
-export function setLevel(state) {
-  const isNextLevel = state.scoreToNextLevel === 0;
+export function checkLevel(state) {
+  const isNextLevel = state.scoreToNextLevel <= state.score;
   const newLevel = isNextLevel ? state.level + 1 : state.level;
   return newLevel;
 }
 
-export function setScoreToNextLevel(state) {
-  const isNextLevel = state.scoreToNextLevel === 0;
-  if (isNextLevel) return 10 * ((state.level / 10) + 1);
-  return state.isCorrectSolution ? state.scoreToNextLevel - 1 : state.scoreToNextLevel + 2;
+export function setScoreToNextLevel(level) {
+  return 10 * level * ((level / 10) + 1);
 }
 
 export function mathReducer(state = initialState, action) {
@@ -72,9 +72,7 @@ export function mathReducer(state = initialState, action) {
     case mathActions.HANDLE_SCORE: {
       return {
         ...state,
-        level: setLevel(state),
         score: state.isCorrectSolution ? (state.score + 1) : (state.score - 2),
-        scoreToNextLevel: setScoreToNextLevel(state),
       };
     }
     case mathActions.CHANGE_USER_INPUT:
@@ -145,6 +143,14 @@ export function mathReducer(state = initialState, action) {
         ...state,
         sessionTime: 0,
         gameStatistic: [],
+      };
+    }
+    case mathActions.CHECK_LEVEL: {
+      const newLevel = checkLevel(state);
+      return {
+        ...state,
+        level: newLevel,
+        scoreToNextLevel: setScoreToNextLevel(newLevel),
       };
     }
     default:
