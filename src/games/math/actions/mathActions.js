@@ -11,6 +11,7 @@ export const mathActions = {
   FINISH_GAME: 'FINISH_GAME',
   RECORD_GAME: 'RECORD_GAME',
   RECORD_SESSION: 'RECORD_SESSION',
+  RESET_SESSION: 'RESET_SESSION',
 };
 
 export const generateDigits = () => ({
@@ -64,4 +65,8 @@ export const recordGame = (category, game) => ({
 
 export const checkLevel = () => ({
   type: mathActions.CHECK_LEVEL,
+});
+
+export const resetSession = () => ({
+  type: mathActions.RESET_SESSION,
 });

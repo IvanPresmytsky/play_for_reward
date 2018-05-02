@@ -16,6 +16,7 @@ import {
   handleScore,
   recordSession,
   removeUserInput,
+  resetSession,
   startGame,
 } from '../actions/mathActions';
 
@@ -59,7 +60,7 @@ export class Addition extends Component {
     this.props.handleScore();
     this.props.checkLevel();
     this.props.recordSession();
-    this.resetSession();
+    this.props.resetSession();
   }
 
   render() {
@@ -116,6 +117,7 @@ const mapDispatchToProps = dispatch => ({
   handleScore: bindActionCreators(handleScore, dispatch),
   recordSession: bindActionCreators(recordSession, dispatch),
   removeUserInput: bindActionCreators(removeUserInput, dispatch),
+  resetSession: bindActionCreators(resetSession, dispatch),
   startGame: bindActionCreators(startGame, dispatch),
 });
 
