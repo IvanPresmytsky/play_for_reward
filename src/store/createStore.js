@@ -1,3 +1,4 @@
+import 'babel-polyfill';
 import { applyMiddleware, compose, createStore } from 'redux';
 import { routerMiddleware } from 'react-router-redux';
 import { createLogger } from 'redux-logger';
@@ -32,7 +33,7 @@ function configureStore(initialState = {}, history) {
     initialState,
     compose(...enhancers),
   );
-  
+
   store.runSaga = sagaMiddleware.run;
   store.close = () => store.dispatch(END);
   sagaMiddleware.run(rootSaga);

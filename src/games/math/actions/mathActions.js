@@ -9,6 +9,7 @@ export const mathActions = {
   CHECK_LEVEL: 'CHECK_LEVEL',
   CLEAR_USER_INPUT: 'CLEAR_USER_INPUT',
   FINISH_GAME: 'FINISH_GAME',
+  FINISH_SESSION: 'FINISH_SESSION',
   RECORD_GAME: 'RECORD_GAME',
   RECORD_SESSION: 'RECORD_SESSION',
   RESET_SESSION: 'RESET_SESSION',
@@ -52,9 +53,8 @@ export const finishGame = () => ({
   type: mathActions.FINISH_GAME,
 });
 
-export const recordSession = sessionData => ({
+export const recordSession = () => ({
   type: mathActions.RECORD_SESSION,
-  sessionData,
 });
 
 export const recordGame = (category, game) => ({
@@ -69,4 +69,9 @@ export const checkLevel = () => ({
 
 export const resetSession = () => ({
   type: mathActions.RESET_SESSION,
+});
+
+export const finishSession = sessionData => ({
+  type: mathActions.FINISH_SESSION,
+  sessionData,
 });

@@ -1,14 +1,15 @@
+import { put, takeEvery } from 'redux-saga/effects';
 import {
   clearUserInput,
   generateDigits,
   getTotal,
-  mathActions } from '../actions/mathActions';
-import { put, takeEvery } from 'redux-saga/effects';
+  mathActions,
+} from '../actions/mathActions';
 
-export function* resetSession(action) {
-  yield put.generateDigits();
-  yield put.getTotal();
-  yield put.clearUserInput();
+export function* resetSession() {
+  yield put(generateDigits());
+  yield put(getTotal());
+  yield put(clearUserInput());
 }
 
 export default function* watchResetSession() {

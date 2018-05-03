@@ -8,13 +8,7 @@ import GameDisplay from '../common/gameDisplay/gameDisplay';
 import { StatusBar } from '../common/statusBar/statusBar';
 import {
   changeUserInput,
-  checkLevel,
-  checkSolution,
-  clearUserInput,
-  generateDigits,
-  getTotal,
-  handleScore,
-  recordSession,
+  finishSession,
   removeUserInput,
   resetSession,
   startGame,
@@ -26,20 +20,13 @@ export class Addition extends Component {
   constructor() {
     super();
 
-    this.resetSession = this.resetSession.bind(this);
     this.onSolveClick = this.onSolveClick.bind(this);
     this.onDigitClick = this.onDigitClick.bind(this);
     this.onRemoveBtnClick = this.onRemoveBtnClick.bind(this);
   }
 
   componentDidMount() {
-    this.resetSession();
-  }
-
-  resetSession() {
-    this.props.generateDigits();
-    this.props.getTotal();
-    this.props.clearUserInput();
+    this.props.resetSession();
   }
 
   onDigitClick(e) {
@@ -55,12 +42,7 @@ export class Addition extends Component {
 
   onSolveClick(e) {
     e.preventDefault();
-
-    this.props.checkSolution(this.props.userInput);
-    this.props.handleScore();
-    this.props.checkLevel();
-    this.props.recordSession();
-    this.props.resetSession();
+    this.props.finishSession(this.props.userInput);
   }
 
   render() {
@@ -109,13 +91,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   changeUserInput: bindActionCreators(changeUserInput, dispatch),
-  checkLevel: bindActionCreators(checkLevel, dispatch),
-  checkSolution: bindActionCreators(checkSolution, dispatch),
-  clearUserInput: bindActionCreators(clearUserInput, dispatch),
-  generateDigits: bindActionCreators(generateDigits, dispatch),
-  getTotal: bindActionCreators(getTotal, dispatch),
-  handleScore: bindActionCreators(handleScore, dispatch),
-  recordSession: bindActionCreators(recordSession, dispatch),
+  finishSession: bindActionCreators(finishSession, dispatch),
   removeUserInput: bindActionCreators(removeUserInput, dispatch),
   resetSession: bindActionCreators(resetSession, dispatch),
   startGame: bindActionCreators(startGame, dispatch),
