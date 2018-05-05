@@ -1,0 +1,7 @@
+.statusBar {
+  align-items: center;
+  background: gainsboro;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}

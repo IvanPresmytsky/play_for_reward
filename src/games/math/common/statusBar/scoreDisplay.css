@@ -1,0 +1,9 @@
+.scoreDisplay {
+  align-items: center;
+  display: flex;
+}
+
+.scoreText {
+  color: green;
+  font-size: 30px;
+}

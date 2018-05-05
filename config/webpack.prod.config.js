@@ -1,6 +1,6 @@
 const project = require('./project.config');
 
-const APP_ENTRY = project.paths.client('app.js');
+const APP_ENTRY = project.paths.client('root.js');
 
 const prodWebpackConfig = {
   devtool: false,

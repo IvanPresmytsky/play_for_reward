@@ -1,0 +1,15 @@
+.sessionTimer {
+  font-size: 30px;
+}
+
+.time {
+  color: green;
+}
+
+.mediumTime {
+  color: yellow;
+}
+
+.lowTime {
+  color: red;
+}

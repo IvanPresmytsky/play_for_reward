@@ -1,0 +1,21 @@
+.solutionDisplay {
+  font-size: 30px;
+}
+
+.solutionText {
+  font-size: 30px;
+  font-weight: bold;
+  visibility: hidden;
+}
+
+.solutionVisible {
+  visibility: visible;
+}
+
+.correctSolution {
+  color: green;
+}
+
+.incorrectSolution {
+  color: red;
+}

@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const project = require('./project.config.js');
 
-const APP_ENTRY = project.paths.client('app.js');
+const APP_ENTRY = project.paths.client('root.js');
 
 const devWebpackConfig = {
   devtool: project.compiler_devtool,

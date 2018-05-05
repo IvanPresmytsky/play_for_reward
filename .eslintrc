@@ -26,6 +26,12 @@
     "key-spacing": 0,
     "jsx-quotes": [2, "prefer-double" ],
     "max-len": [2, 120, 2],
+    "no-param-reassign": [
+      "error",
+      {
+        "props": false
+      }
+    ],
     "object-curly-spacing": [2, "always"],
     "react/jsx-uses-vars": [2],
     "no-unused-vars": [
