@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { setCurrentGame } from '../actions/menuActions';
-import history from '../../store/history';
+import { navigateToGamePreview } from '../../common/_helpers/navigationHelper';
 import Menu from '../common/menu/menu';
 import List from '../common/list/list';
 import Game from '../game/game';
@@ -13,8 +13,9 @@ export const GamesMenu = ({ ...props }) => {
   const onGameClick = (e) => {
     e.preventDefault();
     const gameId = e.target && e.target.id;
+    const categoryId = props.currentCategory.id;
     props.setCurrentGame(gameId);
-    history.push(`/games/${props.currentCategory.name}/${gameId}/preview`);
+    navigateToGamePreview(categoryId, gameId);
   };
 
   return (

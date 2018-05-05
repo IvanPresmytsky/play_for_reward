@@ -3,13 +3,13 @@ import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 
 import Button from '../../common/button/button';
-import history from '../../store/history';
+import { navigateToGame } from '../../common/_helpers/navigationHelper';
 import style from './gamePreview.css';
 
 export const GamePreview = ({ ...props }) => {
   const onStartGameBtnClick = (e) => {
     e.preventDefault();
-    history.push(`/games/${props.currentCategory.name}/${props.currentGame.name}/game`);
+    navigateToGame(props.currentCategory.name, props.currentGame.name);
   };
 
   return (

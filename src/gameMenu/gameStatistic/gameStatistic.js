@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { recordGame } from '../../games/math/actions/mathActions';
-import history from '../../store/history';
+import { navigateToGames, navigateToGame } from '../../common/_helpers/navigationHelper';
 import Button from '../../common/button/button';
 import List from '../common/list/list';
 import StatisticItem from './statisicItem';
@@ -14,13 +14,16 @@ import style from './gameStatistic.css';
 export const GameStatistic = ({ ...props }) => {
   const onPlayBtnClick = (e) => {
     e.preventDefault();
-    history.push(`/games/${props.currentCategory.name}/${props.currentGame.name}/game`);
-    props.recordGame(props.currentCategory.name, props.currentGame.name);
+    const category = props.currentCategory.name;
+    const game = props.currentGame.name;
+
+    navigateToGame(category, game);
+    props.recordGame(category, game);
   };
 
   const onExitBtnClick = (e) => {
     e.preventDefault();
-    history.push('/games');
+    navigateToGames();
     props.recordGame(props.currentCategory.name, props.currentGame.name);
   };
 

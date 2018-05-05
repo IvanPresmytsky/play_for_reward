@@ -2,8 +2,8 @@ import classnames from 'classnames';
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import history from '../../../../store/history';
 
+import { navigateToGameStatistic } from '../../../../common/_helpers/navigationHelper';
 import { finishGame, startGame } from '../../actions/mathActions';
 import style from './sessionTimer.css';
 
@@ -33,7 +33,7 @@ export class SessionTimer extends Component {
     } else {
       window.clearInterval(this.timer);
       this.props.finishGame();
-      history.push(`/games/${this.props.currentCategory.name}/${this.props.currentGame.name}/statistic`);
+      navigateToGameStatistic(this.props.currentCategory.name, this.props.currentGame.name);
     }
   }
 

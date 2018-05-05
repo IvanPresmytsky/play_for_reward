@@ -2,9 +2,8 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-
 import { setCurrentCategory } from '../actions/menuActions';
-import history from '../../store/history';
+import { navigateToCategory } from '../../common/_helpers/navigationHelper';
 import Menu from '../common/menu/menu';
 import List from '../common/list/list';
 import Category from '../category/category';
@@ -14,7 +13,7 @@ export const CategoriesMenu = ({ ...props }) => {
     e.preventDefault();
     const categoryId = e.target && e.target.id;
     props.setCurrentCategory(categoryId);
-    history.push(`/games/${categoryId}`);
+    navigateToCategory(categoryId);
   };
 
   return (
