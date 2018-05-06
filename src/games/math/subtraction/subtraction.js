@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
 import operations from '../common/constants/operations';
 import DigitsPanel from '../common/digitsPanel/digitsPanel';
 import GameDisplay from '../common/gameDisplay/gameDisplay';
@@ -14,19 +14,18 @@ import {
   setOperation,
 } from '../actions/mathActions';
 
-import style from './addition.css';
+import style from './subtraction.css';
 
-export class Addition extends Component {
+export class Subtraction extends Component {
   constructor() {
     super();
-
     this.onSolveClick = this.onSolveClick.bind(this);
     this.onDigitClick = this.onDigitClick.bind(this);
     this.onRemoveBtnClick = this.onRemoveBtnClick.bind(this);
   }
 
   componentDidMount() {
-    this.props.setOperation('addition');
+    this.props.setOperation('subtraction');
     this.props.resetSession();
   }
 
@@ -57,8 +56,8 @@ export class Addition extends Component {
     } = this.props;
 
     return (
-      <div className={style.addition}>
-        <h2>Addition game</h2>
+      <div className={style.subtraction}>
+        <h2>Subtraction game</h2>
         <StatusBar
           gameStarted={gameStarted}
           isCorrectSolution={isCorrectSolution}
@@ -67,7 +66,7 @@ export class Addition extends Component {
           score={score}
         />
         <GameDisplay
-          operation={operations.addition.name}
+          operation={operations.subtraction.name}
           userInput={userInput}
         />
         <DigitsPanel
@@ -98,4 +97,4 @@ const mapDispatchToProps = dispatch => ({
   setOperation: bindActionCreators(setOperation, dispatch),
 });
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Addition));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Subtraction));

@@ -13,6 +13,7 @@ export const mathActions = {
   RECORD_GAME: 'RECORD_GAME',
   RECORD_SESSION: 'RECORD_SESSION',
   RESET_SESSION: 'RESET_SESSION',
+  SET_OPERATION: 'SET_OPERATION',
 };
 
 export const generateDigits = () => ({
@@ -74,4 +75,9 @@ export const resetSession = () => ({
 export const finishSession = sessionData => ({
   type: mathActions.FINISH_SESSION,
   sessionData,
+});
+
+export const setOperation = operation => ({
+  type: mathActions.SET_OPERATION,
+  operation,
 });

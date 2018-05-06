@@ -2,6 +2,7 @@ import { hot } from 'react-hot-loader';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import React, { Component } from 'react';
 import Addition from '../games/math/addition/addition';
+import Subtraction from '../games/math/subtraction/subtraction';
 import GamesMenu from '../gameMenu/gamesMenu/gamesMenu';
 import GamePreview from '../gameMenu/gamePreview/gamePreview';
 import GameStatistic from '../gameMenu/gameStatistic/gameStatistic';
@@ -19,6 +20,7 @@ export class App extends Component {
           <Route path={`${routes.GAMES}/:category/:game${routes.PREVIEW}`} component={GamePreview} />
           <Route path={`${routes.GAMES}/:category/:game${routes.STATISTIC}`} component={GameStatistic} />
           <Route path={`${routes.GAMES}${routes.MATH}${routes.ADDITION}${routes.GAME}`} component={Addition} />
+          <Route path={`${routes.GAMES}${routes.MATH}${routes.SUBTRACTION}${routes.GAME}`} component={Subtraction} />
           <Route path={`${routes.GAMES}/:category`} component={GamesMenu} />
           <Route path={routes.GAMES} component={CategoriesMenu} />
           <Redirect from={routes.BASE} to={routes.GAMES} />

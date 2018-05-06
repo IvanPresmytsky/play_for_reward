@@ -3,6 +3,7 @@ import { mathActions } from '../actions/mathActions';
 import operations from '../common/constants/operations';
 
 const initialState = {
+  digitsQuantity: 2,
   firstDigit: 0,
   isCorrectSolution: false,
   isGameFinished: false,
@@ -25,9 +26,23 @@ export function getDigit(level) {
   return Math.floor(Math.random() * levelRatio) + 1;
 }
 
+export function getDigits(quantity, level, operation) {
+  const digits = new Array(quantity).fill()
+    .map(() => getDigit(level));
+
+  if (operation === operations.subtraction.name) {
+    const sortedDigits = digits.sort((a, b) => b - a);
+    return sortedDigits;
+  }
+
+  return digits;
+}
+
 export function getTotal(firstDigit, secondDigit, operation) {
   if (operation === operations.addition.name) {
     return firstDigit + secondDigit;
+  } else if (operation === operations.subtraction.name) {
+    return firstDigit - secondDigit;
   }
   return null;
 }
@@ -90,12 +105,14 @@ export function mathReducer(state = initialState, action) {
         ...state,
         userInput: '',
       };
-    case mathActions.GENERATE_DIGITS:
+    case mathActions.GENERATE_DIGITS: {
+      const digits = getDigits(state.digitsQuantity, state.level, state.operation);
       return {
         ...state,
-        firstDigit: getDigit(state.level),
-        secondDigit: getDigit(state.level),
+        firstDigit: digits[0],
+        secondDigit: digits[1],
       };
+    }
     case mathActions.GET_TOTAL:
       return {
         ...state,
@@ -151,6 +168,12 @@ export function mathReducer(state = initialState, action) {
         ...state,
         level: newLevel,
         scoreToNextLevel: setScoreToNextLevel(newLevel),
+      };
+    }
+    case mathActions.SET_OPERATION: {
+      return {
+        ...state,
+        operation: action.operation,
       };
     }
     default:

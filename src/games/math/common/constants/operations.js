@@ -7,6 +7,10 @@ export const operations = {
     name: 'equality',
     symbol: '=',
   },
+  subtraction: {
+    name: 'subtraction',
+    symbol: '-',
+  },
 };
 
 export default operations;

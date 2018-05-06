@@ -6,6 +6,7 @@ const routes = {
   MATH: '/math',
   PREVIEW: '/preview',
   STATISTIC: '/statistic',
+  SUBTRACTION: '/subtraction',
 };
 
 export default routes;
