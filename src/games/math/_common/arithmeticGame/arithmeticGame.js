@@ -14,9 +14,9 @@ import {
   setOperation,
 } from '../../actions/mathActions';
 
-import style from './game.css';
+import style from './arithmeticGame.css';
 
-export class Game extends Component {
+export class ArithmeticGame extends Component {
   constructor(props) {
     super(props);
     this.onSolveClick = this.onSolveClick.bind(this);
@@ -25,7 +25,8 @@ export class Game extends Component {
   }
 
   componentDidMount() {
-    this.props.setOperation(this.props.game);
+    const operation = this.props.match.params && this.props.math.params.game;
+    this.props.setOperation(operation);
     this.props.resetSession();
   }
 
@@ -51,13 +52,15 @@ export class Game extends Component {
       hasSolution,
       isCorrectSolution,
       level,
+      match,
       score,
       userInput,
     } = this.props;
+    const { game } = match.params;
 
     return (
-      <div className={style[this.props.game]}>
-        <h2>{this.props.game} game</h2>
+      <div className={style[game]}>
+        <h2>{game} game</h2>
         <StatusBar
           gameStarted={gameStarted}
           isCorrectSolution={isCorrectSolution}
@@ -66,7 +69,7 @@ export class Game extends Component {
           score={score}
         />
         <GameDisplay
-          operation={operations[this.props.game].name}
+          operation={operations[game].name}
           userInput={userInput}
         />
         <DigitsPanel
@@ -97,4 +100,4 @@ const mapDispatchToProps = dispatch => ({
   setOperation: bindActionCreators(setOperation, dispatch),
 });
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Game));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ArithmeticGame));
