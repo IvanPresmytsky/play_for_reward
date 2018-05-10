@@ -2,6 +2,7 @@ import classnames from 'classnames';
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 
 import { navigateToGameStatistic } from '../../../../common/_helpers/navigationHelper';
 import { finishGame, startGame } from '../../actions/mathActions';
@@ -26,6 +27,10 @@ export class SessionTimer extends Component {
 
   setTimer() {
     const { time } = this.state;
+    const {
+      category,
+      game,
+    } = this.props.match.params;
     const newTime = time - 1;
 
     if (time > 0) {
@@ -33,7 +38,7 @@ export class SessionTimer extends Component {
     } else {
       window.clearInterval(this.timer);
       this.props.finishGame();
-      navigateToGameStatistic(this.props.currentCategory.name, this.props.currentGame.name);
+      navigateToGameStatistic(category, game);
     }
   }
 
@@ -63,14 +68,9 @@ export class SessionTimer extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  currentCategory: state.menu.currentCategory,
-  currentGame: state.menu.currentGame,
-});
-
 const mapDispatchToProps = dispatch => ({
   finishGame: bindActionCreators(finishGame, dispatch),
   startGame: bindActionCreators(startGame, dispatch),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(SessionTimer);
+export default withRouter(connect(null, mapDispatchToProps)(SessionTimer));

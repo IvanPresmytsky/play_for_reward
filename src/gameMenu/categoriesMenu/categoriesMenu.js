@@ -1,19 +1,17 @@
 import React from 'react';
-import { withRouter } from 'react-router';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { setCurrentCategory } from '../actions/menuActions';
+import { withRouter } from 'react-router';
+
 import { navigateToCategory } from '../../common/_helpers/navigationHelper';
 import Menu from '../common/menu/menu';
 import List from '../common/list/list';
 import Category from '../category/category';
 
-export const CategoriesMenu = ({ ...props }) => {
+export const CategoriesMenu = (props) => {
   const onCategoryClick = (e) => {
     e.preventDefault();
-    const categoryId = e.target && e.target.id;
-    props.setCurrentCategory(categoryId);
-    navigateToCategory(categoryId);
+    const category = e.target && e.target.id;
+    navigateToCategory(category);
   };
 
   return (
@@ -34,8 +32,4 @@ const mapStateToProps = state => ({
   categories: state.menu.categories,
 });
 
-const mapDispatchToProps = dispatch => ({
-  setCurrentCategory: bindActionCreators(setCurrentCategory, dispatch),
-});
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CategoriesMenu));
+export default withRouter(connect(mapStateToProps, null)(CategoriesMenu));

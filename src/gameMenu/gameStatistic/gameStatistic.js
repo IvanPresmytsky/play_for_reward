@@ -11,12 +11,19 @@ import StatisticItem from './statisicItem';
 
 import style from './gameStatistic.css';
 
-export const GameStatistic = ({ ...props }) => {
+export const GameStatistic = (props) => {
+  const {
+    gameStatistic,
+    match,
+  } = props;
+
+  const {
+    category,
+    game,
+  } = match.params;
+
   const onPlayBtnClick = (e) => {
     e.preventDefault();
-    const category = props.currentCategory.name;
-    const game = props.currentGame.name;
-
     navigateToGame(category, game);
     props.recordGame(category, game);
   };
@@ -24,15 +31,15 @@ export const GameStatistic = ({ ...props }) => {
   const onExitBtnClick = (e) => {
     e.preventDefault();
     navigateToGames();
-    props.recordGame(props.currentCategory.name, props.currentGame.name);
+    props.recordGame(category, game);
   };
 
   return (
     <div className={style.gameStatistic}>
-      <h3 className={style.title}>{`${props.currentGame.name} statistic`}</h3>
+      <h3 className={style.title}>{`${game} statistic`}</h3>
       <List
         Component={StatisticItem}
-        items={props.gameStatistic}
+        items={gameStatistic}
       />
       <Button
         className={style.playBtn}
@@ -49,8 +56,6 @@ export const GameStatistic = ({ ...props }) => {
 };
 
 const mapStateToProps = state => ({
-  currentCategory: state.menu.currentCategory,
-  currentGame: state.menu.currentGame,
   gameStatistic: state.math.gameStatistic,
 });
 

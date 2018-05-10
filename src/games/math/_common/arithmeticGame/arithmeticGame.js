@@ -25,7 +25,7 @@ export class ArithmeticGame extends Component {
   }
 
   componentDidMount() {
-    const operation = this.props.match.params && this.props.math.params.game;
+    const operation = this.props.match.params && this.props.match.params.game;
     this.props.setOperation(operation);
     this.props.resetSession();
   }
