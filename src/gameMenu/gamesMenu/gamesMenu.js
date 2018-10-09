@@ -7,13 +7,8 @@ import Menu from '../common/menu/menu';
 import List from '../common/list/list';
 import Game from '../game/game';
 
-export const GamesMenu = (props) => {
-  const {
-    games,
-    match,
-  } = props;
-
-  const onGameClick = (e) => {
+export const GamesMenu = ({ games, match }) => {
+  const onGameClick = e => {
     e.preventDefault();
     const game = e.target && e.target.id;
     const { category } = match.params;

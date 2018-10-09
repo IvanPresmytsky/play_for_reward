@@ -14,13 +14,13 @@ export const DigitsPanel = ({ digitBtnHandler, removeBtnClickHandler, solveBtnHa
         clickHandler={solveBtnHandler}
         key="solveBtn"
         mods={['green']}
-        text={'Solve'}
+        text="Solve"
       />
       <Button
         clickHandler={removeBtnClickHandler}
         key="removeBtn"
         mods={['red']}
-        text={'Remove'}
+        text="Remove"
       />
     </div>
   );

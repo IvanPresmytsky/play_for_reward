@@ -7,27 +7,18 @@ import operations from '../constants/operations';
 import style from './gameDisplay.css';
 
 export const GameDisplay = ({
+  firstDigit,
   operation,
+  secondDigit,
   userInput,
-  ...props
 }) => (
-    <div className={style.gameDisplay}>
-      <Digit
-        digit={props.firstDigit}
-      />
-      <Operation
-        operation={operation}
-      />
-      <Digit
-        digit={props.secondDigit}
-      />
-      <Operation
-        operation={operations.equality.name}
-      />
-      <Total
-        total={userInput}
-      />
-    </div>
+  <div className={style.gameDisplay}>
+    <Digit digit={firstDigit} />
+    <Operation operation={operation} />
+    <Digit digit={secondDigit} />
+    <Operation operation={operations.equality.name} />
+    <Total total={userInput} />
+  </div>
 );
 
 const mapStateToProps = state => ({

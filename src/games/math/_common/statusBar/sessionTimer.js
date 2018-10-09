@@ -9,28 +9,20 @@ import { finishGame, startGame } from '../../actions/mathActions';
 import style from './sessionTimer.css';
 
 export class SessionTimer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      initialTime: 20,
-    };
+  state = {
+    initialTime: 20,
+  };
 
-    this.initTimer = this.initTimer.bind(this);
-    this.setTimer = this.setTimer.bind(this);
-  }
-
-  initTimer() {
+  initTimer = () => {
     const { initialTime } = this.state;
     this.setState({ time: initialTime });
     this.props.startGame();
   }
 
-  setTimer() {
+  setTimer = () => {
     const { time } = this.state;
-    const {
-      category,
-      game,
-    } = this.props.match.params;
+    const { match } = this.props;
+    const { category, game } = match.params;
     const newTime = time - 1;
 
     if (time > 0) {

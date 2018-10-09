@@ -7,8 +7,8 @@ import Menu from '../common/menu/menu';
 import List from '../common/list/list';
 import Category from '../category/category';
 
-export const CategoriesMenu = (props) => {
-  const onCategoryClick = (e) => {
+export const CategoriesMenu = ({ categories }) => {
+  const onCategoryClick = e => {
     e.preventDefault();
     const category = e.target && e.target.id;
     navigateToCategory(category);
@@ -22,7 +22,7 @@ export const CategoriesMenu = (props) => {
       <List
         clickHandler={onCategoryClick}
         Component={Category}
-        items={props.categories}
+        items={categories}
       />
     </Menu>
   );

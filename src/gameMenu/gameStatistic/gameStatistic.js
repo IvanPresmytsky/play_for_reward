@@ -11,24 +11,19 @@ import StatisticItem from './statisicItem';
 
 import style from './gameStatistic.css';
 
-export const GameStatistic = (props) => {
-  const {
-    gameStatistic,
-    match,
-  } = props;
-
+export const GameStatistic = ({ gameStatistic, match, ...props }) => {
   const {
     category,
     game,
   } = match.params;
 
-  const onPlayBtnClick = (e) => {
+  const onPlayBtnClick = e => {
     e.preventDefault();
     navigateToGame(category, game);
     props.recordGame(category, game);
   };
 
-  const onExitBtnClick = (e) => {
+  const onExitBtnClick = e => {
     e.preventDefault();
     navigateToGames();
     props.recordGame(category, game);

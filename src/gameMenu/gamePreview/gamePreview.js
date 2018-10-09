@@ -7,12 +7,7 @@ import { navigateToGame } from '../../common/_helpers/navigationHelper';
 import { getItemById } from '../common/_helpers/mappingHelper';
 import style from './gamePreview.css';
 
-export const GamePreview = (props) => {
-  const {
-    games,
-    match,
-  } = props;
-
+export const GamePreview = ({ games, match }) => {
   const {
     category,
     game,
@@ -20,7 +15,7 @@ export const GamePreview = (props) => {
 
   const gameDescription = getItemById(games, game).description;
 
-  const onStartGameBtnClick = (e) => {
+  const onStartGameBtnClick = e => {
     e.preventDefault();
     navigateToGame(category, game);
   };

@@ -17,31 +17,24 @@ import {
 import style from './arithmeticGame.css';
 
 export class ArithmeticGame extends Component {
-  constructor(props) {
-    super(props);
-    this.onSolveClick = this.onSolveClick.bind(this);
-    this.onDigitClick = this.onDigitClick.bind(this);
-    this.onRemoveBtnClick = this.onRemoveBtnClick.bind(this);
-  }
-
   componentDidMount() {
     const operation = this.props.match.params && this.props.match.params.game;
     this.props.setOperation(operation);
     this.props.resetSession();
   }
 
-  onDigitClick(e) {
+  onDigitClick = e => {
     e.preventDefault();
     const digit = e.target && e.target.id;
     this.props.changeUserInput(digit);
   }
 
-  onRemoveBtnClick(e) {
+  onRemoveBtnClick = e => {
     e.preventDefault();
     this.props.removeUserInput();
   }
 
-  onSolveClick(e) {
+  onSolveClick = e => {
     e.preventDefault();
     this.props.finishSession(this.props.userInput);
   }

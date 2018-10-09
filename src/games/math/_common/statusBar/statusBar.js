@@ -12,19 +12,15 @@ export const StatusBar = ({
   level,
   score,
 }) => (
-    <div className={style.statusBar}>
-      <SessionTimer
-        gameStarted={gameStarted}
-      />
-      <LevelDisplay
-        level={level}
-      />
-      <SolutionDisplay
-        isCorrectSolution={isCorrectSolution}
-        hasSolution={hasSolution}
-      />
-      <ScoreDisplay score={score} />
-    </div>
+  <div className={style.statusBar}>
+    <SessionTimer gameStarted={gameStarted} />
+    <LevelDisplay level={level} />
+    <SolutionDisplay
+      isCorrectSolution={isCorrectSolution}
+      hasSolution={hasSolution}
+    />
+    <ScoreDisplay score={score} />
+  </div>
 );
 
 export default StatusBar;
