@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
-import { navigateToGameStatistic } from '../../../../common/_helpers/navigationHelper';
+import { navigateToGameStatistic } from 'common/_helpers/navigationHelper';
 import { finishGame, startGame } from '../../actions/mathActions';
 import style from './sessionTimer.css';
 

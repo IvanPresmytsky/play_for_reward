@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
-import { navigateToCategory } from '../../common/_helpers/navigationHelper';
+import { navigateToCategory } from 'common/_helpers/navigationHelper';
 import Menu from '../common/menu/menu';
 import List from '../common/list/list';
 import Category from '../category/category';

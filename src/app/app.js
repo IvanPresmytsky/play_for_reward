@@ -6,7 +6,7 @@ import GamesMenu from '../gameMenu/gamesMenu/gamesMenu';
 import GamePreview from '../gameMenu/gamePreview/gamePreview';
 import GameStatistic from '../gameMenu/gameStatistic/gameStatistic';
 import CategoriesMenu from '../gameMenu/categoriesMenu/categoriesMenu';
-import routes from '../common/constants/routes';
+import routes from 'common/constants/routes';
 
 import style from './app.css';
 

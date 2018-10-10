@@ -2,8 +2,8 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 
-import Button from '../../common/button/button';
-import { navigateToGame } from '../../common/_helpers/navigationHelper';
+import Button from 'common/button/button';
+import { navigateToGame } from 'common/_helpers/navigationHelper';
 import { getItemById } from '../common/_helpers/mappingHelper';
 import style from './gamePreview.css';
 
