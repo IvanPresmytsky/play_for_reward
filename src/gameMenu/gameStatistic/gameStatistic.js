@@ -4,8 +4,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { recordGame } from '../../games/math/actions/mathActions';
-import { navigateToGames, navigateToGame } from 'common/_helpers/navigationHelper';
-import Button from 'common/button/button';
+import { navigateToGames, navigateToGame } from '~/_common/_helpers/navigationHelper';
+import Button from '~/_common/button/button';
 import List from '../common/list/list';
 import StatisticItem from './statisicItem';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from 'common/button/button';
+import Button from '~/_common/button/button';
 
 import style from './digitsPanel.css';
 

@@ -11,11 +11,12 @@
     "@babel/react"
   ],
   "plugins": [
-    ["module-resolver", {
-      "alias": {
-        "common": "./src/_common"
+    ["babel-plugin-root-import",
+      {
+        "rootPathSuffix": "src",
+        "rootPathPrefix": "~"
       }
-    }],
+    ],
     "react-hot-loader/babel",
     "@babel/plugin-proposal-object-rest-spread",
     "@babel/plugin-proposal-class-properties"

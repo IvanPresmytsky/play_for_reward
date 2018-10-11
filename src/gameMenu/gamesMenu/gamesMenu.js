@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 
-import { navigateToGamePreview } from 'common/_helpers/navigationHelper';
+import { navigateToGamePreview } from '~/_common/_helpers/navigationHelper';
 import Menu from '../common/menu/menu';
 import List from '../common/list/list';
 import Game from '../game/game';
