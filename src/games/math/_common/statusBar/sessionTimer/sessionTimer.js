@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
 import { navigateToGameStatistic } from '~/_common/_helpers/navigationHelper';
-import { finishGame, startGame } from '../../actions/mathActions';
+import { finishGame, startGame } from '../../../actions/mathActions';
 import style from './sessionTimer.css';
 
 export class SessionTimer extends Component {

@@ -2,9 +2,9 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 
-import Button from '~/_common/button/button';
+import Button from '~/_common/button';
 import { navigateToGame } from '~/_common/_helpers/navigationHelper';
-import { getItemById } from '../common/_helpers/mappingHelper';
+import { getItemById } from '../_common/_helpers/mappingHelper';
 import style from './gamePreview.css';
 
 export const GamePreview = ({ games, match }) => {

@@ -1,11 +1,11 @@
 import { hot } from 'react-hot-loader';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import React, { Component } from 'react';
-import ArithmeticGame from '../games/math/_common/arithmeticGame/arithmeticGame';
-import GamesMenu from '../gameMenu/gamesMenu/gamesMenu';
-import GamePreview from '../gameMenu/gamePreview/gamePreview';
-import GameStatistic from '../gameMenu/gameStatistic/gameStatistic';
-import CategoriesMenu from '../gameMenu/categoriesMenu/categoriesMenu';
+import ArithmeticGame from '~/games/math/_common/arithmeticGame';
+import GamesMenu from '~/gameMenu/gamesMenu';
+import GamePreview from '~/gameMenu/gamePreview';
+import GameStatistic from '~/gameMenu/gameStatistic';
+import CategoriesMenu from '~/gameMenu/categoriesMenu';
 import routes from '~/_common/constants/routes';
 
 import style from './app.css';

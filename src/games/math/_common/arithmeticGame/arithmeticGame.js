@@ -3,8 +3,8 @@ import { withRouter } from 'react-router';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import operations from '../constants/operations';
-import DigitsPanel from '../digitsPanel/digitsPanel';
-import GameDisplay from '../gameDisplay/gameDisplay';
+import DigitsPanel from '../digitsPanel';
+import GameDisplay from '../gameDisplay';
 import { StatusBar } from '../statusBar/statusBar';
 import {
   changeUserInput,

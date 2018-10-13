@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
 import { navigateToCategory } from '~/_common/_helpers/navigationHelper';
-import Menu from '../common/menu/menu';
-import List from '../common/list/list';
-import Category from '../category/category';
+import Menu from '../_common/menu';
+import List from '../_common/list';
+import Category from '../category';
 
 export const CategoriesMenu = ({ categories }) => {
   const onCategoryClick = e => {

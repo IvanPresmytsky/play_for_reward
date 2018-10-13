@@ -1,7 +1,7 @@
-import history from '../../store/history';
-import routes from '../constants/routes';
+import history from '~/store/history';
+import routes from '~/_common/constants/routes';
 
-export function navigateToCategory(currentCategory) {
+export const navigateToCategory = currentCategory => {
   history.push(`${routes.GAMES}/${currentCategory}`);
 }
 
@@ -20,4 +20,3 @@ export const navigateToGamePreview = (currentCategory, currentGame) => {
 export const navigateToGameStatistic = (currentCategory, currentGame) => {
   history.push(`${routes.GAMES}/${currentCategory}/${currentGame}${routes.STATISTIC}`);
 };
-

@@ -1,4 +1,4 @@
-import operations from '../constants/operations';
+import operations from '../../constants/operations';
 
 export const getOperationSymbol = operation => operations[operation] && operations[operation].symbol;
 

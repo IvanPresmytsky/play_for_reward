@@ -2,7 +2,7 @@ import dateformat from 'dateformat';
 import { mathActions } from '../actions/mathActions';
 import operations from '../_common/constants/operations';
 
-const initialState = {
+export const initialState = {
   digitsQuantity: 2,
   firstDigit: 0,
   isCorrectSolution: false,
@@ -21,12 +21,12 @@ const initialState = {
   mainStatistic: {},
 };
 
-export function getDigit(level) {
+export const getDigit = level => {
   const levelRatio = 2 + level;
   return Math.floor(Math.random() * levelRatio) + 1;
 }
 
-export function getDigits(quantity, level, operation) {
+export const getDigits = (quantity, level, operation) => {
   const digits = new Array(quantity).fill()
     .map(() => getDigit(level));
 
@@ -38,7 +38,7 @@ export function getDigits(quantity, level, operation) {
   return digits;
 }
 
-export function getTotal(firstDigit, secondDigit, operation) {
+export const getTotal = (firstDigit, secondDigit, operation) => {
   if (operation === operations.addition.name) {
     return firstDigit + secondDigit;
   } else if (operation === operations.subtraction.name) {
@@ -47,19 +47,19 @@ export function getTotal(firstDigit, secondDigit, operation) {
   return null;
 }
 
-export function validateInput(userInput) {
+export const validateInput = userInput => {
   return userInput.length > 1 && userInput[0] === '0'
     ? userInput.slice(1, userInput.length)
     : userInput;
 }
 
-export function removeUserInput(userInput) {
+export const removeUserInput = userInput => {
   return userInput.length > 1
     ? userInput.slice(0, userInput.length - 1)
     : '';
 }
 
-export function recordSession(state, timeStamp) {
+export const recordSession = (state, timeStamp) => {
   return {
     condition: `${state.firstDigit} ${operations[state.operation].symbol} ${state.secondDigit}`,
     correctSolution: !state.isCorrectSolution ? state.total : null,
@@ -72,17 +72,15 @@ export function recordSession(state, timeStamp) {
   };
 }
 
-export function checkLevel(state) {
+export const checkLevel = state => {
   const isNextLevel = state.scoreToNextLevel <= state.score;
   const newLevel = isNextLevel ? state.level + 1 : state.level;
   return newLevel;
 }
 
-export function setScoreToNextLevel(level) {
-  return 10 * level * ((level / 10) + 1);
-}
+export const setScoreToNextLevel = level => 10 * level * ((level / 10) + 1);
 
-export function mathReducer(state = initialState, action) {
+export const mathReducer = (state = initialState, action) => {
   switch (action.type) {
     case mathActions.HANDLE_SCORE: {
       return {

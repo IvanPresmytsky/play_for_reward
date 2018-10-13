@@ -1,4 +1,4 @@
-const initialState = {
+export const initialState = {
   categories: [
     {
       id: 'math',
@@ -23,7 +23,7 @@ const initialState = {
   ],
 };
 
-export function menuReducer(state = initialState, action) {
+export const menuReducer = (state = initialState, action) => {
   switch (action.type) {
     default:
       return state;
