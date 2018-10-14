@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import { bindActionCreators } from 'redux';
@@ -5,7 +6,7 @@ import { connect } from 'react-redux';
 import operations from '../constants/operations';
 import DigitsPanel from '../digitsPanel';
 import GameDisplay from '../gameDisplay';
-import { StatusBar } from '../statusBar/statusBar';
+import StatusBar from '../statusBar';
 import {
   changeUserInput,
   finishSession,
@@ -50,9 +51,10 @@ export class ArithmeticGame extends Component {
       userInput,
     } = this.props;
     const { game } = match.params;
+    const gameClasses = classNames(style.game, style[game]);
 
     return (
-      <div className={style[game]}>
+      <div className={gameClasses}>
         <h2>{game} game</h2>
         <StatusBar
           gameStarted={gameStarted}

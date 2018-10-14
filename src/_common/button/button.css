@@ -10,7 +10,7 @@
   background: green;
 }
 
-.button_digit {
-  height: 50px;
-  width: 50px;
+.button_responsive {
+  width: 100%;
+  height: 100%;
 }
