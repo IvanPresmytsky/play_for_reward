@@ -4,35 +4,37 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { recordGame } from '../../games/math/actions/mathActions';
-import { navigateToGames, navigateToGame } from '../../common/_helpers/navigationHelper';
-import Button from '../../common/button/button';
-import List from '../common/list/list';
-import StatisticItem from './statisicItem';
+import { navigateToGames, navigateToGame } from '~/_common/_helpers/navigationHelper';
+import Button from '~/_common/button';
+import List from '../_common/list';
+import StatisticItem from './gameStatisticItem';
 
 import style from './gameStatistic.css';
 
-export const GameStatistic = ({ ...props }) => {
-  const onPlayBtnClick = (e) => {
-    e.preventDefault();
-    const category = props.currentCategory.name;
-    const game = props.currentGame.name;
+export const GameStatistic = ({ gameStatistic, match, ...props }) => {
+  const {
+    category,
+    game,
+  } = match.params;
 
+  const onPlayBtnClick = e => {
+    e.preventDefault();
     navigateToGame(category, game);
     props.recordGame(category, game);
   };
 
-  const onExitBtnClick = (e) => {
+  const onExitBtnClick = e => {
     e.preventDefault();
     navigateToGames();
-    props.recordGame(props.currentCategory.name, props.currentGame.name);
+    props.recordGame(category, game);
   };
 
   return (
     <div className={style.gameStatistic}>
-      <h3 className={style.title}>{`${props.currentGame.name} statistic`}</h3>
+      <h3 className={style.title}>{`${game} statistic`}</h3>
       <List
         Component={StatisticItem}
-        items={props.gameStatistic}
+        items={gameStatistic}
       />
       <Button
         className={style.playBtn}
@@ -49,8 +51,6 @@ export const GameStatistic = ({ ...props }) => {
 };
 
 const mapStateToProps = state => ({
-  currentCategory: state.menu.currentCategory,
-  currentGame: state.menu.currentGame,
   gameStatistic: state.math.gameStatistic,
 });
 

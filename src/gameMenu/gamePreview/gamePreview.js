@@ -2,20 +2,28 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 
-import Button from '../../common/button/button';
-import { navigateToGame } from '../../common/_helpers/navigationHelper';
+import Button from '~/_common/button';
+import { navigateToGame } from '~/_common/_helpers/navigationHelper';
+import { getItemById } from '../_common/_helpers/mappingHelper';
 import style from './gamePreview.css';
 
-export const GamePreview = ({ ...props }) => {
-  const onStartGameBtnClick = (e) => {
+export const GamePreview = ({ games, match }) => {
+  const {
+    category,
+    game,
+  } = match.params;
+
+  const gameDescription = getItemById(games, game).description;
+
+  const onStartGameBtnClick = e => {
     e.preventDefault();
-    navigateToGame(props.currentCategory.name, props.currentGame.name);
+    navigateToGame(category, game);
   };
 
   return (
     <div className={style.gamePreview}>
-      <h3 className={style.gameTitle}>{props.currentGame.name}</h3>
-      <p className={style.gameDescription}>{props.currentGame.description}</p>
+      <h3 className={style.gameTitle}>{game}</h3>
+      <p className={style.gameDescription}>{gameDescription}</p>
       <Button
         className={style.startGameBtn}
         clickHandler={onStartGameBtnClick}
@@ -26,8 +34,7 @@ export const GamePreview = ({ ...props }) => {
 };
 
 const mapStateToProps = state => ({
-  currentCategory: state.menu.currentCategory,
-  currentGame: state.menu.currentGame,
+  games: state.menu.games,
 });
 
 export default withRouter(connect(mapStateToProps, null)(GamePreview));
