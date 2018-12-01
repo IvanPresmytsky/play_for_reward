@@ -5,6 +5,8 @@
 }
 
 .app {
+  display: flex;
+  flex-direction: column;
   background: grey;
   height: 100vh;
   margin: 0 auto;
