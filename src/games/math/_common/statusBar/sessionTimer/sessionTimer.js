@@ -10,7 +10,7 @@ import style from './sessionTimer.css';
 
 export class SessionTimer extends Component {
   state = {
-    initialTime: 2000,
+    initialTime: 30,
   };
 
   initTimer = () => {

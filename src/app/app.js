@@ -4,6 +4,7 @@ import GamesMenu from '~/gameMenu/gamesMenu';
 import GamePreview from '~/gameMenu/gamePreview';
 import GameStatistic from '~/gameMenu/gameStatistic';
 import MainHeader from '~/mainHeader';
+import MainMenu from '~/mainMenu';
 import React, { Component } from 'react';
 import routes from '~/_common/constants/routes';
 
@@ -23,7 +24,8 @@ export class App extends Component {
           <Route path={`${routes.GAMES}/:category/:game${routes.GAME}`} component={ArithmeticGame} />
           <Route path={`${routes.GAMES}/:category`} component={GamesMenu} />
           <Route path={routes.GAMES} component={CategoriesMenu} />
-          <Redirect from={routes.BASE} to={routes.GAMES} />
+          <Route path={routes.MAIN_MENU} component={MainMenu} />
+          <Redirect from={routes.BASE} to={routes.MAIN_MENU} />
         </Switch>
       </div>
     );

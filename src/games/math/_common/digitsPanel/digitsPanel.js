@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '~/_common/button';
-import List from '~/_common/list';
+import buttonMods from '~/_common/button/mods';
 
 import style from './digitsPanel.css';
 
@@ -9,6 +9,12 @@ export const DigitsPanel = ({
   removeBtnClickHandler,
   solveBtnHandler
 }) => {
+  const { 
+    GREEN,
+    RED,
+    RESPONSIVE,
+  } = buttonMods;
+
   const digits = Array.from(Array(10).keys())
     .map(digit => (
       <div className={`${style.digit} ${style[`digit${digit}`]}`}>
@@ -16,7 +22,7 @@ export const DigitsPanel = ({
           clickHandler={digitBtnHandler}
           id={digit}
           key={digit}
-          mods={['responsive']}
+          mods={[RESPONSIVE]}
           text={digit}
         />
       </div>
@@ -30,7 +36,7 @@ export const DigitsPanel = ({
         <Button
           clickHandler={solveBtnHandler}
           key="solveBtn"
-          mods={['green', 'responsive']}
+          mods={[GREEN, RESPONSIVE]}
           text="Solve"
         />
       </div>
@@ -38,7 +44,7 @@ export const DigitsPanel = ({
         <Button
           clickHandler={removeBtnClickHandler}
           key="removeBtn"
-          mods={['red', 'responsive']}
+          mods={[RED, RESPONSIVE]}
           text="Remove"
         />
       </div>

@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom';
-import { setConfig } from 'react-hot-loader'
+import { setConfig } from 'react-hot-loader';
 
 setConfig({
   // if our patch is present - ignore all SFC
@@ -8,4 +8,4 @@ setConfig({
   pureSFC: true,
   // remove side effect on classes, to make react-dev-tools experience better(go-to-source)
   pureRender: true,
-})
+});

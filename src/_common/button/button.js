@@ -1,6 +1,9 @@
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
 import React from 'react';
-import style from './button.css';
+
+import buttonMods from './mods';
+import styles from './button.css';
 
 export const Button = ({
   clickHandler,
@@ -8,8 +11,8 @@ export const Button = ({
   mods,
   text,
 }) => {
-  const modsClasses = (mods && mods.length && mods.map(mod => style[`button_${mod}`])) || '';
-  const buttonClasses = classnames(style.button, ...modsClasses);
+  const modsClasses = mods.map(mod => styles[`button_${mod}`]);
+  const buttonClasses = classnames(styles.button, ...modsClasses);
 
   return (
     <button
@@ -21,5 +24,18 @@ export const Button = ({
     </button>
   );
 };
+
+Button.defaultProps = {
+  clickHandler: e => e.preventDefault(),
+  id: null,
+  mods: [],
+}
+
+Button.propTypes = {
+  clickHandler: PropTypes.func,
+  id: PropTypes.string,
+  mods: PropTypes.oneOf(Object.values(buttonMods)),
+  text: PropTypes.string.isRequired,
+}
 
 export default Button;
