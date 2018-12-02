@@ -1,10 +1,11 @@
+import List from '~/_common/components/list';
+import Menu from '~/_common/components/menu';
 import React from 'react';
+
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
-
 import { navigateToGamePreview } from '~/_common/_helpers/navigationHelper';
-import List from '~/_common/list';
-import Menu from '../_common/menu';
+
 import Game from '../game';
 
 export const GamesMenu = ({ games, match }) => {

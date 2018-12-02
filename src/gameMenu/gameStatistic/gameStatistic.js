@@ -1,14 +1,14 @@
+import Button from '~/_common/components/button';
+import List from '~/_common/components/list';
 import React from 'react';
+
 import { withRouter } from 'react-router';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { navigateToGames, navigateToGame } from '~/_common/_helpers/navigationHelper';
 
 import { recordGame } from '../../games/math/actions/mathActions';
-import { navigateToGames, navigateToGame } from '~/_common/_helpers/navigationHelper';
-import Button from '~/_common/button';
-import List from '~/_common/list';
 import StatisticItem from './gameStatisticItem';
-
 import style from './gameStatistic.css';
 
 export const GameStatistic = ({ gameStatistic, match, ...props }) => {

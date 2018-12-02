@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '~/_common/button';
+import Button from '~/_common/components/button';
 import style from './game.css';
 
 export const Game = ({ data, clickHandler }) => (

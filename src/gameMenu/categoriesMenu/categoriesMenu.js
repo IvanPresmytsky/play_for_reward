@@ -1,10 +1,11 @@
+import List from '~/_common/components/list';
+import Menu from '~/_common/components/menu';
 import React from 'react';
+
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-
 import { navigateToCategory } from '~/_common/_helpers/navigationHelper';
-import List from '~/_common/list';
-import Menu from '../_common/menu';
+
 import Category from '../category';
 
 export const CategoriesMenu = ({ categories }) => {

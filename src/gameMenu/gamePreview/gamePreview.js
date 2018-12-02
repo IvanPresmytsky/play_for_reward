@@ -1,8 +1,9 @@
+import Button from '~/_common/components/button';
+import Menu from '~/_common/components/menu';
 import React from 'react';
+
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
-
-import Button from '~/_common/button';
 import { navigateToGame } from '~/_common/_helpers/navigationHelper';
 import { getItemById } from '../_common/_helpers/mappingHelper';
 import style from './gamePreview.css';
@@ -22,13 +23,15 @@ export const GamePreview = ({ games, match }) => {
 
   return (
     <div className={style.gamePreview}>
-      <h3 className={style.gameTitle}>{game}</h3>
-      <p className={style.gameDescription}>{gameDescription}</p>
-      <Button
-        className={style.startGameBtn}
-        clickHandler={onStartGameBtnClick}
-        text="Start Game"
-      />
+      <Menu
+        title={game}
+        subTitle={gameDescription}
+      >
+        <Button
+          clickHandler={onStartGameBtnClick}
+          text="Start Game"
+        />
+      </Menu>
     </div>
   );
 };

@@ -1,8 +1,8 @@
+import Button from '~/_common/components/button';
+import Menu from '~/_common/components/menu';
 import React from 'react';
-import Button from '~/_common/button';
-import { navigateToGames } from '~/_common/_helpers/navigationHelper';
 
-import styles from './mainMenu.css';
+import { navigateToGames } from '~/_common/_helpers/navigationHelper';
 
 const MainMenu = ({}) => {
   const onPlayWithoutRegistrationClick = e => {
@@ -11,8 +11,9 @@ const MainMenu = ({}) => {
   }
 
   return (
-    <div className={styles.mainMenu}>
-      <h2>Main menu</h2>
+    <Menu
+      title="Main menu"
+    >
       <Button
         text="Log in as a mentor"
       />
@@ -29,7 +30,7 @@ const MainMenu = ({}) => {
         clickHandler={onPlayWithoutRegistrationClick}
         text="Try without registration"
       />
-    </div>
+    </Menu>
   );
 };
 

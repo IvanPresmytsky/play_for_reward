@@ -1,6 +1,6 @@
-import React from 'react';
-import Button from '~/_common/button';
+import Button from '~/_common/components/button';
 import buttonMods from '~/_common/button/mods';
+import React from 'react';
 
 import style from './digitsPanel.css';
 
