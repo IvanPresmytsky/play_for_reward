@@ -3,8 +3,10 @@ import CategoriesMenu from '~/gameMenu/categoriesMenu';
 import GamesMenu from '~/gameMenu/gamesMenu';
 import GamePreview from '~/gameMenu/gamePreview';
 import GameStatistic from '~/gameMenu/gameStatistic';
+import MentorLoginForm from '~/mainMenu/mentorLoginForm';
 import MainHeader from '~/mainHeader';
 import MainMenu from '~/mainMenu';
+import PlayerLoginForm from '~/mainMenu/playerLoginForm';
 import React, { Component } from 'react';
 import routes from '~/_common/constants/routes';
 
@@ -15,8 +17,7 @@ import style from './app.css';
 
 export class App extends Component {
   render() {
-    return (
-      <div className={style.app}>
+    return <div className={style.app}>
         <MainHeader />
         <Switch>
           <Route path={`${routes.GAMES}/:category/:game${routes.PREVIEW}`} component={GamePreview} />
@@ -24,11 +25,12 @@ export class App extends Component {
           <Route path={`${routes.GAMES}/:category/:game${routes.GAME}`} component={ArithmeticGame} />
           <Route path={`${routes.GAMES}/:category`} component={GamesMenu} />
           <Route path={routes.GAMES} component={CategoriesMenu} />
+          <Route path={routes.PLAYER_LOGIN} component={PlayerLoginForm} />
+          <Route path={routes.MENTOR_LOGIN} component={MentorLoginForm} />
           <Route path={routes.MAIN_MENU} component={MainMenu} />
           <Redirect from={routes.BASE} to={routes.MAIN_MENU} />
         </Switch>
-      </div>
-    );
+      </div>;
   }
 }
 

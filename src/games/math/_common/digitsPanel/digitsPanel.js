@@ -1,5 +1,5 @@
 import Button from '~/_common/components/button';
-import buttonMods from '~/_common/button/mods';
+import buttonMods from '~/_common/components/button/mods';
 import React from 'react';
 
 import style from './digitsPanel.css';
@@ -7,9 +7,9 @@ import style from './digitsPanel.css';
 export const DigitsPanel = ({
   digitBtnHandler,
   removeBtnClickHandler,
-  solveBtnHandler
+  solveBtnHandler,
 }) => {
-  const { 
+  const {
     GREEN,
     RED,
     RESPONSIVE,
@@ -26,8 +26,7 @@ export const DigitsPanel = ({
           text={digit}
         />
       </div>
-      )
-    );
+    ));
 
   return (
     <div className={style.digitsPanel}>

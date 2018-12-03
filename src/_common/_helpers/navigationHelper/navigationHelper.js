@@ -3,7 +3,7 @@ import routes from '~/_common/constants/routes';
 
 export const navigateToCategory = currentCategory => {
   history.push(`${routes.GAMES}/${currentCategory}`);
-}
+};
 
 export const navigateToGame = (currentCategory, currentGame) => {
   history.push(`${routes.GAMES}/${currentCategory}/${currentGame}${routes.GAME}`);
@@ -11,6 +11,14 @@ export const navigateToGame = (currentCategory, currentGame) => {
 
 export const navigateToGames = () => {
   history.push(`${routes.GAMES}`);
+};
+
+export const navigateToMainMenu = () => {
+  history.push(`${routes.MAIN_MENU}`);
+};
+
+export const navigateToLogin = userType => {
+  history.push(`${routes[`${userType}_LOGIN`]}`);
 };
 
 export const navigateToGamePreview = (currentCategory, currentGame) => {

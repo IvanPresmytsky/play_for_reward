@@ -5,6 +5,8 @@ const routes = {
   GAMES: '/games',
   MAIN_MENU: '/mainMenu',
   MATH: '/math',
+  MENTOR_LOGIN: '/mentorLogin',
+  PLAYER_LOGIN: '/playerLogin',
   PREVIEW: '/preview',
   STATISTIC: '/statistic',
   SUBTRACTION: '/subtraction',

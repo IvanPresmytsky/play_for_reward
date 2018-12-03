@@ -5,7 +5,7 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { navigateToGames, navigateToGame } from '~/_common/_helpers/navigationHelper';
+import { navigateToGame, navigateToMainMenu } from '~/_common/_helpers/navigationHelper';
 
 import { recordGame } from '../../games/math/actions/mathActions';
 import StatisticItem from './gameStatisticItem';
@@ -25,7 +25,7 @@ export const GameStatistic = ({ gameStatistic, match, ...props }) => {
 
   const onExitBtnClick = e => {
     e.preventDefault();
-    navigateToGames();
+    navigateToMainMenu();
     props.recordGame(category, game);
   };
 
