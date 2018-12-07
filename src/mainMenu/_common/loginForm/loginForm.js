@@ -1,3 +1,4 @@
+import Input from '~/_common/components/input';
 import Menu from '~/_common/components/menu';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -9,9 +10,9 @@ const LoginForm = ({ type }) => {
     <Menu
       title={`Log in as a ${type}`}
     >
-      <input type="name" />
-      <input type="password" />
-      <input type="submit" />
+      <Input type="name" />
+      <Input type="password" />
+      <Input type="submit" />
     </Menu>
   );
 };
