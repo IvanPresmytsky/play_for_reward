@@ -22,7 +22,7 @@ Menu.defaultProps = {
 };
 
 Menu.propTypes = {
-  children: PropTypes.object,
+  children: PropTypes.array,
   subTitle: PropTypes.string,
   title: PropTypes.string,
 };

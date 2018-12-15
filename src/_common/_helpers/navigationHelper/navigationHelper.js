@@ -21,6 +21,10 @@ export const navigateToLogin = userType => {
   history.push(`${routes[`${userType}_LOGIN`]}`);
 };
 
+export const navigateToRegister = userType => {
+  history.push(`${routes[`${userType}_REGISTER`]}`);
+};
+
 export const navigateToGamePreview = (currentCategory, currentGame) => {
   history.push(`${routes.GAMES}/${currentCategory}/${currentGame}${routes.PREVIEW}`);
 };

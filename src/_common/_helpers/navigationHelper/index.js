@@ -5,5 +5,6 @@ export {
   navigateToGames,
   navigateToGameStatistic,
   navigateToLogin,
+  navigateToRegister,
   navigateToMainMenu,
 } from './navigationHelper';

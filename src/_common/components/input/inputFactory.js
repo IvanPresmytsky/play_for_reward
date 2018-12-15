@@ -8,7 +8,7 @@ const Input = ({ type }) => {
   const inputClasses = classNames(styles.input);
   return (
     <Fragment>
-      <labelFor></labelFor>
+      <labelfor>LABEL</labelfor>
       <input
         className={inputClasses}
         type={type}

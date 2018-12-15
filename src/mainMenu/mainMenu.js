@@ -3,9 +3,18 @@ import userTypes from '~/_common/constants/userTypes';
 import Menu from '~/_common/components/menu';
 import React from 'react';
 
-import { navigateToGames, navigateToLogin } from '~/_common/_helpers/navigationHelper';
+import {
+  navigateToGames,
+  navigateToLogin,
+  navigateToRegister
+} from '~/_common/_helpers/navigationHelper';
 
 const MainMenu = () => {
+  const {
+    MENTOR,
+    PLAYER,
+  } = userTypes;
+
   const onPlayWithoutRegistrationClick = e => {
     e.preventDefault();
     navigateToGames();
@@ -13,12 +22,22 @@ const MainMenu = () => {
 
   const onPlayerLoginClick = e => {
     e.preventDefault();
-    navigateToLogin(userTypes.PLAYER);
+    navigateToLogin(PLAYER);
   };
 
   const onMentorLoginClick = e => {
     e.preventDefault();
-    navigateToLogin(userTypes.MENTOR);
+    navigateToLogin(MENTOR);
+  };
+
+  const onMentorRegisterClick = e => {
+    e.preventDefault();
+    navigateToRegister(MENTOR);
+  };
+
+  const onPlayerRegisterClick = e => {
+    e.preventDefault();
+    navigateToRegister(PLAYER);
   };
 
   return (
@@ -34,9 +53,11 @@ const MainMenu = () => {
         text="Log in as a player"
       />
       <Button
+        clickHandler={onMentorRegisterClick}
         text="Register as a mentor"
       />
       <Button
+        clickHandler={onPlayerRegisterClick}
         text="Register as a player"
       />
       <Button
