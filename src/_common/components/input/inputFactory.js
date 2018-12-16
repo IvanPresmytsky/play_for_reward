@@ -4,7 +4,12 @@ import React, { Fragment } from 'react';
 
 import styles from './input.css';
 
-const Input = ({ id, labelText, type }) => {
+const Input = ({
+  id,
+  labelText,
+  onChange,
+  type,
+}) => {
   const inputClasses = classNames(styles.input);
   const islabelShown = id && labelText;
 
@@ -17,6 +22,7 @@ const Input = ({ id, labelText, type }) => {
         className={inputClasses}
         id={id}
         type={type}
+        onChange={onChange}
       />
     </Fragment>
   );
