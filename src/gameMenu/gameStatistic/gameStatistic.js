@@ -17,14 +17,12 @@ export const GameStatistic = ({ gameStatistic, match, ...props }) => {
     game,
   } = match.params;
 
-  const onPlayBtnClick = e => {
-    e.preventDefault();
+  const onPlayBtnClick = () => {
     navigateToGame(category, game);
     props.recordGame(category, game);
   };
 
-  const onExitBtnClick = e => {
-    e.preventDefault();
+  const onExitBtnClick = () => {
     navigateToMainMenu();
     props.recordGame(category, game);
   };

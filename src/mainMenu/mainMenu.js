@@ -15,30 +15,11 @@ const MainMenu = () => {
     PLAYER,
   } = userTypes;
 
-  const onPlayWithoutRegistrationClick = e => {
-    e.preventDefault();
-    navigateToGames();
-  };
-
-  const onPlayerLoginClick = e => {
-    e.preventDefault();
-    navigateToLogin(PLAYER);
-  };
-
-  const onMentorLoginClick = e => {
-    e.preventDefault();
-    navigateToLogin(MENTOR);
-  };
-
-  const onMentorRegisterClick = e => {
-    e.preventDefault();
-    navigateToRegister(MENTOR);
-  };
-
-  const onPlayerRegisterClick = e => {
-    e.preventDefault();
-    navigateToRegister(PLAYER);
-  };
+  const onPlayWithoutRegistrationClick = () => navigateToGames();
+  const onPlayerLoginClick = () => navigateToLogin(PLAYER);
+  const onMentorLoginClick = () => navigateToLogin(MENTOR);
+  const onMentorRegisterClick = () => navigateToRegister(MENTOR);
+  const onPlayerRegisterClick = () => navigateToRegister(PLAYER);
 
   return (
     <Menu

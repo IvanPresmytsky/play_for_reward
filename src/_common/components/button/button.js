@@ -1,9 +1,12 @@
+import callAllCallbacks from '~/_common/_helpers/callAllCallbacks';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 
 import buttonMods from './mods';
 import styles from './button.css';
+
+const onClickDefault = e => e && e.preventDefault();
 
 export const Button = ({
   clickHandler,
@@ -18,7 +21,7 @@ export const Button = ({
     <button
       className={buttonClasses}
       id={id}
-      onClick={clickHandler}
+      onClick={callAllCallbacks(onClickDefault, clickHandler)}
     >
       {text}
     </button>

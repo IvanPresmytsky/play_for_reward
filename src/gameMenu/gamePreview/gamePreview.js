@@ -16,10 +16,7 @@ export const GamePreview = ({ games, match }) => {
 
   const gameDescription = getItemById(games, game).description;
 
-  const onStartGameBtnClick = e => {
-    e.preventDefault();
-    navigateToGame(category, game);
-  };
+  const onStartGameBtnClick = () => navigateToGame(category, game);
 
   return (
     <div className={style.gamePreview}>
