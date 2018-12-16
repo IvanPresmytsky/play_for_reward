@@ -1,23 +1,28 @@
-import Input from '~/_common/components/input';
-import Menu from '~/_common/components/menu';
+import Form from '~/_common/components/form';
+import { PasswordInput, NameInput } from '~/_common/components/input';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import styles from './loginForm.css';
-
-const LoginForm = ({ type }) => {
+const LoginForm = ({ type, onSubmit }) => {
   return (
-    <Menu
+    <Form
       title={`Log in as a ${type}`}
+      onSubmit={onSubmit}
     >
-      <Input type="name" />
-      <Input type="password" />
-      <Input type="submit" />
-    </Menu>
+      <NameInput
+        id={`${type}-username`}
+        labelText="Enter username"
+      />
+      <PasswordInput
+        id={`${type}-password`}
+        labelText="Enter password"
+      />
+    </Form>
   );
 };
 
 LoginForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
   type: PropTypes.string.isRequired,
 };
 

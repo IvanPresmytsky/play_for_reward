@@ -1,31 +1,45 @@
-import Input from '~/_common/components/input';
-import Menu from '~/_common/components/menu';
+import Form from '~/_common/components/form';
+import { NameInput, PasswordInput } from '~/_common/components/input';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import styles from './registerForm.css';
-
-const RegisterForm = ({ children, type }) => {
+const RegisterForm = ({ children, type, onSubmit }) => {
+  const nameInputId = `${type}-username`;
+  const passwordInputId = `${type}-password`;
+  const confirmPasswordId = `${type}-confirm-password`;
   return (
-    <Menu
+    <Form
+      onSubmit={onSubmit}
       title={`Register as a ${type}`}
     >
-      <Input type="name" />
+      <NameInput
+        id={nameInputId}
+        key={nameInputId}
+        labelText="Enter username"
+      />
       {children}
-      <Input type="password" />
-      <Input type="password" />
-      <Input type="submit" />
-    </Menu>
+      <PasswordInput
+        id={passwordInputId}
+        key={passwordInputId}
+        labelText="Enter password"
+      />
+      <PasswordInput 
+        id={confirmPasswordId}
+        key={confirmPasswordId}
+        labelText="Confirm password"
+      />
+    </Form>
   );
-};
-
-RegisterForm.propTypes = {
-  children: PropTypes.array,
-  type: PropTypes.string.isRequired,
 };
 
 RegisterForm.defaultProps = {
   children: null,
 }
+
+RegisterForm.propTypes = {
+  children: PropTypes.array,
+  onSubmit: PropTypes.func.isRequired,
+  type: PropTypes.string.isRequired,
+};
 
 export default RegisterForm;
