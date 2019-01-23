@@ -3,14 +3,22 @@ import Menu from '~/_common/components/menu';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const Form = ({ children, title, onSubmit }) => {
+const Form = ({
+  children,
+  onSubmit,
+  requiredValues,
+  title,
+}) => {
+  const isValidForm = requiredValues.every(Boolean);
+
   return (
     <Menu
       title={title}
     >
       {children}
       <Button
-        clickHandler={onSubmit}
+        clickHandler={isValidForm ? onSubmit : null}
+        isDisabled={!isValidForm}
         text="submit"
       />
     </Menu>
@@ -19,10 +27,12 @@ const Form = ({ children, title, onSubmit }) => {
 
 Form.defaultProps = {
   children: null,
+  requiredValues: [],
 };
 
 Form.propTypes = {
   children: PropTypes.array,
+  requiredValues: PropTypes.array,
   title: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
 };

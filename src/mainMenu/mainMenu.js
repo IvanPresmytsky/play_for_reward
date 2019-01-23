@@ -6,7 +6,7 @@ import React from 'react';
 import {
   navigateToGames,
   navigateToLogin,
-  navigateToRegister
+  navigateToRegister,
 } from '~/_common/_helpers/navigationHelper';
 
 const MainMenu = () => {

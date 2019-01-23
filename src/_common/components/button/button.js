@@ -11,17 +11,22 @@ const onClickDefault = e => e && e.preventDefault();
 export const Button = ({
   clickHandler,
   id,
+  isDisabled,
   mods,
   text,
 }) => {
-  const modsClasses = mods.map(mod => styles[`button_${mod}`]);
-  const buttonClasses = classnames(styles.button, ...modsClasses);
+  const modsClasses = mods
+    ? mods.map(mod => styles[`button_${mod}`])
+    : [];
+  const buttonClasses = classnames(styles.button, {
+    [styles.disabled]: isDisabled,
+  }, ...modsClasses);
 
   return (
     <button
       className={buttonClasses}
       id={id}
-      onClick={callAllCallbacks(onClickDefault, clickHandler)}
+      onClick={!isDisabled ? callAllCallbacks(onClickDefault, clickHandler) : null}
     >
       {text}
     </button>
@@ -31,14 +36,16 @@ export const Button = ({
 Button.defaultProps = {
   clickHandler: e => e.preventDefault(),
   id: null,
+  isDisabled: false,
   mods: [],
-}
+};
 
 Button.propTypes = {
   clickHandler: PropTypes.func,
   id: PropTypes.string,
+  isDisabled: PropTypes.bool,
   mods: PropTypes.oneOf(Object.values(buttonMods)),
   text: PropTypes.string.isRequired,
-}
+};
 
 export default Button;

@@ -1,4 +1,4 @@
-import Input from './inputFactory.js';
+import Input from './inputFactory';
 import NameInput from './nameInput';
 import PasswordInput from './passwordInput';
 

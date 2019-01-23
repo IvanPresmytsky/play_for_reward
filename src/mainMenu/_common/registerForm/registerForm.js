@@ -23,7 +23,7 @@ const RegisterForm = ({ children, type, onSubmit }) => {
         key={passwordInputId}
         labelText="Enter password"
       />
-      <PasswordInput 
+      <PasswordInput
         id={confirmPasswordId}
         key={confirmPasswordId}
         labelText="Confirm password"
@@ -34,7 +34,7 @@ const RegisterForm = ({ children, type, onSubmit }) => {
 
 RegisterForm.defaultProps = {
   children: null,
-}
+};
 
 RegisterForm.propTypes = {
   children: PropTypes.array,
