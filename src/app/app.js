@@ -19,7 +19,8 @@ import style from './app.css';
 
 export class App extends Component {
   render() {
-    return <div className={style.app}>
+    return (
+      <div className={style.app}>
         <MainHeader />
         <Switch>
           <Route path={`${routes.GAMES}/:category/:game${routes.PREVIEW}`} component={GamePreview} />
@@ -34,7 +35,8 @@ export class App extends Component {
           <Route path={routes.MAIN_MENU} component={MainMenu} />
           <Redirect from={routes.BASE} to={routes.MAIN_MENU} />
         </Switch>
-      </div>;
+      </div>
+    );
   }
 }
 
