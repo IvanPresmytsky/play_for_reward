@@ -28,6 +28,6 @@ export const menuReducer = (state = initialState, action) => {
     default:
       return state;
   }
-}
+};
 
 export default menuReducer;

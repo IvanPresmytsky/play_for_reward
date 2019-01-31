@@ -24,7 +24,7 @@ export const initialState = {
 export const getDigit = level => {
   const levelRatio = 2 + level;
   return Math.floor(Math.random() * levelRatio) + 1;
-}
+};
 
 export const getDigits = (quantity, level, operation) => {
   const digits = new Array(quantity).fill()
@@ -36,7 +36,7 @@ export const getDigits = (quantity, level, operation) => {
   }
 
   return digits;
-}
+};
 
 export const getTotal = (firstDigit, secondDigit, operation) => {
   if (operation === operations.addition.name) {
@@ -45,19 +45,19 @@ export const getTotal = (firstDigit, secondDigit, operation) => {
     return firstDigit - secondDigit;
   }
   return null;
-}
+};
 
 export const validateInput = userInput => {
   return userInput.length > 1 && userInput[0] === '0'
     ? userInput.slice(1, userInput.length)
     : userInput;
-}
+};
 
 export const removeUserInput = userInput => {
   return userInput.length > 1
     ? userInput.slice(0, userInput.length - 1)
     : '';
-}
+};
 
 export const recordSession = (state, timeStamp) => {
   return {
@@ -70,24 +70,23 @@ export const recordSession = (state, timeStamp) => {
     score: state.score,
     solution: state.userInput,
   };
-}
+};
 
 export const checkLevel = state => {
   const isNextLevel = state.scoreToNextLevel <= state.score;
   const newLevel = isNextLevel ? state.level + 1 : state.level;
   return newLevel;
-}
+};
 
 export const setScoreToNextLevel = level => 10 * level * ((level / 10) + 1);
 
 export const mathReducer = (state = initialState, action) => {
   switch (action.type) {
-    case mathActions.HANDLE_SCORE: {
+    case mathActions.HANDLE_SCORE:
       return {
         ...state,
         score: state.isCorrectSolution ? (state.score + 1) : (state.score - 2),
       };
-    }
     case mathActions.CHANGE_USER_INPUT:
       return {
         ...state,
@@ -177,6 +176,6 @@ export const mathReducer = (state = initialState, action) => {
     default:
       return state;
   }
-}
+};
 
 export default mathReducer;

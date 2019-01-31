@@ -3,12 +3,12 @@ import CategoriesMenu from '~/gameMenu/categoriesMenu';
 import GamesMenu from '~/gameMenu/gamesMenu';
 import GamePreview from '~/gameMenu/gamePreview';
 import GameStatistic from '~/gameMenu/gameStatistic';
-import MentorLoginForm from '~/mainMenu/mentorLoginForm';
-import MentorRegisterForm from '~/mainMenu/mentorRegisterForm';
+import MentorLoginForm from '~/mainMenu/forms/mentorLoginForm';
+import MentorRegisterForm from '~/mainMenu/forms/mentorRegisterForm';
 import MainHeader from '~/mainHeader';
 import MainMenu from '~/mainMenu';
-import PlayerLoginForm from '~/mainMenu/playerLoginForm';
-import PlayerRegisterForm from '~/mainMenu/playerRegisterForm';
+import PlayerLoginForm from '~/mainMenu/forms/playerLoginForm';
+import PlayerRegisterForm from '~/mainMenu/forms/playerRegisterForm';
 import React, { Component } from 'react';
 import routes from '~/_common/constants/routes';
 

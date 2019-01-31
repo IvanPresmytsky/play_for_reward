@@ -1,4 +1,3 @@
-
 import Form from '~/_common/components/form';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';

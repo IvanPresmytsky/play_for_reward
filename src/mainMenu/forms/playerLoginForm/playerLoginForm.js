@@ -4,28 +4,28 @@ import React, { useState } from 'react';
 import userTypes from '~/_common/constants/userTypes';
 import { PasswordInput, NameInput } from '~/_common/components/input';
 
-const MentorLoginForm = ({ onSubmit }) => {
+const PlayerLoginForm = ({ onSubmit }) => {
   const [nameValue, setNameValue] = useState('');
   const [passwordValue, setPasswordValue] = useState('');
 
   const getNameValue = value => setNameValue(value);
   const getPasswordValue = value => setPasswordValue(value);
 
-  const { MENTOR } = userTypes;
+  const { PLAYER } = userTypes;
 
   return (
     <Form
-      title={`Log in as a ${MENTOR}`}
+      title={`Log in as a ${PLAYER}`}
       onSubmit={onSubmit}
       requiredValues={[nameValue, passwordValue]}
     >
       <NameInput
-        id={`${MENTOR}-username`}
+        id={`${PLAYER}-username`}
         getValue={getNameValue}
         labelText="Enter username"
       />
       <PasswordInput
-        id={`${MENTOR}-password`}
+        id={`${PLAYER}-password`}
         getValue={getPasswordValue}
         labelText="Enter password"
       />
@@ -33,8 +33,8 @@ const MentorLoginForm = ({ onSubmit }) => {
   );
 };
 
-MentorLoginForm.propTypes = {
+PlayerLoginForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 };
 
-export default MentorLoginForm;
+export default PlayerLoginForm;
