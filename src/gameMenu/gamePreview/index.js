@@ -1,1 +1,1 @@
-export { default } from './gamePreview';
+export { default } from './gamePreview.container';

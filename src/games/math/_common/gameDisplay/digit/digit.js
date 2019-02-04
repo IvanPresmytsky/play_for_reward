@@ -1,4 +1,6 @@
+import PropTypes from 'prop-types';
 import React from 'react';
+
 import style from './digit.css';
 
 export const Digit = ({ digit }) => (
@@ -6,5 +8,9 @@ export const Digit = ({ digit }) => (
     <span className={style.digit}>{digit}</span>
   </div>
 );
+
+Digit.propTypes = {
+  digit: PropTypes.number.isRequired,
+};
 
 export default Digit;

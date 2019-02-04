@@ -6,14 +6,14 @@ import LevelDisplay from './levelDisplay';
 import style from './statusBar.css';
 
 export const StatusBar = ({
-  gameStarted,
   isCorrectSolution,
+  isGameStarted,
   hasSolution,
   level,
   score,
 }) => (
   <div className={style.statusBar}>
-    <SessionTimer gameStarted={gameStarted} />
+    <SessionTimer isGameStarted={isGameStarted} />
     <LevelDisplay level={level} />
     <SolutionDisplay
       isCorrectSolution={isCorrectSolution}

@@ -1,1 +1,1 @@
-export { default } from './categoriesMenu';
+export { default } from './categoriesMenu.container';

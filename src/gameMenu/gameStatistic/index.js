@@ -1,1 +1,1 @@
-export { default } from './gameStatistic';
+export { default } from './gameStatistic.container';

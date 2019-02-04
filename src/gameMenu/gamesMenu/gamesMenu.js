@@ -1,9 +1,8 @@
 import List from '~/_common/components/list';
 import Menu from '~/_common/components/menu';
+import PropTypes from 'prop-types';
 import React from 'react';
 
-import { withRouter } from 'react-router';
-import { connect } from 'react-redux';
 import { navigateToGamePreview } from '~/_common/_helpers/navigationHelper';
 
 import Game from '../game';
@@ -31,8 +30,9 @@ export const GamesMenu = ({ games, match }) => {
   );
 };
 
-const mapStateToProps = state => ({
-  games: state.menu.games,
-});
+GamesMenu.propTypes = {
+  games: PropTypes.array.isRequired,
+  match: PropTypes.object.isRequired,
+};
 
-export default withRouter(connect(mapStateToProps, null)(GamesMenu));
+export default GamesMenu;

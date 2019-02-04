@@ -1,9 +1,8 @@
 import List from '~/_common/components/list';
 import Menu from '~/_common/components/menu';
+import PropTypes from 'prop-types';
 import React from 'react';
 
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
 import { navigateToCategory } from '~/_common/_helpers/navigationHelper';
 
 import Category from '../category';
@@ -29,8 +28,8 @@ export const CategoriesMenu = ({ categories }) => {
   );
 };
 
-const mapStateToProps = state => ({
-  categories: state.menu.categories,
-});
+CategoriesMenu.PropTypes = {
+  categories: PropTypes.array.isRequired,
+};
 
-export default withRouter(connect(mapStateToProps, null)(CategoriesMenu));
+export default CategoriesMenu;

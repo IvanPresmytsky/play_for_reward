@@ -1,4 +1,6 @@
+import PropTypes from 'prop-types';
 import React from 'react';
+
 import getOperationSymbol from '../../_helpers/operationHelper';
 import style from './operation.css';
 
@@ -9,5 +11,9 @@ export const Operation = ({ operation }) => (
     </span>
   </div>
 );
+
+Operation.propTypes = {
+  operation: PropTypes.object.isRequired,
+};
 
 export default Operation;

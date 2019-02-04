@@ -1,5 +1,6 @@
 import Button from '~/_common/components/button';
 import buttonMods from '~/_common/components/button/mods';
+import PropTypes from 'prop-types';
 import React from 'react';
 
 import style from './digitsPanel.css';
@@ -49,6 +50,12 @@ export const DigitsPanel = ({
       </div>
     </div>
   );
+};
+
+DigitsPanel.propTypes = {
+  digitBtnHandler: PropTypes.func.isRequired,
+  removeBtnClickHandler: PropTypes.func.isRequired,
+  solveBtnHandler: PropTypes.func.isRequired,
 };
 
 export default DigitsPanel;

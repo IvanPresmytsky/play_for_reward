@@ -5,7 +5,7 @@ import styles from './list.css';
 export const List = ({ Component, items, ...props }) => (
   <ul className={styles.list}>
     {items.map((item, index) => (
-      <li 
+      <li
         className={styles.listItem}
         key={item.id || index}
       >

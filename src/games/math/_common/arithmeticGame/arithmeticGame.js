@@ -1,27 +1,25 @@
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { withRouter } from 'react-router';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+
 import operations from '../constants/operations';
 import DigitsPanel from '../digitsPanel';
 import GameDisplay from '../gameDisplay';
 import StatusBar from '../statusBar';
-import {
-  changeUserInput,
-  finishSession,
-  removeUserInput,
-  resetSession,
-  setOperation,
-} from '../../actions/mathActions';
 
 import style from './arithmeticGame.css';
 
 export class ArithmeticGame extends Component {
   componentDidMount() {
-    const operation = this.props.match.params && this.props.match.params.game;
-    this.props.setOperation(operation);
-    this.props.resetSession();
+    const {
+      match,
+      setOperation,
+      resetSession,
+    } = this.props;
+
+    const operation = match.params && match.params.game;
+    setOperation(operation);
+    resetSession();
   }
 
   onDigitClick = e => {
@@ -42,7 +40,7 @@ export class ArithmeticGame extends Component {
 
   render() {
     const {
-      gameStarted,
+      isGameStarted,
       hasSolution,
       isCorrectSolution,
       level,
@@ -57,7 +55,7 @@ export class ArithmeticGame extends Component {
       <div className={gameClasses}>
         <h2>{game} game</h2>
         <StatusBar
-          gameStarted={gameStarted}
+          isGameStarted={isGameStarted}
           isCorrectSolution={isCorrectSolution}
           hasSolution={hasSolution}
           level={level}
@@ -77,22 +75,21 @@ export class ArithmeticGame extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  gameStarted: state.math.gameStarted,
-  isCorrectSolution: state.math.isCorrectSolution,
-  hasSolution: state.math.hasSolution,
-  level: state.math.level,
-  total: state.math.total,
-  score: state.math.score,
-  userInput: state.math.userInput,
-});
 
-const mapDispatchToProps = dispatch => ({
-  changeUserInput: bindActionCreators(changeUserInput, dispatch),
-  finishSession: bindActionCreators(finishSession, dispatch),
-  removeUserInput: bindActionCreators(removeUserInput, dispatch),
-  resetSession: bindActionCreators(resetSession, dispatch),
-  setOperation: bindActionCreators(setOperation, dispatch),
-});
+ArithmeticGame.propTypes = {
+  changeUserInput: PropTypes.func.isRequired,
+  finishSession: PropTypes.func.isRequired,
+  hasSolution: PropTypes.bool.isRequired,
+  isCorrectSolution: PropTypes.bool.isRequired,
+  isGameStarted: PropTypes.bool.isRequired,
+  level: PropTypes.number.isRequired,
+  match: PropTypes.object.isRequired,
+  removeUserInput: PropTypes.func.isRequired,
+  resetSession: PropTypes.func.isRequired,
+  score: PropTypes.number.isRequired,
+  setOperation: PropTypes.func.isRequired,
+  total: PropTypes.number.isRequired,
+  userInput: PropTypes.string.isRequired,
+};
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ArithmeticGame));
+export default ArithmeticGame;

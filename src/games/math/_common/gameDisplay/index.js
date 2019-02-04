@@ -1,1 +1,1 @@
-export { default } from './gameDisplay';
+export { default } from './gameDisplay.container';

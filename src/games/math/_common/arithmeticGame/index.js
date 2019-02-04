@@ -1,1 +1,1 @@
-export { default } from './arithmeticGame';
+export { default } from './arithmeticGame.container';

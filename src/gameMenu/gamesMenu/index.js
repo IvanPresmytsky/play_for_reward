@@ -1,1 +1,1 @@
-export { default } from './gamesMenu';
+export { default } from './gamesMenu.container';

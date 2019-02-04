@@ -1,17 +1,14 @@
 import Button from '~/_common/components/button';
 import List from '~/_common/components/list';
+import PropTypes from 'prop-types';
 import React from 'react';
 
-import { withRouter } from 'react-router';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 import { navigateToGame, navigateToMainMenu } from '~/_common/_helpers/navigationHelper';
 
-import { recordGame } from '../../games/math/actions/mathActions';
 import StatisticItem from './gameStatisticItem';
 import style from './gameStatistic.css';
 
-export const GameStatistic = ({ gameStatistic, match, ...props }) => {
+export const GameStatistic = ({ gameStatistic, match, recordGame }) => {
   const {
     category,
     game,
@@ -19,12 +16,12 @@ export const GameStatistic = ({ gameStatistic, match, ...props }) => {
 
   const onPlayBtnClick = () => {
     navigateToGame(category, game);
-    props.recordGame(category, game);
+    recordGame(category, game);
   };
 
   const onExitBtnClick = () => {
     navigateToMainMenu();
-    props.recordGame(category, game);
+    recordGame(category, game);
   };
 
   return (
@@ -48,12 +45,10 @@ export const GameStatistic = ({ gameStatistic, match, ...props }) => {
   );
 };
 
-const mapStateToProps = state => ({
-  gameStatistic: state.math.gameStatistic,
-});
+GameStatistic.propTypes = {
+  gameStatistic: PropTypes.array.isRequired,
+  match: PropTypes.object.isRequired,
+  recordGame: PropTypes.func.isRequired,
+};
 
-const mapDispatchToProps = dispatch => ({
-  recordGame: bindActionCreators(recordGame, dispatch),
-});
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(GameStatistic));
+export default GameStatistic;
