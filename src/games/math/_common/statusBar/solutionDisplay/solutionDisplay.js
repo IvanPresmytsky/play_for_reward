@@ -1,4 +1,5 @@
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
 import React from 'react';
 import style from './solutionDisplay.css';
 
@@ -16,6 +17,11 @@ export const SolutionDisplay = ({ isCorrectSolution, hasSolution }) => {
       </span>
     </div>
   );
+};
+
+SolutionDisplay.propTypes = {
+  isCorrectSolution: PropTypes.bool.isRequired,
+  hasSolution: PropTypes.bool.isRequired,
 };
 
 export default SolutionDisplay;

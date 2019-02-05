@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 
 import operations from '../constants/operations';
 import DigitsPanel from '../digitsPanel';
@@ -9,71 +9,67 @@ import StatusBar from '../statusBar';
 
 import style from './arithmeticGame.css';
 
-export class ArithmeticGame extends Component {
-  componentDidMount() {
-    const {
-      match,
-      setOperation,
-      resetSession,
-    } = this.props;
+export const ArithmeticGame = ({
+  changeUserInput,
+  isGameStarted,
+  finishSession,
+  hasSolution,
+  isCorrectSolution,
+  level,
+  match,
+  score,
+  setOperation,
+  removeUserInput,
+  resetSession,
+  userInput,
+}) => {
+  const { game } = match.params;
 
-    const operation = match.params && match.params.game;
-    setOperation(operation);
+  useEffect(() => {
+    setOperation(game);
     resetSession();
-  }
+  }, [game, setOperation, resetSession]);
 
-  onDigitClick = e => {
+  const onDigitClick = e => {
     e.preventDefault();
     const digit = e.target && e.target.id;
-    this.props.changeUserInput(digit);
-  }
+    changeUserInput(digit);
+  };
 
-  onRemoveBtnClick = e => {
+  const onRemoveBtnClick = e => {
     e.preventDefault();
-    this.props.removeUserInput();
-  }
+    removeUserInput();
+  };
 
-  onSolveClick = e => {
+  const onSolveClick = e => {
     e.preventDefault();
-    this.props.finishSession(this.props.userInput);
-  }
+    finishSession(userInput);
+  };
 
-  render() {
-    const {
-      isGameStarted,
-      hasSolution,
-      isCorrectSolution,
-      level,
-      match,
-      score,
-      userInput,
-    } = this.props;
-    const { game } = match.params;
-    const gameClasses = classNames(style.game, style[game]);
+  const gameClasses = classNames(style.game, style[game]);
 
-    return (
-      <div className={gameClasses}>
-        <h2>{game} game</h2>
-        <StatusBar
-          isGameStarted={isGameStarted}
-          isCorrectSolution={isCorrectSolution}
-          hasSolution={hasSolution}
-          level={level}
-          score={score}
-        />
-        <GameDisplay
-          operation={operations[game].name}
-          userInput={userInput}
-        />
-        <DigitsPanel
-          digitBtnHandler={this.onDigitClick}
-          removeBtnClickHandler={this.onRemoveBtnClick}
-          solveBtnHandler={this.onSolveClick}
-        />
-      </div>
-    );
-  }
-}
+  return (
+    <div className={gameClasses}>
+      <h2>{game} game</h2>
+      <StatusBar
+        isGameStarted={isGameStarted}
+        isCorrectSolution={isCorrectSolution}
+        hasSolution={hasSolution}
+        level={level}
+        score={score}
+      />
+      <GameDisplay
+        operation={operations[game].name}
+        userInput={userInput}
+      />
+      <DigitsPanel
+        digitBtnHandler={onDigitClick}
+        removeBtnClickHandler={onRemoveBtnClick}
+        solveBtnHandler={onSolveClick}
+      />
+    </div>
+  );
+};
 
 
 ArithmeticGame.propTypes = {

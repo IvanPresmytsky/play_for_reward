@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import style from './scoreDisplay.css';
 
@@ -8,5 +9,9 @@ export const ScoreDisplay = ({ score }) => (
       </span>
     </div>
 );
+
+ScoreDisplay.propTypes = {
+  score: PropTypes.number.isRequired,
+};
 
 export default ScoreDisplay;

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 import style from './statisticItem.css';
@@ -19,5 +20,9 @@ export const StatisticItem = ({ data }) => (
     </span>
   </div>
 );
+
+StatisticItem.propTypes = {
+  data: PropTypes.object.isRequired,
+};
 
 export default StatisticItem;

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import style from './levelDisplay.css';
 
@@ -8,5 +9,9 @@ export const LevelDisplay = ({ level }) => (
     </span>
   </div>
 );
+
+LevelDisplay.propTypes = {
+  level: PropTypes.number.isRequired,
+};
 
 export default LevelDisplay;
