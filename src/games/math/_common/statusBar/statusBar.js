@@ -8,13 +8,18 @@ import style from './statusBar.css';
 
 export const StatusBar = ({
   isCorrectSolution,
-  isGameStarted,
   hasSolution,
   level,
+  onTimerStarted,
+  onTimerStopped,
   score,
 }) => (
   <div className={style.statusBar}>
-    <SessionTimer isGameStarted={isGameStarted} />
+    <SessionTimer
+      onTimerStarted={onTimerStarted}
+      onTimerStopped={onTimerStopped}
+      initialTime={20}
+    />
     <LevelDisplay level={level} />
     <SolutionDisplay
       isCorrectSolution={isCorrectSolution}
@@ -26,9 +31,10 @@ export const StatusBar = ({
 
 StatusBar.propTypes = {
   isCorrectSolution: PropTypes.bool.isRequired,
-  isGameStarted: PropTypes.bool.isRequired,
   hasSolution: PropTypes.bool.isRequired,
   level: PropTypes.number.isRequired,
+  onTimerStarted: PropTypes.func.isRequired,
+  onTimerStopped: PropTypes.func.isRequired,
   score: PropTypes.number.isRequired,
 };
 

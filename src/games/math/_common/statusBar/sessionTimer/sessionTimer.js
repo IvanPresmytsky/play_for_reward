@@ -1,68 +1,64 @@
 import classnames from 'classnames';
-import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
+import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
 
-import { navigateToGameStatistic } from '~/_common/_helpers/navigationHelper';
-import { finishGame, startGame } from '../../../actions/mathActions';
 import style from './sessionTimer.css';
 
-export class SessionTimer extends Component {
-  state = {
-    initialTime: 30,
+
+export const SessionTimer = ({
+  initialTime,
+  onTimerStarted,
+  onTimerStopped,
+}) => {
+  const [time, setTime] = useState(initialTime);
+  let timer;
+
+  const stopTimer = () => {
+    clearTimeout(timer);
+    onTimerStopped();
   };
 
-  initTimer = () => {
-    const { initialTime } = this.state;
-    this.setState({ time: initialTime });
-    this.props.startGame();
-  }
-
-  setTimer = () => {
-    const { time } = this.state;
-    const { match } = this.props;
-    const { category, game } = match.params;
+  const setTimer = () => {
     const newTime = time - 1;
 
     if (time > 0) {
-      this.setState({ time: newTime });
+      setTime(newTime);
     } else {
-      window.clearInterval(this.timer);
-      this.props.finishGame();
-      navigateToGameStatistic(category, game);
+      stopTimer();
     }
-  }
+  };
 
-  componentDidMount() {
-    const { time } = this.state;
-    if (!time) this.initTimer();
-    this.timer = window.setInterval(this.setTimer, 1000);
-  }
+  const startTimer = () => {
+    if (time === initialTime) {
+      onTimerStarted();
+    }
+    timer = setTimeout(setTimer, 1000);
+  };
 
-  componentWillUnmount() {
-    window.clearInterval(this.timer);
-  }
+  useEffect(() => {
+    startTimer();
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [time]);
 
-  render() {
-    const { initialTime, time } = this.state;
-    const timeClasses = classnames(style.time, {
-      [style.mediumTime]: time && (time < initialTime / 2),
-      [style.lowTime]: time && (time < initialTime / 4),
-    });
+  const timeClasses = classnames(style.time, {
+    [style.mediumTime]: time && (time < initialTime / 2),
+    [style.lowTime]: time && (time < initialTime / 4),
+  });
 
-    return (
-      <div className={style.sessionTimer}>
-        <span className={style.timerText}>{'Time: '}</span>
-        <span className={timeClasses}>{time}</span>
-      </div>
-    );
-  }
-}
+  return (
+    <div className={style.sessionTimer}>
+      <span className={style.timerText}>{'Time: '}</span>
+      <span className={timeClasses}>{time}</span>
+    </div>
+  );
+};
 
-const mapDispatchToProps = dispatch => ({
-  finishGame: bindActionCreators(finishGame, dispatch),
-  startGame: bindActionCreators(startGame, dispatch),
-});
+SessionTimer.propTypes = {
+  initialTime: PropTypes.number.isRequired,
+  onTimerStarted: PropTypes.func.isRequired,
+  onTimerStopped: PropTypes.func.isRequired,
+};
 
-export default withRouter(connect(null, mapDispatchToProps)(SessionTimer));
+export default SessionTimer;
