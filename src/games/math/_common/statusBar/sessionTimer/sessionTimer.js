@@ -1,9 +1,33 @@
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 
 import style from './sessionTimer.css';
 
+export const useInterval = (callback, onTimerStarted, onTimerStopped) => {
+  const savedCallback = useRef();
+
+  useEffect(() => {
+    savedCallback.current = callback;
+  });
+
+  useEffect(() => {
+    const tick = () => savedCallback.current();
+
+    if (onTimerStarted) {
+      onTimerStarted();
+    }
+
+    const timer = setInterval(tick, 1000);
+
+    return () => {
+      clearInterval(timer);
+      if (onTimerStopped) {
+        onTimerStopped();
+      }
+    };
+  }, []);
+};
 
 export const SessionTimer = ({
   initialTime,
@@ -11,40 +35,22 @@ export const SessionTimer = ({
   onTimerStopped,
 }) => {
   const [time, setTime] = useState(initialTime);
-  let timer;
 
-  const stopTimer = () => {
-    clearTimeout(timer);
-    onTimerStopped();
-  };
+  useInterval(
+    () => {
+      if (time === 0) {
+        onTimerStopped();
+      }
 
-  const setTimer = () => {
-    const newTime = time - 1;
-
-    if (time > 0) {
-      setTime(newTime);
-    } else {
-      stopTimer();
-    }
-  };
-
-  const startTimer = () => {
-    if (time === initialTime) {
-      onTimerStarted();
-    }
-    timer = setTimeout(setTimer, 1000);
-  };
-
-  useEffect(() => {
-    startTimer();
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [time]);
+      setTime(time - 1);
+    },
+    onTimerStarted,
+    onTimerStopped,
+  );
 
   const timeClasses = classnames(style.time, {
     [style.mediumTime]: time && (time < initialTime / 2),
-    [style.lowTime]: time && (time < initialTime / 4),
+    [style.lowTime]: (time || time === 0) && (time < initialTime / 4),
   });
 
   return (
