@@ -1,6 +1,6 @@
 import dateformat from 'dateformat';
-import { mathActions } from '../actions/mathActions';
-import operations from '../_common/constants/operations';
+import { mathActions } from '../../actions/mathActions';
+import operations from '../../_common/constants/operations';
 
 export const initialState = {
   digitsQuantity: 2,

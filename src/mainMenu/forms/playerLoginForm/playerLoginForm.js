@@ -4,12 +4,20 @@ import React, { useState } from 'react';
 import userTypes from '~/_common/constants/userTypes';
 import { PasswordInput, NameInput } from '~/_common/components/input';
 
-const PlayerLoginForm = ({ onSubmit }) => {
+const PlayerLoginForm = ({ submitForm }) => {
   const [nameValue, setNameValue] = useState('');
   const [passwordValue, setPasswordValue] = useState('');
 
   const getNameValue = value => setNameValue(value);
   const getPasswordValue = value => setPasswordValue(value);
+
+  const onSubmit = () => {
+    const data = {
+      username: nameValue,
+      password: passwordValue,
+    };
+    submitForm(data);
+  };
 
   const { PLAYER } = userTypes;
 
@@ -34,7 +42,7 @@ const PlayerLoginForm = ({ onSubmit }) => {
 };
 
 PlayerLoginForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
+  submitForm: PropTypes.func.isRequired,
 };
 
 export default PlayerLoginForm;

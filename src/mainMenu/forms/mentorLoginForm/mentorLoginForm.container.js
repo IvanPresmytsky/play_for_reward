@@ -2,11 +2,11 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import MentorLoginForm from './mentorLoginForm';
-import { submitLoginForm } from '../../actions/formActions';
+import { submitMentorLoginForm } from '../../actions/mentorLoginFormActions';
 
 
 const mapDispatchToProps = dispatch => ({
-  submitLoginForm: bindActionCreators(submitLoginForm, dispatch),
+  submitForm: bindActionCreators(submitMentorLoginForm, dispatch),
 });
 
 export default connect(null, mapDispatchToProps)(MentorLoginForm);

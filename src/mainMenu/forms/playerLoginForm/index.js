@@ -1,1 +1,1 @@
-export { default } from './playerLoginForm';
+export { default } from './playerLoginForm.container';

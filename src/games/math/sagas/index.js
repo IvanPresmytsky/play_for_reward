@@ -1,2 +1,2 @@
-export { default as watchFinishSession } from './finishSession';
-export { default as watchResetSession } from './resetSession';
+export { default as watchFinishSession } from './finishSession.saga';
+export { default as watchResetSession } from './resetSession.saga';

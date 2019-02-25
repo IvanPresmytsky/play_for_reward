@@ -1,1 +1,1 @@
-export { default } from './menuReducer';
+export { default } from './menu.reducer';

@@ -2,4 +2,5 @@ export {
   mentorLoginFailed,
   mentorLoginFormActions,
   mentorLoginSucceed,
-} from './mentorLoginFormActions';
+  submitMentorLoginForm,
+} from './mentorLoginForm.actions';

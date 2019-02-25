@@ -6,7 +6,7 @@ import userTypes from '~/_common/constants/userTypes';
 import { PasswordInput, NameInput } from '~/_common/components/input';
 
 
-const MentorLoginForm = ({ submitLoginForm }) => {
+const MentorLoginForm = ({ submitForm }) => {
   const [nameValue, setNameValue] = useState('');
   const [passwordValue, setPasswordValue] = useState('');
 
@@ -17,7 +17,7 @@ const MentorLoginForm = ({ submitLoginForm }) => {
       username: nameValue,
       password: passwordValue,
     };
-    submitLoginForm(data);
+    submitForm(data);
   };
 
   const { MENTOR } = userTypes;
@@ -43,7 +43,7 @@ const MentorLoginForm = ({ submitLoginForm }) => {
 };
 
 MentorLoginForm.propTypes = {
-  submitLoginForm: PropTypes.func.isRequired,
+  submitForm: PropTypes.func.isRequired,
 };
 
 export default MentorLoginForm;
