@@ -21,8 +21,8 @@ export const navigateToLogin = (userType, status) => {
   history.push(`${routes.LOGIN}/${userType}/${status || ''}`);
 };
 
-export const navigateToRegister = userType => {
-  history.push(`${routes[`${userType}_REGISTER`]}`);
+export const navigateToRegister = (userType, status) => {
+  history.push(`${routes.REGISTER}/${userType}/${status || ''}`);
 };
 
 export const navigateToGamePreview = (currentCategory, currentGame) => {

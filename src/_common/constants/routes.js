@@ -11,6 +11,7 @@ const routes = {
   PLAYER_LOGIN: '/playerLogin',
   PLAYER_REGISTER: '/playerRegister',
   PREVIEW: '/preview',
+  REGISTER: '/register',
   STATISTIC: '/statistic',
   SUBTRACTION: '/subtraction',
 };
