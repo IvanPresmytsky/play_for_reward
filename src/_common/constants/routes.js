@@ -3,6 +3,7 @@ const routes = {
   BASE: '/',
   GAME: '/game',
   GAMES: '/games',
+  LOGIN: '/login',
   MAIN_MENU: '/mainMenu',
   MATH: '/math',
   MENTOR_LOGIN: '/mentorLogin',

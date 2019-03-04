@@ -17,8 +17,8 @@ export const navigateToMainMenu = () => {
   history.push(`${routes.MAIN_MENU}`);
 };
 
-export const navigateToLogin = userType => {
-  history.push(`${routes[`${userType}_LOGIN`]}`);
+export const navigateToLogin = (userType, status) => {
+  history.push(`${routes.LOGIN}/${userType}/${status || ''}`);
 };
 
 export const navigateToRegister = userType => {

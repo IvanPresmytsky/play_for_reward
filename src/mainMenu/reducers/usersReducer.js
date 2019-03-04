@@ -1,5 +1,5 @@
 import userTypes from '~/_common/constants/userTypes';
-import { mentorLoginFormActions } from '../actions/mentorLoginFormActions';
+import { loginFormActions } from '../actions/loginFormActions';
 
 export const initialState = {
   currentUserType: userTypes.VISITOR,
@@ -8,13 +8,13 @@ export const initialState = {
 
 export const usersReducer = (state = initialState, action) => {
   switch (action.type) {
-    case mentorLoginFormActions.MENTOR_LOGIN_SUCCEED:
+    case loginFormActions.LOGIN_SUCCEED:
       return {
         ...state,
-        currentUserType: userTypes.MENTOR,
+        currentUserType: action.userType,
         username: action.payload.username,
       };
-    case mentorLoginFormActions.MENTOR_LOGIN_FAILED:
+    case loginFormActions.LOGIN_FAILED:
       return {
         ...state,
         currentUserType: userTypes.VISITOR,

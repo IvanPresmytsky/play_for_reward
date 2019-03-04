@@ -3,11 +3,11 @@ import CategoriesMenu from '~/gameMenu/categoriesMenu';
 import GamesMenu from '~/gameMenu/gamesMenu';
 import GamePreview from '~/gameMenu/gamePreview';
 import GameStatistic from '~/gameMenu/gameStatistic';
-import MentorLoginForm from '~/mainMenu/forms/mentorLoginForm';
+import LoginForm from '~/mainMenu/forms/loginForm';
 import MentorRegisterForm from '~/mainMenu/forms/mentorRegisterForm';
 import MainHeader from '~/mainHeader';
 import MainMenu from '~/mainMenu';
-import PlayerLoginForm from '~/mainMenu/forms/playerLoginForm';
+import LoginMessage from '~/mainMenu/messages/loginMessage';
 import PlayerRegisterForm from '~/mainMenu/forms/playerRegisterForm';
 import React from 'react';
 import routes from '~/_common/constants/routes';
@@ -26,8 +26,8 @@ export const App = () => (
       <Route path={`${routes.GAMES}/:category/:game${routes.GAME}`} component={ArithmeticGame} />
       <Route path={`${routes.GAMES}/:category`} component={GamesMenu} />
       <Route path={routes.GAMES} component={CategoriesMenu} />
-      <Route path={routes.PLAYER_LOGIN} component={PlayerLoginForm} />
-      <Route path={routes.MENTOR_LOGIN} component={MentorLoginForm} />
+      <Route path={`${routes.LOGIN}/:user/:status`} component={LoginMessage} />
+      <Route path={`${routes.LOGIN}/:user`} component={LoginForm}/>
       <Route path={routes.PLAYER_REGISTER} component={PlayerRegisterForm} />
       <Route path={routes.MENTOR_REGISTER} component={MentorRegisterForm} />
       <Route path={routes.MAIN_MENU} component={MainMenu} />
