@@ -1,7 +1,7 @@
 import Button from '~/_common/components/button';
-import userTypes from '~/_common/constants/userTypes';
 import Menu from '~/_common/components/menu';
 import React from 'react';
+import { userTypes } from '~/_common/constants';
 
 import {
   navigateToGames,

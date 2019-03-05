@@ -1,5 +1,5 @@
 import history from '~/store/history';
-import routes from '~/_common/constants/routes';
+import { routes } from '~/_common/constants';
 
 export const navigateToCategory = currentCategory => {
   history.push(`${routes.GAMES}/${currentCategory}`);

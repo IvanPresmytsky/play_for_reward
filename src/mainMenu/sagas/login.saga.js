@@ -1,7 +1,7 @@
-import statuses from '~/_common/constants/statuses.constants';
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { loginUser } from '~/_common/_helpers/api';
 import { navigateToLogin } from '~/_common/_helpers/navigationHelper';
+import { statuses } from '~/_common/constants';
 import { loginFormActions, loginSucceed, loginFailed } from '../actions/loginFormActions';
 
 export function* loginSaga(action) {

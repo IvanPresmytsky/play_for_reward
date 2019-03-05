@@ -1,27 +1,27 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import Message from '~/_common/components/message';
-import { navigateToGames, navigateToLogin } from '~/_common/_helpers/navigationHelper';
 import { statuses } from '~/_common/constants';
+import { navigateToGames, navigateToRegister } from '~/_common/_helpers/navigationHelper';
 
-const LoginMessage = ({ match }) => {
+const RegisterMessage = ({ match }) => {
   const { user, status } = match.params;
 
   const redirection = status === statuses.SUCCEED
     ? navigateToGames
-    : () => navigateToLogin(user);
+    : () => navigateToRegister(user);
 
   return (
     <Message
-      message={`The login for the ${user} is ${status}`}
+      message={`The register for the ${user} is ${status}`}
       redirect={redirection}
       timer={2000}
     />
   );
 };
 
-LoginMessage.propTypes = {
+RegisterMessage.propTypes = {
   match: PropTypes.object.isRequired,
 };
 
-export default LoginMessage;
+export default RegisterMessage;

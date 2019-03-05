@@ -1,8 +1,8 @@
 import Form from '~/_common/components/form';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import userTypes from '~/_common/constants/userTypes';
 import { NameInput, PasswordInput } from '~/_common/components/input';
+import { userTypes } from '~/_common/constants';
 
 
 const RegisterForm = ({ submitForm, match }) => {
@@ -29,13 +29,13 @@ const RegisterForm = ({ submitForm, match }) => {
 
   const onSubmit = () => {
     const mentorName = isPlayerRigistration
-      ? mentorNameValue
-      : null;
+      ? { mentorName: mentorNameValue }
+      : {};
 
     const data = {
       username: nameValue,
       password: passwordValue,
-      mentorName,
+      ...mentorName,
     };
 
     validatePassword();
@@ -48,9 +48,9 @@ const RegisterForm = ({ submitForm, match }) => {
       title={`Register as a ${PLAYER}`}
       requiredValues={[
         nameValue,
-        isPlayerRigistration && mentorNameValue,
         passwordValue,
         confirmPasswordValue,
+        ...(isPlayerRigistration ? [mentorNameValue] : []),
       ]}
     >
       <NameInput

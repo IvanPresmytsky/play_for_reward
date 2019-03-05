@@ -1,7 +1,5 @@
-const statuses = {
+export default {
   SUCCEED: 'succeed',
   FAILED: 'failed',
   PENDING: 'pending',
 };
-
-export default statuses;

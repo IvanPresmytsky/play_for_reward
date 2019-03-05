@@ -1,4 +1,4 @@
-const routes = {
+export default {
   ADDITION: '/addition',
   BASE: '/',
   GAME: '/game',
@@ -15,5 +15,3 @@ const routes = {
   STATISTIC: '/statistic',
   SUBTRACTION: '/subtraction',
 };
-
-export default routes;
