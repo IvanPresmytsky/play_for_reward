@@ -5,23 +5,45 @@ import React, { Fragment, useState, forwardRef } from 'react';
 import styles from './input.css';
 
 const Input = forwardRef(({
-  id,
+  errorText,
   getValue,
+  id,
   labelText,
   type,
   validateSymbol,
+  valueToMatch,
 }, ref) => {
   const [value, setValue] = useState('');
   const [error, setError] = useState(null);
 
   const inputClasses = classNames(styles.input);
-  const islabelShown = id && (labelText || error);
-  const labelContent = error || labelText;
+  const islabelShown = id && (labelText || error || errorText);
+  const labelContent = error || errorText || labelText;
 
   const processValue = (valueToProcess, errorToProcess) => {
     setValue(valueToProcess);
     getValue(valueToProcess);
     setError(errorToProcess);
+  };
+
+  const validateEquality = (currentValue, etalon, prevValue) => {
+    const partToMatch = etalon.slice(0, currentValue.length);
+    if (currentValue === partToMatch) {
+      processValue(currentValue, null);
+    } else {
+      processValue(prevValue, 'Confirmation password should be equal to password!');
+    }
+  };
+
+  const validateNextSymbol = (nextValue, prevValue, inputType) => {
+    const currentSymbol = nextValue && nextValue[nextValue.length - 1];
+    const isValidSymbol = currentSymbol && validateSymbol(currentSymbol);
+
+    if (isValidSymbol) {
+      processValue(nextValue, null);
+    } else {
+      processValue(prevValue, `"${currentSymbol}" is not allowed for ${inputType}`);
+    }
   };
 
   const onChangeValue = e => {
@@ -35,13 +57,10 @@ const Input = forwardRef(({
       return false;
     }
 
-    const currentSymbol = nextValue && nextValue[nextValue.length - 1];
-    const isValidSymbol = currentSymbol && validateSymbol(currentSymbol);
+    validateNextSymbol(nextValue, value, type);
 
-    if (isValidSymbol) {
-      processValue(nextValue, null);
-    } else {
-      processValue(value, `"${currentSymbol}" is not allowed for ${type}`);
+    if (valueToMatch) {
+      validateEquality(nextValue, valueToMatch, value);
     }
   };
 
@@ -67,6 +86,7 @@ Input.defaultProps = {
   id: null,
   labelText: null,
   value: '',
+  valueToMatch: null,
 };
 
 Input.propTypes = {
@@ -77,6 +97,7 @@ Input.propTypes = {
   type: PropTypes.string.isRequired,
   validateSymbol: PropTypes.func.isRequired,
   value: PropTypes.string,
+  valueToMatch: PropTypes.string,
 };
 
 export default Input;

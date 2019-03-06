@@ -24,8 +24,12 @@ const RegisterForm = ({ submitForm, match }) => {
   const getMentorNameValue = value => setMentorNameValue(value);
   const getPasswordValue = value => setPasswordValue(value);
   const getConfirmPasswordValue = value => setConfirmPasswordValue(value);
-
-  const validatePassword = () => passwordValue === confirmPasswordValue;
+  const getRequiredValues = () => ([
+    nameValue,
+    passwordValue,
+    passwordValue === confirmPasswordValue,
+    ...(isPlayerRigistration ? [mentorNameValue] : []),
+  ]);
 
   const onSubmit = () => {
     const mentorName = isPlayerRigistration
@@ -38,7 +42,6 @@ const RegisterForm = ({ submitForm, match }) => {
       ...mentorName,
     };
 
-    validatePassword();
     submitForm(data, user);
   };
 
@@ -46,12 +49,7 @@ const RegisterForm = ({ submitForm, match }) => {
     <Form
       onSubmit={onSubmit}
       title={`Register as a ${PLAYER}`}
-      requiredValues={[
-        nameValue,
-        passwordValue,
-        confirmPasswordValue,
-        ...(isPlayerRigistration ? [mentorNameValue] : []),
-      ]}
+      requiredValues={getRequiredValues()}
     >
       <NameInput
         getValue={getNameValue}
@@ -78,6 +76,7 @@ const RegisterForm = ({ submitForm, match }) => {
         id={confirmPasswordId}
         key={confirmPasswordId}
         labelText="Confirm password"
+        valueToMatch={passwordValue}
       />
     </Form>
   );
