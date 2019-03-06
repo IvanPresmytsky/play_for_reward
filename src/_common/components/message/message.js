@@ -9,7 +9,7 @@ const Message = ({ message, redirect, timer }) => {
       redirect();
     }, timer);
     return () => clearTimeout(timerId);
-  }, []);
+  }, [redirect, timer]);
 
   return (
     <div className={styles.message}>

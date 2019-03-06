@@ -10,11 +10,15 @@ export const navigateToGame = (currentCategory, currentGame) => {
 };
 
 export const navigateToGames = () => {
-  history.push(`${routes.GAMES}`);
+  history.push(routes.GAMES);
 };
 
 export const navigateToMainMenu = () => {
-  history.push(`${routes.MAIN_MENU}`);
+  history.push(routes.MAIN_MENU);
+};
+
+export const navigateToUserMenu = userType => {
+  history.push(routes[`${userType}_MENU`]);
 };
 
 export const navigateToLogin = (userType, status) => {

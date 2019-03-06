@@ -5,6 +5,8 @@ import GamePreview from '~/gameMenu/gamePreview';
 import GameStatistic from '~/gameMenu/gameStatistic';
 import MainHeader from '~/mainHeader';
 import MainMenu from '~/mainMenu';
+import MentorMenu from '~/mainMenu/mentorMenu';
+import PlayerMenu from '~/mainMenu/playerMenu';
 import React from 'react';
 
 import { hot } from 'react-hot-loader';
@@ -29,6 +31,8 @@ export const App = () => (
       <Route path={`${routes.REGISTER}/:user/:status`} component={RegisterMessage} />
       <Route path={`${routes.REGISTER}/:user`} component={RegisterForm} />
       <Route path={routes.MAIN_MENU} component={MainMenu} />
+      <Route path={routes.MENTOR_MENU} component={MentorMenu} />
+      <Route path={routes.PLAYER_MENU} component={PlayerMenu} />
       <Redirect from={routes.BASE} to={routes.MAIN_MENU} />
     </Switch>
   </div>

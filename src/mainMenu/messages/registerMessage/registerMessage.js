@@ -2,13 +2,13 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Message from '~/_common/components/message';
 import { statuses } from '~/_common/constants';
-import { navigateToGames, navigateToRegister } from '~/_common/_helpers/navigationHelper';
+import { navigateToUserMenu, navigateToRegister } from '~/_common/_helpers/navigationHelper';
 
 const RegisterMessage = ({ match }) => {
   const { user, status } = match.params;
 
   const redirection = status === statuses.SUCCEED
-    ? navigateToGames
+    ? () => navigateToUserMenu(user)
     : () => navigateToRegister(user);
 
   return (
