@@ -4,8 +4,9 @@ import Message from '~/_common/components/message';
 import { statuses } from '~/_common/constants';
 import { navigateToUserMenu, navigateToRegister } from '~/_common/_helpers/navigationHelper';
 
-const RegisterMessage = ({ match }) => {
+const RegisterMessage = ({ match, location }) => {
   const { user, status } = match.params;
+  const { state: { message } } = location;
 
   const redirection = status === statuses.SUCCEED
     ? () => navigateToUserMenu(user)
@@ -13,7 +14,7 @@ const RegisterMessage = ({ match }) => {
 
   return (
     <Message
-      message={`The register for the ${user} is ${status}`}
+      message={message}
       redirect={redirection}
       timer={2000}
     />
@@ -21,6 +22,7 @@ const RegisterMessage = ({ match }) => {
 };
 
 RegisterMessage.propTypes = {
+  location: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired,
 };
 

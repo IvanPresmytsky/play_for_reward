@@ -6,6 +6,7 @@ import { userTypes } from '~/_common/constants';
 import {
   navigateToGames,
   navigateToLogin,
+  navigateToAuthorization,
   navigateToRegister,
 } from '~/_common/_helpers/navigationHelper';
 
@@ -17,7 +18,7 @@ const MainMenu = () => {
 
   const onPlayWithoutRegistrationClick = () => navigateToGames();
   const onPlayerLoginClick = () => navigateToLogin(PLAYER);
-  const onMentorLoginClick = () => navigateToLogin(MENTOR);
+  const onMentorLoginClick = () => navigateToAuthorization('login', MENTOR);
   const onMentorRegisterClick = () => navigateToRegister(MENTOR);
   const onPlayerRegisterClick = () => navigateToRegister(PLAYER);
 

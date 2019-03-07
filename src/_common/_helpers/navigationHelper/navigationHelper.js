@@ -21,12 +21,16 @@ export const navigateToUserMenu = userType => {
   history.push(routes[`${userType}_MENU`]);
 };
 
-export const navigateToLogin = (userType, status) => {
-  history.push(`${routes.LOGIN}/${userType}/${status || ''}`);
+export const navigateToAuthorization = (method, userType, status, message) => {
+  history.push(`${method}/${userType}/${status || ''}`, { message });
 };
 
-export const navigateToRegister = (userType, status) => {
-  history.push(`${routes.REGISTER}/${userType}/${status || ''}`);
+export const navigateToLogin = (userType, status, message) => {
+  history.push(`${routes.LOGIN}/${userType}/${status || ''}`, { message });
+};
+
+export const navigateToRegister = (userType, status, message) => {
+  history.push(`${routes.REGISTER}/${userType}/${status || ''}`, { message });
 };
 
 export const navigateToGamePreview = (currentCategory, currentGame) => {

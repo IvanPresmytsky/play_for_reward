@@ -5,6 +5,7 @@ export {
   navigateToGames,
   navigateToGameStatistic,
   navigateToLogin,
+  navigateToAuthorization,
   navigateToMainMenu,
   navigateToRegister,
   navigateToUserMenu,

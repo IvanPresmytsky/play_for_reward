@@ -6,14 +6,14 @@ import { registerFormActions, registerSucceed, registerFailed } from '../actions
 
 export function* registerSaga(action) {
   const { payload, userType } = action;
-  const { user, error } = yield call(registerUser, payload, userType);
+  const { error, ...user } = yield call(registerUser, payload, userType);
 
   if (error) {
     yield put(registerFailed(error, userType));
-    yield call(() => navigateToRegister(userType, statuses.FAILED));
+    yield call(() => navigateToRegister(userType, statuses.FAILED, error));
   } else {
     yield put(registerSucceed(user, userType));
-    yield call(() => navigateToRegister(userType, statuses.SUCCEED));
+    yield call(() => navigateToRegister(userType, statuses.SUCCEED, user.message));
   }
 }
 
