@@ -1,1 +1,1 @@
-export { default } from './playerMenu';
+export { default } from './PlayerMenu';

@@ -1,1 +1,1 @@
-export { default } from './statusBar';
+export { default } from './StatusBar';

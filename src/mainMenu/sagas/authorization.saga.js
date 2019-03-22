@@ -8,8 +8,10 @@ export function* authorizationSaga(action) {
   const { payload, userType, method } = action;
   const {
     FAILED,
+    PENDING,
     SUCCEED,
   } = statuses;
+  yield call(() => navigateToAuthorization(method, userType, PENDING));
   const { error, message, ...user } = yield call(authorizeUser, payload, userType, method);
 
   if (error) {

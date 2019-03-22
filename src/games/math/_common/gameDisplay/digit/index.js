@@ -1,1 +1,1 @@
-export { default } from './digit';
+export { default } from './Digit';

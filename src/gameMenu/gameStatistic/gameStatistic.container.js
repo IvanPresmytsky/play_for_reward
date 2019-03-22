@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { recordGame } from '~/games/math/actions/mathActions';
 import { withRouter } from 'react-router';
 
-import GameStatistic from './gameStatistic';
+import GameStatistic from './GameStatistic';
 
 const mapStateToProps = state => ({
   gameStatistic: state.math.gameStatistic,

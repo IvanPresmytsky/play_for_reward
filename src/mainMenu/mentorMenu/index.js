@@ -1,1 +1,1 @@
-export { default } from './mentorMenu';
+export { default } from './MentorMenu';

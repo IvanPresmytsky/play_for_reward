@@ -1,1 +1,2 @@
-export { default } from './solutionDisplay';
+export { default } from './SolutionDisplay';
+

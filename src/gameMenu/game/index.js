@@ -1,1 +1,1 @@
-export { default } from './game';
+export { default } from './Game';

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
-import CategoriesMenu from './categoriesMenu';
+import CategoriesMenu from './CategoriesMenu';
 
 const mapStateToProps = state => ({
   categories: state.menu.categories,

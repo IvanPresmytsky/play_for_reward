@@ -1,6 +1,6 @@
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
-import GamesMenu from './gamesMenu';
+import GamesMenu from './GamesMenu';
 
 
 const mapStateToProps = state => ({

@@ -2,7 +2,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
-import LoginForm from './loginForm';
+import LoginForm from './LoginForm';
 import { submitAuthorizationForm } from '../../actions/authorizationActions';
 
 const mapDispatchToProps = dispatch => ({

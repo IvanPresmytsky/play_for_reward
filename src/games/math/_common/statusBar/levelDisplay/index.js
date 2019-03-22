@@ -1,1 +1,2 @@
-export { default } from './levelDisplay';
+export { default } from './LevelDisplay';
+

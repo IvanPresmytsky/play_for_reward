@@ -1,1 +1,1 @@
-export { default } from './digitsPanel';
+export { default } from './DigitsPanel';

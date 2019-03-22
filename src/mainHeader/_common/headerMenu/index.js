@@ -1,1 +1,2 @@
-export { default } from './headerMenu';
+export { default } from './HeaderMenu';
+

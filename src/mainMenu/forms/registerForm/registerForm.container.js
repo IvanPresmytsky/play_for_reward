@@ -1,7 +1,7 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import RegisterForm from './registerForm';
+import RegisterForm from './RegisterForm';
 import { submitAuthorizationForm } from '../../actions/authorizationActions';
 
 const mapDispatchToProps = dispatch => ({

@@ -1,6 +1,6 @@
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
-import GamePreview from './gamePreview';
+import GamePreview from './GamePreview';
 
 
 const mapStateToProps = state => ({

@@ -1,4 +1,4 @@
-import Input from './inputFactory';
+import Input from './InputFactory';
 import NameInput from './nameInput';
 import PasswordInput from './passwordInput';
 

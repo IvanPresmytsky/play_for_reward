@@ -10,7 +10,7 @@ import {
   setOperation,
   startGame,
 } from '~/games/math/actions/mathActions';
-import ArithmeticGame from './arithmeticGame';
+import ArithmeticGame from './ArithmeticGame';
 
 const mapStateToProps = state => ({
   isGameStarted: state.math.isGameStarted,

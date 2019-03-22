@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import GameDisplay from './gameDisplay';
+import GameDisplay from './GameDisplay';
 
 const mapStateToProps = state => ({
   firstDigit: state.math.firstDigit,

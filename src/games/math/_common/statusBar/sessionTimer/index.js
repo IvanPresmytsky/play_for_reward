@@ -1,1 +1,1 @@
-export { default } from './sessionTimer';
+export { default } from './SessionTimer';
