@@ -11,16 +11,12 @@ import React from 'react';
 
 import { hot } from 'react-hot-loader';
 import { LoginForm, RegisterForm } from '~/mainMenu/forms';
-import { LoginMessage, RegisterMessage, AuthorizationMessage } from '~/mainMenu/messages';
+import { AuthorizationMessage } from '~/mainMenu/messages';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { routes } from '~/_common/constants';
 
 import style from './app.css';
-/*
-<Route path={`${routes.LOGIN}/:user/:status`} component={LoginMessage} />
-<Route path={`${routes.REGISTER}/:user/:status`} component={RegisterMessage} />
-<Route path={`${routes.REGISTER}/:user`} component={RegisterForm} />
-*/
+
 export const App = () => (
   <div className={style.app}>
     <MainHeader />
@@ -30,8 +26,9 @@ export const App = () => (
       <Route path={`${routes.GAMES}/:category/:game${routes.GAME}`} component={ArithmeticGame} />
       <Route path={`${routes.GAMES}/:category`} component={GamesMenu} />
       <Route path={routes.GAMES} component={CategoriesMenu} />
-      <Route path=":method/:user/:status" component={AuthorizationMessage} />
+      <Route path="/:method/:user/:status" component={AuthorizationMessage} />
       <Route path={`${routes.LOGIN}/:user`} component={LoginForm} />
+      <Route path={`${routes.REGISTER}/:user`} component={RegisterForm} />
       <Route path={routes.MAIN_MENU} component={MainMenu} />
       <Route path={routes.MENTOR_MENU} component={MentorMenu} />
       <Route path={routes.PLAYER_MENU} component={PlayerMenu} />

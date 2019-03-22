@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
 import LoginForm from './loginForm';
-import { submitLoginForm } from '../../actions/loginFormActions';
+import { submitAuthorizationForm } from '../../actions/authorizationActions';
 
 const mapDispatchToProps = dispatch => ({
-  submitForm: bindActionCreators(submitLoginForm, dispatch),
+  submitForm: bindActionCreators(submitAuthorizationForm, dispatch),
 });
 
 export default withRouter(connect(null, mapDispatchToProps)(LoginForm));

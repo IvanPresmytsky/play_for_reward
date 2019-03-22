@@ -7,8 +7,6 @@ export default {
   MAIN_MENU: '/mainMenu',
   MATH: '/math',
   MENTOR_MENU: '/mentorMenu',
-  MENTOR_REGISTER: '/mentorRegister',
-  PLAYER_LOGIN: '/playerLogin',
   PLAYER_MENU: '/playerMenu',
   PREVIEW: '/preview',
   REGISTER: '/register',

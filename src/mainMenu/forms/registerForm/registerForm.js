@@ -2,7 +2,7 @@ import Form from '~/_common/components/form';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { NameInput, PasswordInput } from '~/_common/components/input';
-import { userTypes } from '~/_common/constants';
+import { authorizationMethods, userTypes } from '~/_common/constants';
 
 
 const RegisterForm = ({ submitForm, match }) => {
@@ -11,9 +11,9 @@ const RegisterForm = ({ submitForm, match }) => {
   const [passwordValue, setPasswordValue] = useState('');
   const [confirmPasswordValue, setConfirmPasswordValue] = useState('');
 
-  const { user } = match.params;
+  const { user, method } = match.params;
   const { MENTOR, PLAYER } = userTypes;
-  const isPlayerRigistration = user === userTypes.PLAYER;
+  const isPlayerRigistration = user === PLAYER;
 
   const nameInputId = `${PLAYER}-username`;
   const mentorNameInputId = `${MENTOR}-username`;
@@ -42,7 +42,7 @@ const RegisterForm = ({ submitForm, match }) => {
       ...mentorName,
     };
 
-    submitForm(data, user);
+    submitForm(data, user, authorizationMethods.REGISTER);
   };
 
   return (

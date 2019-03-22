@@ -11,36 +11,36 @@ const app = express();
 const compiler = webpack(webpackConfig);
 
 if (process.env.NODE_ENV === 'development') {
-    app.use(webpackDevMiddleware(compiler, {
-      hot: true,
-      filename: webpackConfig.filename,
-      publicPath: webpackConfig.publicPath,
-      stats: {
-        colors: true,
-      },
-      historyApiFallback: true,
-    }));
+  app.use(webpackDevMiddleware(compiler, {
+    hot: true,
+    filename: webpackConfig.filename,
+    publicPath: webpackConfig.publicPath,
+    stats: {
+      colors: true,
+    },
+    historyApiFallback: true,
+  }));
 
-    app.use(webpackHotMiddleware(compiler));
-  
-    app.use(express.static(project.paths.public()));
- 
-    app.use('*', (req, res, next) => {
-      const filename = path.join(compiler.outputPath, 'index.html');
+  app.use(webpackHotMiddleware(compiler));
 
-      compiler.outputFileSystem.readFile(filename, (err, result) => {
-        if (err) {
-          return next(err);
-        }
-        res.set('content-type', 'text/html');
-        res.send(result);
-        res.end();
-      });
+  app.use(express.static(project.paths.public()));
+
+  app.use('*', (req, res, next) => {
+    const filename = path.join(compiler.outputPath, 'index.html');
+
+    compiler.outputFileSystem.readFile(filename, (err, result) => {
+      if (err) {
+        return next(err);
+      }
+      res.set('content-type', 'text/html');
+      res.send(result);
+      res.end();
     });
+  });
 }
 
 const server = app.listen(project.server_port, () => {
+  const { port } = server.address().port;
   const host = server.address().address;
-  const port = server.address().port;
   console.log('app listening at http://%s:%s', host, port);
 });

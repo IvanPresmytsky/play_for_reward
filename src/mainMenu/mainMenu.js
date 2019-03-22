@@ -1,26 +1,28 @@
 import Button from '~/_common/components/button';
 import Menu from '~/_common/components/menu';
 import React from 'react';
-import { userTypes } from '~/_common/constants';
+import { authorizationMethods, userTypes } from '~/_common/constants';
 
 import {
   navigateToGames,
-  navigateToLogin,
   navigateToAuthorization,
-  navigateToRegister,
 } from '~/_common/_helpers/navigationHelper';
 
 const MainMenu = () => {
+  const {
+    LOGIN,
+    REGISTER,
+  } = authorizationMethods;
   const {
     MENTOR,
     PLAYER,
   } = userTypes;
 
   const onPlayWithoutRegistrationClick = () => navigateToGames();
-  const onPlayerLoginClick = () => navigateToLogin(PLAYER);
-  const onMentorLoginClick = () => navigateToAuthorization('login', MENTOR);
-  const onMentorRegisterClick = () => navigateToRegister(MENTOR);
-  const onPlayerRegisterClick = () => navigateToRegister(PLAYER);
+  const onPlayerLoginClick = () => navigateToAuthorization(LOGIN, PLAYER);
+  const onMentorLoginClick = () => navigateToAuthorization(LOGIN, MENTOR);
+  const onMentorRegisterClick = () => navigateToAuthorization(REGISTER, MENTOR);
+  const onPlayerRegisterClick = () => navigateToAuthorization(REGISTER, PLAYER);
 
   return (
     <Menu

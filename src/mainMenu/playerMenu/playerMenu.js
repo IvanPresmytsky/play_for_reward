@@ -1,19 +1,20 @@
 import Button from '~/_common/components/button';
 import Menu from '~/_common/components/menu';
 import React from 'react';
-import { userTypes } from '~/_common/constants';
+import { authorizationMethods, userTypes } from '~/_common/constants';
 
 import {
+  navigateToAuthorization,
   navigateToGames,
-  navigateToLogin,
   navigateToMainMenu,
 } from '~/_common/_helpers/navigationHelper';
 
 const PlayerMenu = () => {
+  const { LOGIN } = authorizationMethods;
   const { PLAYER } = userTypes;
 
   const onAvalableGamesClick = () => navigateToGames();
-  const onPlayerLoginClick = () => navigateToLogin(PLAYER);
+  const onPlayerLoginClick = () => navigateToAuthorization(LOGIN, PLAYER);
   const onSignOutClick = () => navigateToMainMenu();
 
   return (

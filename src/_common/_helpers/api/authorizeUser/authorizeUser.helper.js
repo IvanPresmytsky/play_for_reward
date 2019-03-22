@@ -1,11 +1,11 @@
-const loginPlayer = data => new Promise(resolve => {
+const authorizeUser = (data, userType, method) => new Promise(resolve => {
   const { username, password } = data;
 
   setTimeout(() => {
     if (password === '111') {
       resolve({
         ...data,
-        message: `Successfull athorization for ${username}`,
+        message: `Successfull ${method} as ${userType} for ${username}`,
       });
     } else {
       resolve({
@@ -16,4 +16,4 @@ const loginPlayer = data => new Promise(resolve => {
 });
 
 
-export default loginPlayer;
+export default authorizeUser;

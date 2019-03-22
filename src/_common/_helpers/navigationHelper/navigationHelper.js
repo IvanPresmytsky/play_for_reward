@@ -22,15 +22,7 @@ export const navigateToUserMenu = userType => {
 };
 
 export const navigateToAuthorization = (method, userType, status, message) => {
-  history.push(`${method}/${userType}/${status || ''}`, { message });
-};
-
-export const navigateToLogin = (userType, status, message) => {
-  history.push(`${routes.LOGIN}/${userType}/${status || ''}`, { message });
-};
-
-export const navigateToRegister = (userType, status, message) => {
-  history.push(`${routes.REGISTER}/${userType}/${status || ''}`, { message });
+  history.push(`/${method}/${userType}/${status || ''}`, { message });
 };
 
 export const navigateToGamePreview = (currentCategory, currentGame) => {

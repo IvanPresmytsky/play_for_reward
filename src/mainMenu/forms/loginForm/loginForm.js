@@ -1,6 +1,7 @@
 import Form from '~/_common/components/form';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
+import { authorizationMethods } from '~/_common/constants';
 
 import { PasswordInput, NameInput } from '~/_common/components/input';
 
@@ -17,7 +18,7 @@ const LoginForm = ({ submitForm, match }) => {
       username: nameValue,
       password: passwordValue,
     };
-    submitForm(data, user);
+    submitForm(data, user, authorizationMethods.LOGIN);
   };
 
   return (
