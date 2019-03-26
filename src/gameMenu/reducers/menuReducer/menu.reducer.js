@@ -1,3 +1,5 @@
+import { gameMenuActions } from '../../actions/gameMenuActions';
+
 export const initialState = {
   categories: [
     {
@@ -14,20 +16,25 @@ export const initialState = {
       name: 'addition',
       description: 'add digits to get correct result',
     },
-    {
-      category: 'math',
-      id: 'subtraction',
-      name: 'subtraction',
-      description: 'subtract digits to get correct result',
-    },
   ],
 };
 
 export const menuReducer = (state = initialState, action) => {
   switch (action.type) {
+    case gameMenuActions.GET_AVAILABLE_CATEGORIES:
+      return {
+        ...state,
+        categories: action.payload,
+      };
+    case gameMenuActions.GET_AVAILABLE_GAMES:
+      return {
+        ...state,
+        games: action.payload,
+      };
     default:
       return state;
   }
 };
 
 export default menuReducer;
+

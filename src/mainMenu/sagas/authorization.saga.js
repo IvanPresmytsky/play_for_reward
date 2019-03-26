@@ -3,6 +3,7 @@ import { navigateToAuthorization } from '~/_common/_helpers/navigationHelper';
 import { authorizeUser } from '~/_common/_helpers/api';
 import { statuses } from '~/_common/constants';
 import { authorizationActions, authorizationSucceed, authorizationFailed } from '../actions/authorizationActions';
+import { gameMenuActions, getAvailableCategories, getAvailableGames } from '~/gameMenu/actions/gameMenuActions';
 
 export function* authorizationSaga(action) {
   const { payload, userType, method } = action;
@@ -19,6 +20,8 @@ export function* authorizationSaga(action) {
     yield call(() => navigateToAuthorization(method, userType, FAILED, error));
   } else {
     yield put(authorizationSucceed(user, userType, method));
+    yield put(getAvailableCategories(user.availableCategories));
+    yield put(getAvailableGames(user.availableGames));
     yield call(() => navigateToAuthorization(method, userType, SUCCEED, message));
   }
 }

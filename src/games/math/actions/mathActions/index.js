@@ -15,4 +15,4 @@ export {
   resetSession,
   setOperation,
   startGame,
-} from './mathActions';
+} from './math.actions';
