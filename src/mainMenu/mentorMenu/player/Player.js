@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '~/_common/components/button';
-import style from './Category.css';
+import style from './Player.css';
 
-export const Category = ({ data, clickHandler }) => (
-  <div className={style.category}>
+export const Player = ({ data, clickHandler }) => (
+  <div className={style.player}>
     <Button
-      className={style.categoryBtn}
+      className={style.playerBtn}
       id={data.id}
       clickHandler={clickHandler}
       text={data.name}
@@ -14,14 +14,14 @@ export const Category = ({ data, clickHandler }) => (
   </div>
 );
 
-Category.defaultProps = {
+Player.defaultProps = {
   clickHandler: null,
 };
 
-Category.propTypes = {
+Player.propTypes = {
   data: PropTypes.object.isRequired,
   clickHandler: PropTypes.func,
 };
 
-export default Category;
+export default Player;
 

@@ -6,6 +6,7 @@ import { authorizationMethods, userTypes } from '~/_common/constants';
 import {
   navigateToAuthorization,
   navigateToMainMenu,
+  navigateToPlayers,
 } from '~/_common/_helpers/navigationHelper';
 
 const MentorMenu = () => {
@@ -13,7 +14,7 @@ const MentorMenu = () => {
   const { MENTOR } = userTypes;
 
   const onSettingsClick = () => navigateToAuthorization(LOGIN, MENTOR);
-  const onPlayersClick = () => navigateToMainMenu();
+  const onPlayersClick = () => navigateToPlayers();
   const onSignOutClick = () => navigateToMainMenu();
 
   return (

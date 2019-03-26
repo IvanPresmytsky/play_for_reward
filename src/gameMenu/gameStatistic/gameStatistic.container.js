@@ -8,6 +8,7 @@ import GameStatistic from './GameStatistic';
 
 const mapStateToProps = state => ({
   gameStatistic: state.math.gameStatistic,
+  currentUser: state.users.currentUserType,
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -1,5 +1,5 @@
 import history from '~/store/history';
-import { routes } from '~/_common/constants';
+import { routes, userTypes } from '~/_common/constants';
 
 export const navigateToCategory = currentCategory => {
   history.push(`${routes.GAMES}/${currentCategory}`);
@@ -19,6 +19,14 @@ export const navigateToMainMenu = () => {
 
 export const navigateToUserMenu = userType => {
   history.push(routes[`${userType}_MENU`]);
+};
+
+export const navigateToPlayers = () => {
+  history.push(`${routes[`${userTypes.MENTOR}_MENU`]}/players`);
+};
+
+export const navigateToPlayer = id => {
+  history.push(`${routes[`${userTypes.MENTOR}_MENU`]}/players/${id}`);
 };
 
 export const navigateToAuthorization = (method, userType, status, message) => {

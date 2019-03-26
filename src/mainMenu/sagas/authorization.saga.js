@@ -2,8 +2,8 @@ import { call, put, takeEvery } from 'redux-saga/effects';
 import { navigateToAuthorization } from '~/_common/_helpers/navigationHelper';
 import { authorizeUser } from '~/_common/_helpers/api';
 import { statuses } from '~/_common/constants';
+import { getAvailableCategories, getAvailableGames } from '~/gameMenu/actions/gameMenuActions';
 import { authorizationActions, authorizationSucceed, authorizationFailed } from '../actions/authorizationActions';
-import { gameMenuActions, getAvailableCategories, getAvailableGames } from '~/gameMenu/actions/gameMenuActions';
 
 export function* authorizationSaga(action) {
   const { payload, userType, method } = action;

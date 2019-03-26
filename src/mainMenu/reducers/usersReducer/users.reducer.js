@@ -4,6 +4,7 @@ import { authorizationActions } from '../../actions/authorizationActions';
 export const initialState = {
   currentUserType: userTypes.VISITOR,
   userName: null,
+  players: [],
 };
 
 export default (state = initialState, action) => {
@@ -13,6 +14,7 @@ export default (state = initialState, action) => {
         ...state,
         currentUserType: action.userType,
         userName: action.payload.username,
+        players: action.payload.players,
       };
     case authorizationActions.AUTHORIZATION_FAILED:
       return {

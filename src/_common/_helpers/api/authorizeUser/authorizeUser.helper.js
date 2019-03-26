@@ -28,6 +28,15 @@ const authorizeUser = (data, userType, method) => new Promise(resolve => {
             description: 'subtract digits to get correct result',
           },
         ],
+        players: [
+          {
+            id: 'palyer1',
+            name: 'Player1',
+          }, {
+            id: 'player2',
+            name: 'Player2',
+          },
+        ],
       });
     } else {
       resolve({

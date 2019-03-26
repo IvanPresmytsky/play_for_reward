@@ -3,12 +3,17 @@ import List from '~/_common/components/list';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { navigateToGame, navigateToMainMenu } from '~/_common/_helpers/navigationHelper';
+import { navigateToGame, navigateToUserMenu } from '~/_common/_helpers/navigationHelper';
 
 import StatisticItem from './gameStatisticItem';
 import style from './GameStatistic.css';
 
-export const GameStatistic = ({ gameStatistic, match, recordGame }) => {
+export const GameStatistic = ({
+  currentUser,
+  gameStatistic,
+  match,
+  recordGame,
+}) => {
   const {
     category,
     game,
@@ -20,7 +25,7 @@ export const GameStatistic = ({ gameStatistic, match, recordGame }) => {
   };
 
   const onExitBtnClick = () => {
-    navigateToMainMenu();
+    navigateToUserMenu(currentUser);
     recordGame(category, game);
   };
 
@@ -39,13 +44,14 @@ export const GameStatistic = ({ gameStatistic, match, recordGame }) => {
       <Button
         className={style.exitBtn}
         clickHandler={onExitBtnClick}
-        text="Exit to main menu"
+        text="Exit to user menu"
       />
     </div>
   );
 };
 
 GameStatistic.propTypes = {
+  currentUser: PropTypes.string.isRequired,
   gameStatistic: PropTypes.array.isRequired,
   match: PropTypes.object.isRequired,
   recordGame: PropTypes.func.isRequired,

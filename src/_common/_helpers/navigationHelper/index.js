@@ -1,10 +1,12 @@
 export {
+  navigateToAuthorization,
   navigateToCategory,
   navigateToGame,
   navigateToGamePreview,
   navigateToGames,
   navigateToGameStatistic,
-  navigateToAuthorization,
   navigateToMainMenu,
+  navigateToPlayer,
+  navigateToPlayers,
   navigateToUserMenu,
 } from './navigationHelper';
