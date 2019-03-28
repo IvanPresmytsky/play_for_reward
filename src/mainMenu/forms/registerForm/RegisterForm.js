@@ -1,7 +1,7 @@
 import Form from '~/_common/components/form';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import { NameInput, PasswordInput } from '~/_common/components/input';
+import { NameInput, PasswordInput } from '~/_common/components/textInput';
 import { authorizationMethods, userTypes } from '~/_common/constants';
 
 

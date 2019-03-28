@@ -6,7 +6,8 @@ export {
   navigateToGames,
   navigateToGameStatistic,
   navigateToMainMenu,
-  navigateToPlayer,
+  navigateToPlayerConfiguration,
+  navigateToPlayerGamesConfiguration,
   navigateToPlayers,
   navigateToUserMenu,
 } from './navigationHelper';

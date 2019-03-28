@@ -1,4 +1,4 @@
-import { Input } from '~/_common/components/input';
+import { Input } from '~/_common/components/textInput';
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 

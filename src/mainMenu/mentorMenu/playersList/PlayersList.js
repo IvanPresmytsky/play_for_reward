@@ -1,9 +1,10 @@
+import Button from '~/_common/components/button';
 import List from '~/_common/components/list';
 import Menu from '~/_common/components/menu';
 import PropTypes from 'prop-types';
 import React from 'react';
-
-import { navigateToPlayer } from '~/_common/_helpers/navigationHelper';
+import { userTypes } from '~/_common/constants';
+import { navigateToPlayerConfiguration, navigateToUserMenu } from '~/_common/_helpers/navigationHelper';
 
 import Player from '../player';
 
@@ -11,8 +12,10 @@ export const PlayerList = ({ players }) => {
   const onPlayerClick = e => {
     e.preventDefault();
     const id = e.target && e.target.id;
-    navigateToPlayer(id);
+    navigateToPlayerConfiguration(id);
   };
+
+  const onBackClick = () => navigateToUserMenu(userTypes.MENTOR);
 
   return (
     <Menu
@@ -24,11 +27,15 @@ export const PlayerList = ({ players }) => {
         Component={Player}
         items={players}
       />
+      <Button
+        clickHandler={onBackClick}
+        text="Back"
+      />
     </Menu>
   );
 };
 
-PlayerList.PropTypes = {
+PlayerList.propTypes = {
   players: PropTypes.array.isRequired,
 };
 

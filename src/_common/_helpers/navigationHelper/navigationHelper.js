@@ -1,32 +1,52 @@
 import history from '~/store/history';
 import { routes, userTypes } from '~/_common/constants';
 
+const {
+  GAME,
+  GAMES,
+  MAIN_MENU,
+  PLAYERS,
+  PREVIEW,
+  STATISTIC,
+  SET_GAMES,
+} = routes;
+
+const { MENTOR, VISITOR } = userTypes;
+
 export const navigateToCategory = currentCategory => {
-  history.push(`${routes.GAMES}/${currentCategory}`);
+  history.push(`${GAMES}/${currentCategory}`);
 };
 
 export const navigateToGame = (currentCategory, currentGame) => {
-  history.push(`${routes.GAMES}/${currentCategory}/${currentGame}${routes.GAME}`);
+  history.push(`${GAMES}/${currentCategory}/${currentGame}${GAME}`);
 };
 
 export const navigateToGames = () => {
-  history.push(routes.GAMES);
+  history.push(GAMES);
 };
 
 export const navigateToMainMenu = () => {
-  history.push(routes.MAIN_MENU);
+  history.push(MAIN_MENU);
 };
 
 export const navigateToUserMenu = userType => {
-  history.push(routes[`${userType}_MENU`]);
+  if (userType === VISITOR) {
+    return navigateToMainMenu();
+  }
+
+  return history.push(routes[`${userType}_MENU`]);
 };
 
 export const navigateToPlayers = () => {
-  history.push(`${routes[`${userTypes.MENTOR}_MENU`]}/players`);
+  history.push(`${routes[`${MENTOR}_MENU`]}${PLAYERS}`);
 };
 
-export const navigateToPlayer = id => {
-  history.push(`${routes[`${userTypes.MENTOR}_MENU`]}/players/${id}`);
+export const navigateToPlayerConfiguration = (id, section) => {
+  history.push(`${routes[`${MENTOR}_MENU`]}${PLAYERS}/${id}${section || ''}`);
+};
+
+export const navigateToPlayerGamesConfiguration = id => {
+  navigateToPlayerConfiguration(id, SET_GAMES);
 };
 
 export const navigateToAuthorization = (method, userType, status, message) => {
@@ -34,9 +54,9 @@ export const navigateToAuthorization = (method, userType, status, message) => {
 };
 
 export const navigateToGamePreview = (currentCategory, currentGame) => {
-  history.push(`${routes.GAMES}/${currentCategory}/${currentGame}${routes.PREVIEW}`);
+  history.push(`${GAMES}/${currentCategory}/${currentGame}${PREVIEW}`);
 };
 
 export const navigateToGameStatistic = (currentCategory, currentGame) => {
-  history.push(`${routes.GAMES}/${currentCategory}/${currentGame}${routes.STATISTIC}`);
+  history.push(`${GAMES}/${currentCategory}/${currentGame}${STATISTIC}`);
 };

@@ -6,8 +6,10 @@ import GameStatistic from '~/gameMenu/gameStatistic';
 import MainHeader from '~/mainHeader';
 import MainMenu from '~/mainMenu';
 import MentorMenu from '~/mainMenu/mentorMenu';
+import PlayerCategories from '~/mainMenu/mentorMenu/playerCategories';
 import PlayerMenu from '~/mainMenu/playerMenu';
 import PlayersList from '~/mainMenu/mentorMenu/playersList';
+import PlayerConfigurationMenu from '~/mainMenu/mentorMenu/playerConfigurationMenu';
 import React from 'react';
 
 import { hot } from 'react-hot-loader';
@@ -18,23 +20,46 @@ import { routes } from '~/_common/constants';
 
 import style from './App.css';
 
+const {
+  BASE,
+  CATEGORY_PARAM,
+  GAME_PARAM,
+  GAME,
+  GAMES,
+  LOGIN,
+  MAIN_MENU,
+  MENTOR_MENU,
+  METHOD_PARAM,
+  PLAYER_MENU,
+  PLAYER_PARAM,
+  PLAYERS,
+  PREVIEW,
+  REGISTER,
+  SET_GAMES,
+  STATISTIC,
+  STATUS_PARAM,
+  USER_PARAM,
+} = routes;
+
 export const App = () => (
   <div className={style.app}>
     <MainHeader />
     <Switch>
-      <Route path={`${routes.GAMES}/:category/:game${routes.PREVIEW}`} component={GamePreview} />
-      <Route path={`${routes.GAMES}/:category/:game${routes.STATISTIC}`} component={GameStatistic} />
-      <Route path={`${routes.GAMES}/:category/:game${routes.GAME}`} component={ArithmeticGame} />
-      <Route path={`${routes.GAMES}/:category`} component={GamesMenu} />
-      <Route path={routes.GAMES} component={CategoriesMenu} />
-      <Route path="/:method/:user/:status" component={AuthorizationMessage} />
-      <Route path={`${routes.LOGIN}/:user`} component={LoginForm} />
-      <Route path={`${routes.REGISTER}/:user`} component={RegisterForm} />
-      <Route path={routes.MAIN_MENU} component={MainMenu} />
-      <Route path={`${routes.MENTOR_MENU}/players`} component={PlayersList} />
-      <Route path={routes.MENTOR_MENU} component={MentorMenu} />
-      <Route path={routes.PLAYER_MENU} component={PlayerMenu} />
-      <Redirect from={routes.BASE} to={routes.MAIN_MENU} />
+      <Route path={`${GAMES}${CATEGORY_PARAM}${GAME_PARAM}${PREVIEW}`} component={GamePreview} />
+      <Route path={`${GAMES}${CATEGORY_PARAM}${GAME_PARAM}${STATISTIC}`} component={GameStatistic} />
+      <Route path={`${GAMES}${CATEGORY_PARAM}${GAME_PARAM}${GAME}`} component={ArithmeticGame} />
+      <Route path={`${GAMES}${CATEGORY_PARAM}`} component={GamesMenu} />
+      <Route path={GAMES} component={CategoriesMenu} />
+      <Route path={`${MENTOR_MENU}${PLAYERS}${PLAYER_PARAM}${SET_GAMES}`} component={PlayerCategories} />
+      <Route path={`${MENTOR_MENU}${PLAYERS}${PLAYER_PARAM}`} component={PlayerConfigurationMenu} />
+      <Route path={`${MENTOR_MENU}${PLAYERS}`} component={PlayersList} />
+      <Route path={`${METHOD_PARAM}${USER_PARAM}${STATUS_PARAM}`} component={AuthorizationMessage} />
+      <Route path={`${LOGIN}${USER_PARAM}`} component={LoginForm} />
+      <Route path={`${REGISTER}${USER_PARAM}`} component={RegisterForm} />
+      <Route path={MAIN_MENU} component={MainMenu} />
+      <Route path={MENTOR_MENU} component={MentorMenu} />
+      <Route path={PLAYER_MENU} component={PlayerMenu} />
+      <Redirect from={BASE} to={MAIN_MENU} />
     </Switch>
   </div>
 );

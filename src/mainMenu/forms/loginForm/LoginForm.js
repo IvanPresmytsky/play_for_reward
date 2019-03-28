@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { authorizationMethods } from '~/_common/constants';
 
-import { PasswordInput, NameInput } from '~/_common/components/input';
+import { PasswordInput, NameInput } from '~/_common/components/textInput';
 
 const LoginForm = ({ submitForm, match }) => {
   const [nameValue, setNameValue] = useState('');
