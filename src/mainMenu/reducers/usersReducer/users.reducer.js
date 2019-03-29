@@ -5,6 +5,22 @@ export const initialState = {
   currentUserType: userTypes.VISITOR,
   userName: null,
   players: [],
+  availableCategories: [
+    {
+      id: 'math',
+      isSwitchedOn: true,
+      games: [
+        {
+          id: 'addition',
+          isSwitchedOn: true,
+        },
+        {
+          id: 'substraction',
+          isSwitchedOn: false,
+        },
+      ],
+    },
+  ],
 };
 
 export default (state = initialState, action) => {

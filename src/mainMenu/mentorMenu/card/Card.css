@@ -1,0 +1,12 @@
+.header {
+  background: brown;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  width: 100%;
+}
+
+.list {
+  background: darkgoldenrod;
+  padding-left: 20px; 
+}

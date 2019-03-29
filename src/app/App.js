@@ -6,7 +6,7 @@ import GameStatistic from '~/gameMenu/gameStatistic';
 import MainHeader from '~/mainHeader';
 import MainMenu from '~/mainMenu';
 import MentorMenu from '~/mainMenu/mentorMenu';
-import PlayerCategories from '~/mainMenu/mentorMenu/playerCategories';
+import SetCategoriesMenu from '~/mainMenu/mentorMenu/setCategoriesMenu';
 import PlayerMenu from '~/mainMenu/playerMenu';
 import PlayersList from '~/mainMenu/mentorMenu/playersList';
 import PlayerConfigurationMenu from '~/mainMenu/mentorMenu/playerConfigurationMenu';
@@ -50,7 +50,7 @@ export const App = () => (
       <Route path={`${GAMES}${CATEGORY_PARAM}${GAME_PARAM}${GAME}`} component={ArithmeticGame} />
       <Route path={`${GAMES}${CATEGORY_PARAM}`} component={GamesMenu} />
       <Route path={GAMES} component={CategoriesMenu} />
-      <Route path={`${MENTOR_MENU}${PLAYERS}${PLAYER_PARAM}${SET_GAMES}`} component={PlayerCategories} />
+      <Route path={`${MENTOR_MENU}${PLAYERS}${PLAYER_PARAM}${SET_GAMES}`} component={SetCategoriesMenu} />
       <Route path={`${MENTOR_MENU}${PLAYERS}${PLAYER_PARAM}`} component={PlayerConfigurationMenu} />
       <Route path={`${MENTOR_MENU}${PLAYERS}`} component={PlayersList} />
       <Route path={`${METHOD_PARAM}${USER_PARAM}${STATUS_PARAM}`} component={AuthorizationMessage} />

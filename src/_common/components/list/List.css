@@ -3,4 +3,9 @@
   display: flex;
   flex-direction: column;
   list-style: none;
+  width: 100%;
+}
+
+.listItem {
+  width: 100%;
 }

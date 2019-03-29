@@ -1,35 +1,34 @@
 import PropTypes from 'prop-types';
-import React, { forwardRef } from 'react';
+import React from 'react';
+import Checkbox from '~/_common/components/checkboxInput';
 
-import styles from './CheckboxInput.css';
+import styles from './Card.css';
 
-const Checkbox = forwardRef(({
+const Card = ({
   checked,
   id,
   labelText,
   name,
   onChange,
-}, ref) => (
-  <div className={styles.wrapper}>
-    <input
+}) => (
+  <div className={styles.header}>
+    <Checkbox
       checked={checked}
-      className={styles.input}
       id={id}
+      labelText={labelText}
       name={name}
       onChange={onChange}
-      ref={ref}
-      type="checkbox"
     />
-    <label htmlFor={id}>{labelText}</label>
+    <a href="#">Expand</a>
   </div>
-));
+);
 
-Checkbox.propTypes = {
+Card.propTypes = {
   id: PropTypes.string.isRequired,
   labelText: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
 };
 
-export default Checkbox;
+export default Card;
 
