@@ -6,20 +6,17 @@ import React, { useState } from 'react';
 
 import Category from '../category';
 
-export const SetCategoriesMenu = ({ categories }) => {
-  const [updatedCategories, setCategories] = useState([categories]);
+export const SetCategoriesMenu = ({ categories, categoriesAndGames }) => {
+  const [updatedCategories, setCategories] = useState(categoriesAndGames);
 
   const onCategoryClick = e => {
     const { name, checked } = e.target;
-    const updatedItem = updatedCategories.find(item => item.name === name);
-    if (updatedItem) {
-      updatedItem.isSwitchedOn = checked;
-      setCategories(updatedCategories);
-    } else {
-      setCategories([...updatedCategories, { name, isSwitchedOn: checked }]);
-    }
+    const updatedItem = updatedCategories.find(category => category.id === name);
 
-    console.log(name, checked);
+    if (!updatedItem) return;
+
+    updatedItem.isSwitchedOn = checked;
+    setCategories(updatedCategories);
   };
 
   const onSaveClick = e => {
@@ -46,6 +43,7 @@ export const SetCategoriesMenu = ({ categories }) => {
 
 SetCategoriesMenu.PropTypes = {
   categories: PropTypes.array.isRequired,
+  categoriesAndGames: PropTypes.array.isRequired,
 };
 
 export default SetCategoriesMenu;

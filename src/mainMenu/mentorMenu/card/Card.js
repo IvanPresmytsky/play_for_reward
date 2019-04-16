@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { Fragment, useState } from 'react';
 import Checkbox from '~/_common/components/checkboxInput';
 
+import CardOptions from '../cardOptions';
 import styles from './Card.css';
 
 const Card = ({
@@ -10,18 +11,34 @@ const Card = ({
   labelText,
   name,
   onChange,
-}) => (
-  <div className={styles.header}>
-    <Checkbox
-      checked={checked}
-      id={id}
-      labelText={labelText}
-      name={name}
-      onChange={onChange}
-    />
-    <a href="#">Expand</a>
-  </div>
-);
+}) => {
+  const [isExpanded, setExpanded] = useState(false);
+
+  const onExpandedClick = e => {
+    e.preventDefault();
+    setExpanded(!isExpanded);
+  };
+
+  return (
+    <Fragment>
+      <div className={styles.header}>
+        <Checkbox
+          checked={checked}
+          id={id}
+          labelText={labelText}
+          name={name}
+          onChange={onChange}
+        />
+        <a href="#" onClick={onExpandedClick}>
+          {isExpanded ? 'Hide' : 'Expand'}
+        </a>
+      </div>
+      {isExpanded && (
+        <CardOptions />
+      )}
+    </Fragment>
+  );
+};
 
 Card.propTypes = {
   id: PropTypes.string.isRequired,

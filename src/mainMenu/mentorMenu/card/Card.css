@@ -10,3 +10,9 @@
   background: darkgoldenrod;
   padding-left: 20px; 
 }
+
+.cardOption {
+  height: 100px;
+  background: green;
+  width: 100%;
+}
