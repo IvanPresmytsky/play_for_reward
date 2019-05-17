@@ -1,3 +1,4 @@
+import { handleActions } from 'redux-actions';
 import { userTypes } from '~/_common/constants';
 import { authorizationActions } from '../../actions/authorizationActions';
 
@@ -23,22 +24,23 @@ export const initialState = {
   ],
 };
 
-export default (state = initialState, action) => {
-  switch (action.type) {
-    case authorizationActions.AUTHORIZATION_SUCCEED:
-      return {
-        ...state,
-        currentUserType: action.userType,
-        userName: action.payload.username,
-        players: action.payload.players,
-      };
-    case authorizationActions.AUTHORIZATION_FAILED:
-      return {
-        ...state,
-        currentUserType: userTypes.VISITOR,
-        userName: null,
-      };
-    default:
-      return state;
-  }
-};
+export default handleActions(
+  {
+    [authorizationActions.AUTHORIZATION_SUCCEED]: (state, action) => ({
+      ...state,
+      currentUserType: action.payload.userType,
+      userName: action.payload.username,
+      players: action.payload.players,
+      availableCategories: initialState.availableCategories,
+    }),
+    [authorizationActions.AUTHORIZATION_FAILED]: state => ({
+      ...state,
+      currentUserType: userTypes.VISITOR,
+      userName: null,
+      players: null,
+      availableCategories: null,
+    }),
+  },
+  initialState,
+);
+

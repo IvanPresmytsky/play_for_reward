@@ -9,7 +9,7 @@ import {
 } from '../actions/mathActions';
 
 export function* finishSession(action) {
-  yield put(checkSolution(action.sessionData));
+  yield put(checkSolution(action.payload));
   yield put(handleScore());
   yield put(checkLevel());
   yield put(recordSession());

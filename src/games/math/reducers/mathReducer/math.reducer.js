@@ -1,4 +1,6 @@
 import dateformat from 'dateformat';
+import { handleActions } from 'redux-actions';
+import mathHelpers from '../../_common/_helpers';
 import { mathActions } from '../../actions/mathActions';
 import operations from '../../_common/constants/operations';
 
@@ -21,135 +23,64 @@ export const initialState = {
   mainStatistic: {},
 };
 
-export const getDigit = level => {
-  const levelRatio = 2 + level;
-  return Math.floor(Math.random() * levelRatio) + 1;
-};
+export default handleActions(
+  {
+    [mathActions.CHANGE_USER_INPUT]: (state, action) => ({
+      ...state,
+      userInput: mathHelpers.validateInput(state.userInput + action.payload),
+    }),
 
-export const getDigits = (quantity, level, operation) => {
-  const digits = new Array(quantity).fill()
-    .map(() => getDigit(level));
-
-  if (operation === operations.subtraction.name) {
-    const sortedDigits = digits.sort((a, b) => b - a);
-    return sortedDigits;
-  }
-
-  return digits;
-};
-
-export const getTotal = (firstDigit, secondDigit, operation) => {
-  if (operation === operations.addition.name) {
-    return firstDigit + secondDigit;
-  } else if (operation === operations.subtraction.name) {
-    return firstDigit - secondDigit;
-  }
-  return null;
-};
-
-export const validateInput = userInput => {
-  return userInput.length > 1 && userInput[0] === '0'
-    ? userInput.slice(1, userInput.length)
-    : userInput;
-};
-
-export const removeUserInput = userInput => {
-  return userInput.length > 1
-    ? userInput.slice(0, userInput.length - 1)
-    : '';
-};
-
-export const recordSession = (state, timeStamp) => {
-  return {
-    condition: `${state.firstDigit} ${operations[state.operation].symbol} ${state.secondDigit}`,
-    correctSolution: !state.isCorrectSolution ? state.total : null,
-    isCorrectSolution: state.isCorrectSolution,
-    id: timeStamp,
-    duration: parseFloat(((timeStamp - state.sessionTime) / 1000).toFixed(1)),
-    level: state.level,
-    score: state.score,
-    solution: state.userInput,
-  };
-};
-
-export const checkLevel = state => {
-  const isNextLevel = state.scoreToNextLevel <= state.score;
-  const newLevel = isNextLevel ? state.level + 1 : state.level;
-  return newLevel;
-};
-
-export const setScoreToNextLevel = level => 10 * level * ((level / 10) + 1);
-
-export const mathReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case mathActions.HANDLE_SCORE:
+    [mathActions.CHECK_LEVEL]: state => {
+      const newLevel = mathHelpers.checkLevel(state);
       return {
         ...state,
-        score: state.isCorrectSolution ? (state.score + 1) : (state.score - 2),
+        level: newLevel,
+        scoreToNextLevel: mathHelpers.setScoreToNextLevel(newLevel),
       };
-    case mathActions.CHANGE_USER_INPUT:
-      return {
-        ...state,
-        userInput: validateInput(state.userInput + action.userInput),
-      };
-    case mathActions.REMOVE_USER_INPUT:
-      return {
-        ...state,
-        userInput: removeUserInput(state.userInput),
-      };
-    case mathActions.CLEAR_USER_INPUT:
-      return {
-        ...state,
-        userInput: '',
-      };
-    case mathActions.GENERATE_DIGITS: {
-      const digits = getDigits(state.digitsQuantity, state.level, state.operation);
-      return {
-        ...state,
-        firstDigit: digits[0],
-        secondDigit: digits[1],
-      };
-    }
-    case mathActions.GET_TOTAL:
-      return {
-        ...state,
-        total: getTotal(state.firstDigit, state.secondDigit, state.operation),
-      };
-    case mathActions.CHECK_SOLUTION:
-      return {
-        ...state,
-        isCorrectSolution: state.total === Number(action.solution),
-        hasSolution: true,
-      };
-    case mathActions.START_GAME:
-      return {
-        ...state,
-        isGameStarted: true,
-        isGameFinished: false,
-        sessionTime: Date.now(),
-      };
-    case mathActions.FINISH_GAME:
-      return {
-        ...state,
-        isGameFinished: true,
-        isGameStarted: false,
-      };
-    case mathActions.RECORD_SESSION: {
-      const timeStamp = Date.now();
-      const data = recordSession(state, timeStamp);
-      state.gameStatistic.push(data);
+    },
 
+    [mathActions.CHECK_SOLUTION]: (state, action) => ({
+      ...state,
+      isCorrectSolution: state.total === Number(action.payload),
+      hasSolution: true,
+    }),
+
+    [mathActions.CLEAR_USER_INPUT]: state => ({
+      ...state,
+      userInput: '',
+    }),
+
+    [mathActions.FINISH_GAME]: state => ({
+      ...state,
+      isGameFinished: true,
+      isGameStarted: false,
+    }),
+
+    [mathActions.GENERATE_DIGITS]: state => {
+      const [firstDigit, secondDigit] = mathHelpers.getDigits(state.digitsQuantity, state.level, state.operation);
       return {
         ...state,
-        sessionTime: timeStamp,
+        firstDigit,
+        secondDigit,
       };
-    }
-    case mathActions.RECORD_GAME: {
+    },
+
+    [mathActions.GET_TOTAL]: state => ({
+      ...state,
+      total: mathHelpers.getTotal(state.firstDigit, state.secondDigit, state.operation),
+    }),
+
+    [mathActions.HANDLE_SCORE]: state => ({
+      ...state,
+      score: state.isCorrectSolution ? (state.score + 1) : (state.score - 2),
+    }),
+
+    [mathActions.RECORD_GAME]: (state, action) => {
       const date = dateformat(new Date(Date.now()), 'isoDateTime');
-
+      const { category, game } = action.payload;
       state.mainStatistic[date] = {
-        category: action.category,
-        game: action.game,
+        category,
+        game,
         statistic: state.gameStatistic,
       };
 
@@ -158,24 +89,35 @@ export const mathReducer = (state = initialState, action) => {
         sessionTime: 0,
         gameStatistic: [],
       };
-    }
-    case mathActions.CHECK_LEVEL: {
-      const newLevel = checkLevel(state);
-      return {
-        ...state,
-        level: newLevel,
-        scoreToNextLevel: setScoreToNextLevel(newLevel),
-      };
-    }
-    case mathActions.SET_OPERATION: {
-      return {
-        ...state,
-        operation: action.operation,
-      };
-    }
-    default:
-      return state;
-  }
-};
+    },
 
-export default mathReducer;
+    [mathActions.RECORD_SESSION]: state => {
+      const timeStamp = Date.now();
+      const data = mathHelpers.recordSession(state, timeStamp);
+      state.gameStatistic.push(data);
+
+      return {
+        ...state,
+        sessionTime: timeStamp,
+      };
+    },
+
+    [mathActions.REMOVE_USER_INPUT]: state => ({
+      ...state,
+      userInput: mathHelpers.removeUserInput(state.userInput),
+    }),
+
+    [mathActions.SET_OPERATION]: (state, action) => ({
+      ...state,
+      operation: action.payload,
+    }),
+
+    [mathActions.START_GAME]: state => ({
+      ...state,
+      isGameStarted: true,
+      isGameFinished: false,
+      sessionTime: Date.now(),
+    }),
+  },
+  initialState,
+);

@@ -42,7 +42,11 @@ const RegisterForm = ({ submitForm, match }) => {
       ...mentorName,
     };
 
-    submitForm(data, user, authorizationMethods.REGISTER);
+    submitForm({
+      data,
+      userType: user,
+      method: authorizationMethods.REGISTER,
+    });
   };
 
   return (

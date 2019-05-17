@@ -1,3 +1,4 @@
+import { handleActions } from 'redux-actions';
 import { gameMenuActions } from '../../actions/gameMenuActions';
 
 export const initialState = {
@@ -19,22 +20,16 @@ export const initialState = {
   ],
 };
 
-export const menuReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case gameMenuActions.GET_AVAILABLE_CATEGORIES:
-      return {
-        ...state,
-        categories: action.payload,
-      };
-    case gameMenuActions.GET_AVAILABLE_GAMES:
-      return {
-        ...state,
-        games: action.payload,
-      };
-    default:
-      return state;
-  }
-};
-
-export default menuReducer;
-
+export default handleActions(
+  {
+    [gameMenuActions.GET_AVAILABLE_CATEGORIES]: (state, action) => ({
+      ...state,
+      categories: action.payload,
+    }),
+    [gameMenuActions.GET_AVAILABLE_GAMES]: (state, action) => ({
+      ...state,
+      games: action.payload,
+    }),
+  },
+  initialState,
+);

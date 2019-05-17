@@ -18,7 +18,11 @@ const LoginForm = ({ submitForm, match }) => {
       username: nameValue,
       password: passwordValue,
     };
-    submitForm(data, user, authorizationMethods.LOGIN);
+    submitForm({
+      data,
+      userType: user,
+      method: authorizationMethods.LOGIN,
+    });
   };
 
   return (

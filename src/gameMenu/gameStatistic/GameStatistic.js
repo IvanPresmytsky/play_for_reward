@@ -18,15 +18,19 @@ export const GameStatistic = ({
     category,
     game,
   } = match.params;
+  const payload = {
+    category,
+    game,
+  };
 
   const onPlayBtnClick = () => {
     navigateToGame(category, game);
-    recordGame(category, game);
+    recordGame(payload);
   };
 
   const onExitBtnClick = () => {
     navigateToUserMenu(currentUser);
-    recordGame(category, game);
+    recordGame(payload);
   };
 
   return (
