@@ -5,41 +5,32 @@ import { NameInput, PasswordInput } from '~/_common/components/textInput';
 import { authorizationMethods, userTypes } from '~/_common/constants';
 
 
-const RegisterForm = ({ submitForm, match }) => {
+const RegisterForm = ({ submitForm, match, mentorName }) => {
   const [nameValue, setNameValue] = useState('');
-  const [mentorNameValue, setMentorNameValue] = useState('');
   const [passwordValue, setPasswordValue] = useState('');
   const [confirmPasswordValue, setConfirmPasswordValue] = useState('');
 
   const { user } = match.params;
-  const { MENTOR, PLAYER } = userTypes;
-  const isPlayerRigistration = user === PLAYER;
+  const { PLAYER } = userTypes;
 
   const nameInputId = `${PLAYER}-username`;
-  const mentorNameInputId = `${MENTOR}-username`;
   const passwordInputId = `${PLAYER}-password`;
   const confirmPasswordId = `${PLAYER}-confirm-password`;
 
   const getNameValue = value => setNameValue(value);
-  const getMentorNameValue = value => setMentorNameValue(value);
   const getPasswordValue = value => setPasswordValue(value);
   const getConfirmPasswordValue = value => setConfirmPasswordValue(value);
   const getRequiredValues = () => ([
     nameValue,
     passwordValue,
     passwordValue === confirmPasswordValue,
-    ...(isPlayerRigistration ? [mentorNameValue] : []),
   ]);
 
   const onSubmit = () => {
-    const mentorName = isPlayerRigistration
-      ? { mentorName: mentorNameValue }
-      : {};
-
     const data = {
       username: nameValue,
       password: passwordValue,
-      ...mentorName,
+      ...(mentorName ? { mentorName } : {}),
     };
 
     submitForm({
@@ -61,14 +52,6 @@ const RegisterForm = ({ submitForm, match }) => {
         key={nameInputId}
         labelText="Enter username"
       />
-      {isPlayerRigistration && (
-        <NameInput
-          getValue={getMentorNameValue}
-          id={mentorNameInputId}
-          key={mentorNameInputId}
-          labelText="Enter your mentor username"
-        />)
-      }
       <PasswordInput
         getValue={getPasswordValue}
         id={passwordInputId}
@@ -86,8 +69,13 @@ const RegisterForm = ({ submitForm, match }) => {
   );
 };
 
+RegisterForm.defaultProps = {
+  mentorName: null,
+};
+
 RegisterForm.propTypes = {
   match: PropTypes.object.isRequired,
+  mentorName: PropTypes.string,
   submitForm: PropTypes.func.isRequired,
 };
 

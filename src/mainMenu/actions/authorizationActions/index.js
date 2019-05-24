@@ -1,6 +1,7 @@
 export {
-  authorizationFailed,
   authorizationActions,
-  authorizationSucceed,
+  authorizationFailed,
+  mentorAuthorizationSucceed,
+  playerAuthorizationSucceed,
   submitAuthorizationForm,
 } from './authorization.actions';

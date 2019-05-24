@@ -22,7 +22,6 @@ const MainMenu = () => {
   const onPlayerLoginClick = () => navigateToAuthorization(LOGIN, PLAYER);
   const onMentorLoginClick = () => navigateToAuthorization(LOGIN, MENTOR);
   const onMentorRegisterClick = () => navigateToAuthorization(REGISTER, MENTOR);
-  const onPlayerRegisterClick = () => navigateToAuthorization(REGISTER, PLAYER);
 
   return (
     <Menu
@@ -39,10 +38,6 @@ const MainMenu = () => {
       <Button
         clickHandler={onMentorRegisterClick}
         text="Register as a mentor"
-      />
-      <Button
-        clickHandler={onPlayerRegisterClick}
-        text="Register as a player"
       />
       <Button
         clickHandler={onPlayWithoutRegistrationClick}

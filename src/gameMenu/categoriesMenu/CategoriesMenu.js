@@ -7,10 +7,11 @@ import { navigateToCategory } from '~/_common/_helpers/navigationHelper';
 
 import Category from '../category';
 
-export const CategoriesMenu = ({ categories }) => {
+export const CategoriesMenu = ({ categories, getCurrentCategory }) => {
   const onCategoryClick = e => {
     e.preventDefault();
     const category = e.target && e.target.id;
+    getCurrentCategory(category);
     navigateToCategory(category);
   };
 

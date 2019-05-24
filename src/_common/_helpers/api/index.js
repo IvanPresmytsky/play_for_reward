@@ -1,1 +1,2 @@
-export { default as authorizeUser } from './authorizeUser';
+export { default as authorizeMentor } from './authorizeMentor';
+export { default as authorizePlayer } from './authorizePlayer';
