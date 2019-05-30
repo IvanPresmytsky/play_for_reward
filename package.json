@@ -10,6 +10,7 @@
     "eslint:fix": "npm run eslint -- --fix",
     "lint": "npm run stylelint; npm run eslint",
     "start:dev": "NODE_ENV=development babel-node ./server/server.js",
+    "storybook": "start-storybook",
     "stylelint": "./node_modules/.bin/stylelint './source/**/**/*.css'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -31,6 +32,7 @@
     "@babel/core": "^7.1.2",
     "@babel/node": "^7.0.0",
     "@babel/polyfill": "^7.0.0",
+    "@storybook/react": "^5.1.0-alpha.7",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.4",
     "classnames": "^2.2.5",

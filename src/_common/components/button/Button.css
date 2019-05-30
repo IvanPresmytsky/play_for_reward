@@ -16,5 +16,6 @@
 }
 
 .disabled {
+  cursor: none;
   background: grey;
 }

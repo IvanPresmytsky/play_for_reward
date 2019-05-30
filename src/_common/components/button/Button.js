@@ -37,7 +37,7 @@ Button.defaultProps = {
   clickHandler: e => e.preventDefault(),
   id: null,
   isDisabled: false,
-  mods: [],
+  mods: null,
 };
 
 Button.propTypes = {
@@ -45,7 +45,10 @@ Button.propTypes = {
   id: PropTypes.string,
   isDisabled: PropTypes.bool,
   mods: PropTypes.oneOf(Object.values(buttonMods)),
-  text: PropTypes.string.isRequired,
+  text: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element,
+  ]),
 };
 
 export default Button;
