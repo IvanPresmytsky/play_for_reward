@@ -1,7 +1,2 @@
-export {
-  gameMenuActions,
-  getAvailableCategories,
-  getAvailableGames,
-  getCurrentCategory,
-} from './gameMenu.actions';
+export * from './gameMenu.actions';
 

@@ -1,4 +1,1 @@
-export {
-  mentorActions,
-  setCurrentPlayer,
-} from './mentor.actions';
+export * from './mentor.actions';

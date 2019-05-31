@@ -1,2 +1,1 @@
-export { currentCategorySelector } from './menu.selectors';
-
+export * from './menu.selectors';

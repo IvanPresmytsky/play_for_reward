@@ -3,10 +3,10 @@ import { userTypes, categories } from '~/_common/constants';
 
 const getDescriptiveGames = (currentCategory, availableCategories, currentUserType) => {
   const { games } = categories.find(item => item.id === currentCategory);
-  const playerGames = availableCategories.find(item => item.id === currentCategory).games;
+  const availableCategory = availableCategories.find(item => item.id === currentCategory);
 
-  return (currentUserType === userTypes.PLAYER && playerGames)
-    ? mapCategoriesToDescriptive(games, playerGames)
+  return (currentUserType === userTypes.PLAYER && availableCategory)
+    ? mapCategoriesToDescriptive(games, availableCategory.games)
     : games;
 };
 
