@@ -58,6 +58,9 @@
     "redux-saga": "^0.16.0",
     "reselect": "^4.0.0",
     "rimraf": "^2.6.2",
+    "styled-components": "^4.2.1",
+    "styled-components-modifiers": "^1.2.1",
+    "styled-theming": "^2.2.0",
     "uglifyjs-webpack-plugin": "^1.2.4",
     "webpack": "^4.4.1",
     "webpack-dev-middleware": "^3.1.0",
@@ -70,6 +73,7 @@
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
     "babel-plugin-root-import": "^6.1.0",
+    "babel-plugin-styled-components": "^1.10.0",
     "css-loader": "^0.28.11",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
@@ -88,7 +92,9 @@
     "stylelint": "^9.2.0",
     "stylelint-config-css-modules": "^1.2.0",
     "stylelint-config-standard": "^18.2.0",
+    "stylelint-config-styled-components": "^0.1.1",
     "stylelint-order": "^0.8.1",
+    "stylelint-processor-styled-components": "^1.8.0",
     "webpack-cli": "^2.0.13"
   }
 }

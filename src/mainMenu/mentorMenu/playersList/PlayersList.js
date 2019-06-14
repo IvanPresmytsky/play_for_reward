@@ -1,4 +1,4 @@
-import Button from '~/_common/components/button';
+import Button from '~/_common/components/Button';
 import List from '~/_common/components/list';
 import Menu from '~/_common/components/menu';
 import PropTypes from 'prop-types';
@@ -33,14 +33,12 @@ export const PlayerList = ({ players, setCurrentPlayer }) => {
         Component={Player}
         items={players}
       />
-      <Button
-        clickHandler={onPlayerRegisterClick}
-        text="Add a player"
-      />
-      <Button
-        clickHandler={onBackClick}
-        text="Back"
-      />
+      <Button clickHandler={onPlayerRegisterClick}>
+        Add a player
+      </Button>
+      <Button clickHandler={onBackClick}>
+        Back
+      </Button>
     </Menu>
   );
 };

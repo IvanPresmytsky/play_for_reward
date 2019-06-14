@@ -1,4 +1,4 @@
-import Button from '~/_common/components/button';
+import Button from '~/_common/components/Button';
 import Menu from '~/_common/components/menu';
 import React from 'react';
 import { authorizationMethods, userTypes } from '~/_common/constants';
@@ -27,22 +27,18 @@ const MainMenu = () => {
     <Menu
       title="Main menu"
     >
-      <Button
-        clickHandler={onMentorLoginClick}
-        text="Log in as a mentor"
-      />
-      <Button
-        clickHandler={onPlayerLoginClick}
-        text="Log in as a player"
-      />
-      <Button
-        clickHandler={onMentorRegisterClick}
-        text="Register as a mentor"
-      />
-      <Button
-        clickHandler={onPlayWithoutRegistrationClick}
-        text="Try without registration"
-      />
+      <Button clickHandler={onMentorLoginClick}>
+        Log in as a mentor
+      </Button>
+      <Button clickHandler={onPlayerLoginClick}>
+        Log in as a player
+      </Button>
+      <Button clickHandler={onMentorRegisterClick}>
+        Register as a mentor
+      </Button>
+      <Button clickHandler={onPlayWithoutRegistrationClick}>
+        Try without registration
+      </Button>
     </Menu>
   );
 };

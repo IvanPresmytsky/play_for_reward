@@ -1,4 +1,4 @@
-import Button from '~/_common/components/button';
+import Button from '~/_common/components/Button';
 import Menu from '~/_common/components/menu';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -17,22 +17,18 @@ const PlayerConfigurationMenu = ({ match }) => {
     <Menu
       title="Player configuration menu"
     >
-      <Button
-        clickHandler={onSetCategoriesClick}
-        text="Set categories"
-      />
-      <Button
-        clickHandler={onSetGamesClick}
-        text="Set games"
-      />
-      <Button
-        clickHandler={onSetRewardClick}
-        text="Set reward"
-      />
-      <Button
-        clickHandler={onBackClick}
-        text="Back"
-      />
+      <Button clickHandler={onSetCategoriesClick}>
+        Set categories
+      </Button>
+      <Button clickHandler={onSetGamesClick}>
+        Set games
+      </Button>
+      <Button clickHandler={onSetRewardClick}>
+        Set reward
+      </Button>
+      <Button clickHandler={onBackClick}>
+        Back
+      </Button>
     </Menu>
   );
 };

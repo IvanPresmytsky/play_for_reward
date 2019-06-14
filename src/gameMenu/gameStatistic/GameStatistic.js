@@ -1,4 +1,4 @@
-import Button from '~/_common/components/button';
+import Button from '~/_common/components/Button';
 import List from '~/_common/components/list';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -40,16 +40,15 @@ export const GameStatistic = ({
         Component={StatisticItem}
         items={gameStatistic}
       />
-      <Button
-        className={style.playBtn}
-        clickHandler={onPlayBtnClick}
-        text="Play again"
-      />
+      <Button clickHandler={onPlayBtnClick}>
+        Play again
+      </Button>
       <Button
         className={style.exitBtn}
         clickHandler={onExitBtnClick}
-        text="Exit to user menu"
-      />
+      >
+        Exit to user menu
+      </Button>
     </div>
   );
 };

@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from '~/_common/components/button';
+import Button from '~/_common/components/Button';
 import style from './Category.css';
 
 export const Category = ({ data, clickHandler }) => (
   <div className={style.category}>
     <Button
-      className={style.categoryBtn}
       id={data.id}
       clickHandler={clickHandler}
-      text={data.name}
-    />
+    >
+      {data.name}
+    </Button>
   </div>
 );
 

@@ -1,4 +1,4 @@
-import Button from '~/_common/components/button';
+import Button from '~/_common/components/Button';
 import Menu from '~/_common/components/menu';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -19,8 +19,9 @@ const Form = ({
       <Button
         clickHandler={isValidForm ? onSubmit : null}
         isDisabled={!isValidForm}
-        text="submit"
-      />
+      >
+        submit
+      </Button>
     </Menu>
   );
 };

@@ -1,7 +1,6 @@
 export const buttonMods = {
-  GREEN: 'green',
   RESPONSIVE: 'responsive',
-  RED: 'red',
+  CANCEL: 'cancel',
 };
 
 export default buttonMods;

@@ -11,6 +11,12 @@
     "@babel/react"
   ],
   "plugins": [
+    [
+      "babel-plugin-styled-components",
+      {
+        "fileName": false
+      }
+    ],
     ["babel-plugin-root-import",
       {
         "rootPathSuffix": "src",

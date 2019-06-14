@@ -1,4 +1,4 @@
-import Button from '~/_common/components/button';
+import Button from '~/_common/components/Button';
 import Menu from '~/_common/components/menu';
 import React from 'react';
 import { authorizationMethods, userTypes } from '~/_common/constants';
@@ -21,18 +21,15 @@ const PlayerMenu = () => {
     <Menu
       title="Player menu"
     >
-      <Button
-        clickHandler={onPlayerLoginClick}
-        text="Accaunt settings"
-      />
-      <Button
-        clickHandler={onAvalableGamesClick}
-        text="Available games"
-      />
-      <Button
-        clickHandler={onSignOutClick}
-        text="Sign out"
-      />
+      <Button clickHandler={onPlayerLoginClick}>
+        Accaunt settings
+      </Button>
+      <Button clickHandler={onAvalableGamesClick}>
+        Available games
+      </Button>
+      <Button clickHandler={onSignOutClick}>
+        Sign out
+      </Button>
     </Menu>
   );
 };

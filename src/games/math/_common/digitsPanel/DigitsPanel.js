@@ -1,5 +1,5 @@
-import Button from '~/_common/components/button';
-import buttonMods from '~/_common/components/button/mods';
+import Button from '~/_common/components/Button';
+import buttonMods from '~/_common/components/Button/mods';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -11,42 +11,44 @@ export const DigitsPanel = ({
   solveBtnHandler,
 }) => {
   const {
-    GREEN,
-    RED,
+    CANCEL,
     RESPONSIVE,
   } = buttonMods;
 
   const digits = Array.from(Array(10).keys())
     .map(digit => (
-      <div className={`${style.digit} ${style[`digit${digit}`]}`}>
+      <div
+        className={`${style.digit} ${style[`digit${digit}`]}`}
+        key={digit}
+      >
         <Button
           clickHandler={digitBtnHandler}
           id={digit}
-          key={digit}
-          mods={[RESPONSIVE]}
-          text={digit}
-        />
+          modifiers={[RESPONSIVE]}
+        >
+          {digit}
+        </Button>
       </div>
     ));
 
   return (
     <div className={style.digitsPanel}>
       {digits}
-      <div className={style.solveBtn}>
+      <div className={style.solveBtn} key="solveBtn">
         <Button
           clickHandler={solveBtnHandler}
-          key="solveBtn"
-          mods={[GREEN, RESPONSIVE]}
-          text="Solve"
-        />
+          modifiers={[RESPONSIVE]}
+        >
+          Solve
+        </Button>
       </div>
-      <div className={style.removeBtn}>
+      <div className={style.removeBtn} key="removeBtn">
         <Button
           clickHandler={removeBtnClickHandler}
-          key="removeBtn"
-          mods={[RED, RESPONSIVE]}
-          text="Remove"
-        />
+          modifiers={[CANCEL, RESPONSIVE]}
+        >
+          Remove
+        </Button>
       </div>
     </div>
   );

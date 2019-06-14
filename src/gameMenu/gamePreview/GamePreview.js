@@ -1,4 +1,4 @@
-import Button from '~/_common/components/button';
+import Button from '~/_common/components/Button';
 import Menu from '~/_common/components/menu';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -23,10 +23,9 @@ export const GamePreview = ({ games, match }) => {
         title={game}
         subTitle={gameDescription}
       >
-        <Button
-          clickHandler={onStartGameBtnClick}
-          text="Start Game"
-        />
+        <Button clickHandler={onStartGameBtnClick}>
+          Start Game
+        </Button>
       </Menu>
     </div>
   );

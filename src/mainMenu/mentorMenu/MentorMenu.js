@@ -1,4 +1,4 @@
-import Button from '~/_common/components/button';
+import Button from '~/_common/components/Button';
 import Menu from '~/_common/components/menu';
 import React from 'react';
 import { authorizationMethods, userTypes } from '~/_common/constants';
@@ -21,18 +21,15 @@ const MentorMenu = () => {
     <Menu
       title="Mentor menu"
     >
-      <Button
-        clickHandler={onSettingsClick}
-        text="Accaunt settings"
-      />
-      <Button
-        clickHandler={onPlayersClick}
-        text="Players list"
-      />
-      <Button
-        clickHandler={onSignOutClick}
-        text="Sign out"
-      />
+      <Button clickHandler={onSettingsClick}>
+        Accaunt settings
+      </Button>
+      <Button clickHandler={onPlayersClick}>
+        Players list
+      </Button>
+      <Button clickHandler={onSignOutClick}>
+        Sign out
+      </Button>
     </Menu>
   );
 };

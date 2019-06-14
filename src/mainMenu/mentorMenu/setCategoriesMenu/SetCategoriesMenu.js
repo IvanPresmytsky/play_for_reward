@@ -1,4 +1,4 @@
-import Button from '~/_common/components/button';
+import Button from '~/_common/components/Button';
 import List from '~/_common/components/list';
 import Menu from '~/_common/components/menu';
 import PropTypes from 'prop-types';
@@ -33,10 +33,9 @@ export const SetCategoriesMenu = ({ categories, categoriesAndGames }) => {
         Component={Category}
         items={categories}
       />
-      <Button
-        clickHandler={onSaveClick}
-        text="Save"
-      />
+      <Button clickHandler={onSaveClick}>
+        Save
+      </Button>
     </Menu>
   );
 };

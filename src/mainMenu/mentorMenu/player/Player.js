@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from '~/_common/components/button';
+import Button from '~/_common/components/Button';
 import style from './Player.css';
 
 export const Player = ({ data, clickHandler }) => (
   <div className={style.player}>
     <Button
-      className={style.playerBtn}
       id={data.id}
       clickHandler={clickHandler}
-      text={data.name}
-    />
+    >
+      {data.name}
+    </Button>
   </div>
 );
 
