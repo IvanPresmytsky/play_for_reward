@@ -14,11 +14,13 @@ export const Button = ({
   id,
   isDisabled,
   modifiers,
+  marginBottom,
 }) => (
   <StyledButton
     className={className}
     isDisabled={isDisabled}
     modifiers={modifiers}
+    marginBottom={marginBottom}
     id={id}
     onClick={!isDisabled ? callAllCallbacks(onClickDefault, clickHandler) : null}
   >
@@ -47,6 +49,7 @@ Button.propTypes = {
   isDisabled: PropTypes.bool,
   isResponsive: PropTypes.bool,
   modifiers: PropTypes.oneOf(Object.values(buttonMods)),
+  marginBottom: PropTypes.string,
 };
 
 export default Button;

@@ -1,9 +1,9 @@
-import Button from '~/_common/components/Button';
 import List from '~/_common/components/list';
 import Menu from '~/_common/components/menu';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { authorizationMethods, userTypes } from '~/_common/constants';
+import { Button, buttonMods } from '~/_common/components/Button';
 import {
   navigateToAuthorization,
   navigateToPlayerConfiguration,
@@ -33,10 +33,16 @@ export const PlayerList = ({ players, setCurrentPlayer }) => {
         Component={Player}
         items={players}
       />
-      <Button clickHandler={onPlayerRegisterClick}>
+      <Button
+        clickHandler={onPlayerRegisterClick}
+        modifiers={[buttonMods.RESPONSIVE]}
+      >
         Add a player
       </Button>
-      <Button clickHandler={onBackClick}>
+      <Button
+        clickHandler={onBackClick}
+        modifiers={[buttonMods.RESPONSIVE]}
+      >
         Back
       </Button>
     </Menu>

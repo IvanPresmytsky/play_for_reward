@@ -1,7 +1,7 @@
-import Button from '~/_common/components/Button';
 import Menu from '~/_common/components/menu';
 import React from 'react';
 import { authorizationMethods, userTypes } from '~/_common/constants';
+import { Button, buttonMods } from '~/_common/components/Button';
 
 import {
   navigateToGames,
@@ -27,16 +27,28 @@ const MainMenu = () => {
     <Menu
       title="Main menu"
     >
-      <Button clickHandler={onMentorLoginClick}>
+      <Button
+        clickHandler={onMentorLoginClick}
+        modifiers={[buttonMods.RESPONSIVE]}
+      >
         Log in as a mentor
       </Button>
-      <Button clickHandler={onPlayerLoginClick}>
+      <Button
+        clickHandler={onPlayerLoginClick}
+        modifiers={[buttonMods.RESPONSIVE]}
+      >
         Log in as a player
       </Button>
-      <Button clickHandler={onMentorRegisterClick}>
+      <Button
+        clickHandler={onMentorRegisterClick}
+        modifiers={[buttonMods.RESPONSIVE]}
+      >
         Register as a mentor
       </Button>
-      <Button clickHandler={onPlayWithoutRegistrationClick}>
+      <Button
+        clickHandler={onPlayWithoutRegistrationClick}
+        modifiers={[buttonMods.RESPONSIVE]}
+      >
         Try without registration
       </Button>
     </Menu>

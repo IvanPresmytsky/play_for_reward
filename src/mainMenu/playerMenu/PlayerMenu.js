@@ -1,7 +1,7 @@
-import Button from '~/_common/components/Button';
 import Menu from '~/_common/components/menu';
 import React from 'react';
 import { authorizationMethods, userTypes } from '~/_common/constants';
+import { Button, buttonMods } from '~/_common/components/Button';
 
 import {
   navigateToAuthorization,
@@ -21,13 +21,22 @@ const PlayerMenu = () => {
     <Menu
       title="Player menu"
     >
-      <Button clickHandler={onPlayerLoginClick}>
+      <Button
+        clickHandler={onPlayerLoginClick}
+        modifiers={[buttonMods.RESPONSIVE]}
+      >
         Accaunt settings
       </Button>
-      <Button clickHandler={onAvalableGamesClick}>
+      <Button
+        clickHandler={onAvalableGamesClick}
+        modifiers={[buttonMods.RESPONSIVE]}
+      >
         Available games
       </Button>
-      <Button clickHandler={onSignOutClick}>
+      <Button
+        clickHandler={onSignOutClick}
+        modifiers={[buttonMods.RESPONSIVE]}
+      >
         Sign out
       </Button>
     </Menu>

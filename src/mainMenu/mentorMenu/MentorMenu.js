@@ -1,7 +1,7 @@
-import Button from '~/_common/components/Button';
 import Menu from '~/_common/components/menu';
 import React from 'react';
 import { authorizationMethods, userTypes } from '~/_common/constants';
+import { Button, buttonMods } from '~/_common/components/Button';
 
 import {
   navigateToAuthorization,
@@ -21,13 +21,22 @@ const MentorMenu = () => {
     <Menu
       title="Mentor menu"
     >
-      <Button clickHandler={onSettingsClick}>
+      <Button
+        clickHandler={onSettingsClick}
+        modifiers={[buttonMods.RESPONSIVE]}
+      >
         Accaunt settings
       </Button>
-      <Button clickHandler={onPlayersClick}>
+      <Button
+        clickHandler={onPlayersClick}
+        modifiers={[buttonMods.RESPONSIVE]}
+      >
         Players list
       </Button>
-      <Button clickHandler={onSignOutClick}>
+      <Button
+        clickHandler={onSignOutClick}
+        modifiers={[buttonMods.RESPONSIVE]}
+      >
         Sign out
       </Button>
     </Menu>

@@ -1,8 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import buttonMods from './mods';
-import Button from './Button';
+import { Button, buttonMods } from './index';
 
 const {
   CANCEL,

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import Button from '~/_common/components/Button';
+import { Button, buttonMods } from '~/_common/components/Button';
 
 import style from './Game.css';
 
@@ -9,6 +9,7 @@ export const Game = ({ data, clickHandler }) => (
     <Button
       id={data.id}
       clickHandler={clickHandler}
+      modifiers={[buttonMods.RESPONSIVE]}
     >
       {data.name}
     </Button>

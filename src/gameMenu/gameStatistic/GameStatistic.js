@@ -1,4 +1,4 @@
-import Button from '~/_common/components/Button';
+import { Button, buttonMods } from '~/_common/components/Button';
 import List from '~/_common/components/list';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -40,12 +40,16 @@ export const GameStatistic = ({
         Component={StatisticItem}
         items={gameStatistic}
       />
-      <Button clickHandler={onPlayBtnClick}>
+      <Button
+        clickHandler={onPlayBtnClick}
+        modifiers={[buttonMods.RESPONSIVE]}
+      >
         Play again
       </Button>
       <Button
         className={style.exitBtn}
         clickHandler={onExitBtnClick}
+        modifiers={[buttonMods.RESPONSIVE]}
       >
         Exit to user menu
       </Button>

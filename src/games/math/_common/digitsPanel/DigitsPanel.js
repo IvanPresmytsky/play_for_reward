@@ -1,7 +1,6 @@
-import Button from '~/_common/components/Button';
-import buttonMods from '~/_common/components/Button/mods';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { Button, buttonMods } from '~/_common/components/Button';
 
 import style from './DigitsPanel.css';
 

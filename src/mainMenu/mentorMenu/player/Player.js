@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from '~/_common/components/Button';
+import { Button, buttonMods } from '~/_common/components/Button';
 import style from './Player.css';
 
 export const Player = ({ data, clickHandler }) => (
@@ -8,6 +8,7 @@ export const Player = ({ data, clickHandler }) => (
     <Button
       id={data.id}
       clickHandler={clickHandler}
+      modifiers={[buttonMods.RESPONSIVE]}
     >
       {data.name}
     </Button>

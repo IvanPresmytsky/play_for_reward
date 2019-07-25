@@ -1,7 +1,7 @@
-import Button from '~/_common/components/Button';
 import Menu from '~/_common/components/menu';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { Button, buttonMods } from '~/_common/components/Button';
 
 const Form = ({
   children,
@@ -19,6 +19,7 @@ const Form = ({
       <Button
         clickHandler={isValidForm ? onSubmit : null}
         isDisabled={!isValidForm}
+        modifiers={[buttonMods.RESPONSIVE]}
       >
         submit
       </Button>

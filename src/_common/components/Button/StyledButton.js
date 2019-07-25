@@ -25,7 +25,9 @@ export default styled.button`
   border: 2px solid green;
   color: green;
   font-weight: bold;
+  margin-bottom: 5px;
   outline: none;
+  padding: 5px;
 
   &:active {
     background-color: green;
@@ -45,5 +47,9 @@ export default styled.button`
         border-color: grey;
         color: grey;
       }
+    `}
+  ${({ marginBottom }) => marginBottom
+    && `
+      margin-bottom: ${marginBottom}
     `}
 `;
