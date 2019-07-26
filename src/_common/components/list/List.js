@@ -9,10 +9,7 @@ export const List = ({ Component, items, ...props }) => (
         className={styles.listItem}
         key={item.id || index}
       >
-          <Component
-            data={item}
-            {...props}
-          />
+        <Component {...props} {...item} />
       </li>
     ))}
   </ul>

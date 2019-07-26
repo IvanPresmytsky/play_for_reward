@@ -15,6 +15,7 @@ export const Button = ({
   isDisabled,
   modifiers,
   marginBottom,
+  text,
 }) => (
   <StyledButton
     className={className}
@@ -24,7 +25,7 @@ export const Button = ({
     id={id}
     onClick={!isDisabled ? callAllCallbacks(onClickDefault, clickHandler) : null}
   >
-    {children}
+    {children || text}
   </StyledButton>
 );
 
@@ -36,6 +37,7 @@ Button.defaultProps = {
   isDisabled: false,
   isResponsive: false,
   modifiers: null,
+  text: null,
 };
 
 Button.propTypes = {
@@ -50,6 +52,7 @@ Button.propTypes = {
   isResponsive: PropTypes.bool,
   modifiers: PropTypes.oneOf(Object.values(buttonMods)),
   marginBottom: PropTypes.string,
+  text: PropTypes.string,
 };
 
 export default Button;

@@ -1,46 +1,23 @@
 import Menu from '~/_common/components/menu';
+import List from '~/_common/components/list';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Button, buttonMods } from '~/_common/components/Button';
 
-import { navigateToPlayers, navigateToPlayerGamesConfiguration } from '~/_common/_helpers/navigationHelper';
+import playerConfigurationMenuItem from './playerConfigurationMenuItems.constants';
 
 const PlayerConfigurationMenu = ({ match }) => {
   const { player } = match.params;
-
-  const onSetCategoriesClick = () => navigateToPlayerGamesConfiguration(player);
-  const onSetGamesClick = () => navigateToPlayers();
-  const onSetRewardClick = () => navigateToPlayers();
-  const onBackClick = () => navigateToPlayers();
 
   return (
     <Menu
       title="Player configuration menu"
     >
-      <Button
-        clickHandler={onSetCategoriesClick}
+      <List
+        Component={Button}
+        items={playerConfigurationMenuItem(player)}
         modifiers={[buttonMods.RESPONSIVE]}
-      >
-        Set categories
-      </Button>
-      <Button
-        clickHandler={onSetGamesClick}
-        modifiers={[buttonMods.RESPONSIVE]}
-      >
-        Set games
-      </Button>
-      <Button
-        clickHandler={onSetRewardClick}
-        modifiers={[buttonMods.RESPONSIVE]}
-      >
-        Set reward
-      </Button>
-      <Button
-        clickHandler={onBackClick}
-        modifiers={[buttonMods.RESPONSIVE]}
-      >
-        Back
-      </Button>
+      />
     </Menu>
   );
 };
