@@ -14,9 +14,10 @@ const PlayerConfigurationMenu = ({ match }) => {
       title="Player configuration menu"
     >
       <List
-        Component={Button}
         items={playerConfigurationMenuItem(player)}
-        modifiers={[buttonMods.RESPONSIVE]}
+        renderItem={props => (
+          <Button modifiers={[buttonMods.RESPONSIVE]} {...props} />
+        )}
       />
     </Menu>
   );

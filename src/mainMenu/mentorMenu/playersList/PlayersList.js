@@ -29,9 +29,10 @@ export const PlayerList = ({ players, setCurrentPlayer }) => {
       title="Players list"
     >
       <List
-        clickHandler={onPlayerClick}
-        Component={Player}
         items={players}
+        renderItem={props => (
+          <Player  clickHandler={onPlayerClick} {...props} />
+        )}
       />
       <Button
         clickHandler={onPlayerRegisterClick}

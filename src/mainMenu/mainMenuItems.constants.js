@@ -32,6 +32,6 @@ export default [
   {
     id: 'tryWithoutRegistration',
     text: 'Try without registration',
-    clickHandler: () => () => navigateToGames(),
+    clickHandler: () => navigateToGames(),
   },
 ];

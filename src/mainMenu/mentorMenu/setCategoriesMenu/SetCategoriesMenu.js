@@ -29,9 +29,10 @@ export const SetCategoriesMenu = ({ categories, categoriesAndGames }) => {
       title="Games categories list"
     >
       <List
-        clickHandler={onCategoryClick}
-        Component={Category}
         items={categories}
+        renderItem={props => (
+          <Category clickHandler={onCategoryClick} {...props} />
+        )}
       />
       <Button
         clickHandler={onSaveClick}

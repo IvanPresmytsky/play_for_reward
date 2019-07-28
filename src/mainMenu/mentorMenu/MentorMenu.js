@@ -10,9 +10,10 @@ const MentorMenu = () => (
     title="Mentor menu"
   >
     <List
-      Component={Button}
       items={mentorMenuItems}
-      modifiers={[buttonMods.RESPONSIVE]}
+      renderItem={props => (
+        <Button modifiers={[buttonMods.RESPONSIVE]} {...props} />
+      )}
     />
   </Menu>
 );

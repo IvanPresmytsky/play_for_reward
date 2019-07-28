@@ -44,7 +44,7 @@ Button.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
-  ]).isRequired,
+  ]),
   className: PropTypes.string,
   clickHandler: PropTypes.func,
   id: PropTypes.string,

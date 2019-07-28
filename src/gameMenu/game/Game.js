@@ -4,14 +4,14 @@ import { Button, buttonMods } from '~/_common/components/Button';
 
 import style from './Game.css';
 
-export const Game = ({ data, clickHandler }) => (
+export const Game = ({ id, name, clickHandler }) => (
   <div className={style.game}>
     <Button
-      id={data.id}
+      id={id}
       clickHandler={clickHandler}
       modifiers={[buttonMods.RESPONSIVE]}
     >
-      {data.name}
+      {name}
     </Button>
   </div>
 );
@@ -21,7 +21,8 @@ Game.defaultProps = {
 };
 
 Game.propTypes = {
-  data: PropTypes.object.isRequired,
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   clickHandler: PropTypes.func,
 };
 

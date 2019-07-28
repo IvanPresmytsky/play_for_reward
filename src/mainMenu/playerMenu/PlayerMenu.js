@@ -11,9 +11,10 @@ const PlayerMenu = () => (
     title="Player menu"
   >
     <List
-      Component={Button}
       items={playerMenuItems}
-      modifiers={[buttonMods.RESPONSIVE]}
+      renderItem={props => (
+        <Button modifiers={[buttonMods.RESPONSIVE]} {...props} />
+      )}
     />
   </Menu>
 );

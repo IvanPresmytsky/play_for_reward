@@ -22,7 +22,9 @@ export const CategoriesMenu = ({ categories, getCurrentCategory }) => {
     >
       <List
         clickHandler={onCategoryClick}
-        Component={Category}
+        renderItem={props => (
+          <Category clickHandler={onCategoryClick} {...props} />
+        )}
         items={categories}
       />
     </Menu>

@@ -22,9 +22,10 @@ export const GamesMenu = ({ games, match }) => {
       title="Games list"
     >
       <List
-        clickHandler={onGameClick}
-        Component={Game}
         items={games}
+        renderItem={props => (
+          <Game clickHandler={onGameClick} {...props} />
+        )}
       />
     </Menu>
   );
