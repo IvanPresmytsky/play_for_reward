@@ -33,18 +33,20 @@ export const SetCategoriesMenu = ({ categories, categoriesAndGames }) => {
         renderItem={props => (
           <Category clickHandler={onCategoryClick} {...props} />
         )}
-      />
-      <Button
-        clickHandler={onSaveClick}
-        modifiers={[buttonMods.RESPONSIVE]}
       >
-        Save
-      </Button>
+        <Button
+          clickHandler={onSaveClick}
+          id="save"
+          modifiers={[buttonMods.RESPONSIVE]}
+        >
+          Save
+        </Button>
+      </List>
     </Menu>
   );
 };
 
-SetCategoriesMenu.PropTypes = {
+SetCategoriesMenu.propTypes = {
   categories: PropTypes.array.isRequired,
   categoriesAndGames: PropTypes.array.isRequired,
 };

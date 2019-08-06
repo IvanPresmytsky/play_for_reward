@@ -3,26 +3,36 @@ import React from 'react';
 
 import style from './StatisticItem.css';
 
-export const StatisticItem = ({ data }) => (
+export const StatisticItem = ({
+  correctSolution,
+  condition,
+  duration,
+  isCorrectSolution,
+  solution,
+}) => (
   <div className={style.StatisticItem}>
     <span className={style.date}>
-      {`duration: ${data.duration} sec `}
+      {`duration: ${duration} sec `}
     </span>
     <span className={style.condition}>
-      {data.condition}
+      {condition}
     </span>
     <span> = </span>
     <span className={style.solution}>
-      {` ${data.solution}`}
+      {` ${solution}`}
     </span>
     <span className={style.correctSolution}>
-      {!data.isCorrectSolution && ` ${data.correctSolution}` }
+      {!isCorrectSolution && ` ${correctSolution}` }
     </span>
   </div>
 );
 
 StatisticItem.propTypes = {
-  data: PropTypes.object.isRequired,
+  correctSolution: PropTypes.number.isRequired,
+  condition: PropTypes.string.isRequired,
+  duration: PropTypes.number.isRequired,
+  isCorrectSolution: PropTypes.bool.isRequired,
+  solution: PropTypes.number.isRequired,
 };
 
 export default StatisticItem;

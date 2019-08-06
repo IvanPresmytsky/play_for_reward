@@ -21,11 +21,10 @@ export const CategoriesMenu = ({ categories, getCurrentCategory }) => {
       title="Games categories list"
     >
       <List
-        clickHandler={onCategoryClick}
+        items={categories}
         renderItem={props => (
           <Category clickHandler={onCategoryClick} {...props} />
         )}
-        items={categories}
       />
     </Menu>
   );

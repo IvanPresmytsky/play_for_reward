@@ -31,21 +31,24 @@ export const PlayerList = ({ players, setCurrentPlayer }) => {
       <List
         items={players}
         renderItem={props => (
-          <Player  clickHandler={onPlayerClick} {...props} />
+          <Player clickHandler={onPlayerClick} {...props} />
         )}
-      />
-      <Button
-        clickHandler={onPlayerRegisterClick}
-        modifiers={[buttonMods.RESPONSIVE]}
       >
-        Add a player
-      </Button>
-      <Button
-        clickHandler={onBackClick}
-        modifiers={[buttonMods.RESPONSIVE]}
-      >
-        Back
-      </Button>
+        <Button
+          clickHandler={onPlayerRegisterClick}
+          id="addPlayer"
+          modifiers={[buttonMods.RESPONSIVE]}
+        >
+          Add a player
+        </Button>
+        <Button
+          clickHandler={onBackClick}
+          id="back"
+          modifiers={[buttonMods.RESPONSIVE]}
+        >
+          Back
+        </Button>
+      </List>
     </Menu>
   );
 };

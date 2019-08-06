@@ -6,20 +6,26 @@ import Game from '../game';
 import Card from '../card';
 import styles from './Category.css';
 
-export const Category = ({ data, clickHandler }) => (
+export const Category = ({
+  clickHandler,
+  id,
+  isSwitchedOn,
+  games,
+}) => (
   <div>
     <Card
-      checked={data.isSwitchedOn}
-      id={data.id}
-      labelText={data.id}
-      name={data.id}
+      checked={isSwitchedOn}
+      id={id}
+      labelText={id}
+      name={id}
       onChange={clickHandler}
     />
     <div className={styles.list}>
       <List
-        clickHandler={clickHandler}
-        Component={Game}
-        items={data.games}
+        renderItem={props => (
+          <Game clickHandler={clickHandler} {...props} />
+        )}
+        items={games}
       />
     </div>
   </div>
@@ -30,8 +36,10 @@ Category.defaultProps = {
 };
 
 Category.propTypes = {
-  data: PropTypes.object.isRequired,
   clickHandler: PropTypes.func,
+  id: PropTypes.string.isRequired,
+  isSwitchedOn: PropTypes.bool.isRequired,
+  games: PropTypes.array.isRequired,
 };
 
 export default Category;

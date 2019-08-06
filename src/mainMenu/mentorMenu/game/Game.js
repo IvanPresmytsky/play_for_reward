@@ -2,13 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Card from '../card';
 
-const Game = ({ data, clickHandler }) => (
+const Game = ({
+  id,
+  isSwitchedOn,
+  clickHandler,
+}) => (
   <div>
     <Card
-      checked={data.isSwitchedOn}
-      id={data.id}
-      labelText={data.id}
-      name={data.id}
+      checked={isSwitchedOn}
+      id={id}
+      labelText={id}
+      name={id}
       onChange={clickHandler}
     />
   </div>
@@ -19,7 +23,8 @@ Game.defaultProps = {
 };
 
 Game.propTypes = {
-  data: PropTypes.object.isRequired,
+  id: PropTypes.string.isRequired,
+  isSwitchedOn: PropTypes.bool.isRequired,
   clickHandler: PropTypes.func,
 };
 

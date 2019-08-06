@@ -37,22 +37,27 @@ export const GameStatistic = ({
     <div className={style.gameStatistic}>
       <h3 className={style.title}>{`${game} statistic`}</h3>
       <List
-        Component={StatisticItem}
         items={gameStatistic}
-      />
-      <Button
-        clickHandler={onPlayBtnClick}
-        modifiers={[buttonMods.RESPONSIVE]}
+        renderItem={props => (
+          <StatisticItem {...props} />
+        )}
       >
-        Play again
-      </Button>
-      <Button
-        className={style.exitBtn}
-        clickHandler={onExitBtnClick}
-        modifiers={[buttonMods.RESPONSIVE]}
-      >
-        Exit to user menu
-      </Button>
+        <Button
+          clickHandler={onPlayBtnClick}
+          id="playAgain"
+          modifiers={[buttonMods.RESPONSIVE]}
+        >
+          Play again
+        </Button>
+        <Button
+          className={style.exitBtn}
+          clickHandler={onExitBtnClick}
+          id="exit"
+          modifiers={[buttonMods.RESPONSIVE]}
+        >
+          Exit to user menu
+        </Button>
+      </List>
     </div>
   );
 };
