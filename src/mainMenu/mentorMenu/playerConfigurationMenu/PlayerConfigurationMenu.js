@@ -4,9 +4,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Button, buttonMods } from '~/_common/components/Button';
 
-import playerConfigurationMenuItem from './playerConfigurationMenuItems.constants';
-
-const PlayerConfigurationMenu = ({ match }) => {
+const PlayerConfigurationMenu = ({ match, getMenuItems }) => {
   const { player } = match.params;
 
   return (
@@ -14,7 +12,7 @@ const PlayerConfigurationMenu = ({ match }) => {
       title="Player configuration menu"
     >
       <List
-        items={playerConfigurationMenuItem(player)}
+        items={getMenuItems(player)}
         renderItem={props => (
           <Button modifiers={[buttonMods.RESPONSIVE]} {...props} />
         )}
@@ -25,6 +23,7 @@ const PlayerConfigurationMenu = ({ match }) => {
 
 PlayerConfigurationMenu.propTypes = {
   match: PropTypes.object.isRequired,
+  getMenuItems: PropTypes.func.isRequired,
 };
 
 export default PlayerConfigurationMenu;

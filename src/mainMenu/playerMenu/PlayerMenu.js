@@ -1,22 +1,31 @@
 import Menu from '~/_common/components/menu';
 import List from '~/_common/components/list';
+import PropTypes from 'prop-types';
 import React from 'react';
 
 import { Button, buttonMods } from '~/_common/components/Button';
 
 import playerMenuItems from './playerMenuItems.constants';
 
-const PlayerMenu = () => (
+const PlayerMenu = ({ menuItems }) => (
   <Menu
     title="Player menu"
   >
     <List
-      items={playerMenuItems}
+      items={menuItems}
       renderItem={props => (
         <Button modifiers={[buttonMods.RESPONSIVE]} {...props} />
       )}
     />
   </Menu>
 );
+
+PlayerMenu.defaultProps = {
+  menuItems: [],
+}
+
+PlayerMenu.propTypes = {
+  menuItems: PropTypes.array,
+}
 
 export default PlayerMenu;

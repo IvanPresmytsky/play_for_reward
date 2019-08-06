@@ -22,10 +22,10 @@ export const Category = ({
     />
     <div className={styles.list}>
       <List
+        items={games}
         renderItem={props => (
           <Game clickHandler={clickHandler} {...props} />
         )}
-        items={games}
       />
     </div>
   </div>
