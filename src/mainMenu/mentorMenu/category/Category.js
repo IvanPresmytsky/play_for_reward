@@ -1,6 +1,6 @@
-import React from 'react';
+import List from '~/_common/components/List';
 import PropTypes from 'prop-types';
-import List from '~/_common/components/list';
+import React from 'react';
 
 import Game from '../game';
 import Card from '../card';

@@ -1,35 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import StyledList from './StyledList';
+import * as S from './StyledList';
 
 const renderChildren = children => {
   if (!children) return null;
   if (children.map) {
     return children.map((child, index) => (
-      <li key={child.props.id || index}>
+      <S.StyledListItem key={child.props.id || index}>
         {child}
-      </li>
+      </S.StyledListItem>
     ));
   }
 
   return (
-    <li key={children.props.id || 0}>
+    <S.StyledListItem key={children.props.id || 0}>
       {children}
-    </li>
+    </S.StyledListItem>
   );
 };
 
 export const List = ({ renderItem, items, children }) => (
-  <StyledList>
+  <S.StyledList>
     {items.map((item, index) => (
-      <li
+      <S.StyledListItem
         key={item.id || index}
       >
         {renderItem(item)}
-      </li>
+      </S.StyledListItem>
     ))}
     {renderChildren(children)}
-  </StyledList>
+  </S.StyledList>
 );
 
 List.propTypes = {

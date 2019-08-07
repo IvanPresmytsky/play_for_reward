@@ -14,5 +14,7 @@ storiesOf('Lists', module)
       renderItem={(props) => (
         <Button modifiers={[buttonMods.RESPONSIVE]} {...props} />
       )}
-    />
+    >
+      <Button modifiers={[buttonMods.RESPONSIVE]}>Child Item</Button>
+    </List>
   ));

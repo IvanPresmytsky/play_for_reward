@@ -1,5 +1,5 @@
 import { Button, buttonMods } from '~/_common/components/Button';
-import List from '~/_common/components/list';
+import List from '~/_common/components/List';
 import PropTypes from 'prop-types';
 import React from 'react';
 

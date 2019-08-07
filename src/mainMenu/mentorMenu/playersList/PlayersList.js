@@ -1,4 +1,4 @@
-import List from '~/_common/components/list';
+import List from '~/_common/components/List';
 import Menu from '~/_common/components/menu';
 import PropTypes from 'prop-types';
 import React from 'react';
