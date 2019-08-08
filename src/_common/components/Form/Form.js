@@ -1,4 +1,5 @@
-import Menu from '~/_common/components/menu';
+import List from '~/_common/components/List';
+import Menu from '~/_common/components/Menu';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Button, buttonMods } from '~/_common/components/Button';
@@ -15,14 +16,16 @@ const Form = ({
     <Menu
       title={title}
     >
-      {children}
-      <Button
-        clickHandler={isValidForm ? onSubmit : null}
-        isDisabled={!isValidForm}
-        modifiers={[buttonMods.RESPONSIVE]}
-      >
-        submit
-      </Button>
+      <List>
+        {children}
+        <Button
+          clickHandler={isValidForm ? onSubmit : null}
+          isDisabled={!isValidForm}
+          modifiers={[buttonMods.RESPONSIVE]}
+        >
+          submit
+        </Button>
+      </List>
     </Menu>
   );
 };
@@ -33,7 +36,7 @@ Form.defaultProps = {
 };
 
 Form.propTypes = {
-  children: PropTypes.array,
+  children: PropTypes.func,
   requiredValues: PropTypes.array,
   title: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,

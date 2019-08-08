@@ -1,5 +1,5 @@
 import List from '~/_common/components/List';
-import Menu from '~/_common/components/menu';
+import Menu from '~/_common/components/Menu';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Button, buttonMods } from '~/_common/components/Button';

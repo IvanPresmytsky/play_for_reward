@@ -1,6 +1,6 @@
 import Input from './InputFactory';
-import NameInput from './nameInput';
-import PasswordInput from './passwordInput';
+import NameInput from './NameInput';
+import PasswordInput from './PasswordInput';
 
 export {
   Input,

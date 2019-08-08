@@ -1,8 +1,7 @@
-import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React, { Fragment, useState, forwardRef } from 'react';
 
-import styles from './Input.css';
+import StyledInput from './StyledInput';
 
 const Input = forwardRef(({
   errorText,
@@ -16,7 +15,6 @@ const Input = forwardRef(({
   const [value, setValue] = useState('');
   const [error, setError] = useState(null);
 
-  const inputClasses = classNames(styles.input);
   const islabelShown = id && (labelText || error || errorText);
   const labelContent = error || errorText || labelText;
 
@@ -69,8 +67,7 @@ const Input = forwardRef(({
       {islabelShown && (
         <label htmlFor={id}>{labelContent}</label>
       )}
-      <input
-        className={inputClasses}
+      <StyledInput
         id={id}
         ref={ref}
         type={type}

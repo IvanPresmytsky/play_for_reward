@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import Message from '~/_common/components/message';
+import Message from '~/_common/components/Message';
 import { navigateToUserMenu, navigateToAuthorization } from '~/_common/_helpers/navigationHelper';
 import { statuses } from '~/_common/constants';
 

@@ -1,8 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useEffect } from 'react';
 
-import styles from './Message.css';
-
 const Message = ({ message, redirect, timer }) => {
   useEffect(() => {
     const timerId = setTimeout(() => {
@@ -11,15 +9,21 @@ const Message = ({ message, redirect, timer }) => {
     return () => clearTimeout(timerId);
   }, [redirect, timer]);
 
+  if (!message) return null;
+
   return (
-    <div className={styles.message}>
-      {message}
-    </div>
+    <div>{message}</div>
   );
 };
 
+Message.defaultProps = {
+  message: null,
+  redirect: () => null,
+  timer: 0,
+};
+
 Message.propTypes = {
-  message: PropTypes.string.isRequired,
+  message: PropTypes.string,
   redirect: PropTypes.func,
   timer: PropTypes.number,
 };

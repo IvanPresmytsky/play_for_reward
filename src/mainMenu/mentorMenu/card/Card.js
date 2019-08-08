@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Fragment, useState } from 'react';
-import Checkbox from '~/_common/components/checkboxInput';
+import Checkbox from '~/_common/components/CheckboxInput';
 
 import CardOptions from '../cardOptions';
 import styles from './Card.css';

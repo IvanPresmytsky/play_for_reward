@@ -1,4 +1,4 @@
-import Menu from '~/_common/components/menu';
+import Menu from '~/_common/components/Menu';
 import PropTypes from 'prop-types';
 import React from 'react';
 

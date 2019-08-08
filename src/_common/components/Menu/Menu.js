@@ -1,18 +1,18 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import styles from './Menu.css';
+import * as S from './StyledMenu';
 
 export const Menu = ({ title, subTitle, children }) => (
-  <div className={styles.menu}>
+  <S.StyledMenu>
     {title && (
-      <h2 className={styles.title}>{title}</h2>
+      <h2>{title}</h2>
     )}
     {subTitle && (
-      <h3 className={styles.subTitle}>{subTitle}</h3>
+      <h3>{subTitle}</h3>
     )}
     {children}
-  </div>
+  </S.StyledMenu>
 );
 
 Menu.defaultProps = {
