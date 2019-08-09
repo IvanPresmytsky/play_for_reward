@@ -23,11 +23,11 @@ export default styled.button`
   background: none;
   border: none;
   border: 2px solid green;
+  border-radius: 5px;
   color: green;
   font-weight: bold;
-  margin-bottom: 5px;
   outline: none;
-  padding: 5px;
+  padding: 8px;
 
   &:active {
     background-color: green;

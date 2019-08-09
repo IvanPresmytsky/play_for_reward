@@ -1,8 +1,12 @@
 import styled from 'styled-components';
 
 export const StyledListItem = styled.li`
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   width: 100%;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 `;
 
 export const StyledList = styled.ul`
@@ -11,6 +15,9 @@ export const StyledList = styled.ul`
   flex-direction: column;
   list-style: none;
   margin: 0;
-  padding: 5px;
   width: 100%;
+
+  ${({ marginBottom }) => marginBottom && `
+    margin-bottom: ${marginBottom};
+  `}
 `;

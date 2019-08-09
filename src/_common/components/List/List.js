@@ -10,12 +10,20 @@ const renderListItem = (item, index) => (
 
 const renderChildren = children => {
   if (!children) return null;
-  if (children.map) return children.map((child, index) => renderListItem(child, index));
+  if (children.map) {
+    return children.filter(Boolean)
+      .map((child, index) => renderListItem(child, index));
+  }
   return renderListItem(children, 0);
 };
 
-export const List = ({ renderItem, items, children }) => (
-  <S.StyledList>
+export const List = ({
+  children,
+  items,
+  marginBottom,
+  renderItem,
+}) => (
+  <S.StyledList marginBottom={marginBottom}>
     {items.map((item, index) => renderListItem(renderItem(item), index))}
     {renderChildren(children)}
   </S.StyledList>
@@ -23,12 +31,14 @@ export const List = ({ renderItem, items, children }) => (
 
 List.defaultProps = {
   items: [],
+  marginBottom: '0px',
   renderItem: () => null,
 };
 
 List.propTypes = {
   children: PropTypes.func,
   items: PropTypes.array,
+  marginBottom: PropTypes.string,
   renderItem: PropTypes.func,
 };
 

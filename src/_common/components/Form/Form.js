@@ -16,16 +16,16 @@ const Form = ({
     <Menu
       title={title}
     >
-      <List>
+      <List marginBottom="15px">
         {children}
-        <Button
-          clickHandler={isValidForm ? onSubmit : null}
-          isDisabled={!isValidForm}
-          modifiers={[buttonMods.RESPONSIVE]}
-        >
-          submit
-        </Button>
       </List>
+      <Button
+        clickHandler={isValidForm ? onSubmit : null}
+        isDisabled={!isValidForm}
+        modifiers={[buttonMods.RESPONSIVE]}
+      >
+        submit
+      </Button>
     </Menu>
   );
 };

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Fragment, useState, forwardRef } from 'react';
 
-import StyledInput from './StyledInput';
+import * as S from './StyledInput';
 
 const Input = forwardRef(({
   errorText,
@@ -65,9 +65,15 @@ const Input = forwardRef(({
   return (
     <Fragment>
       {islabelShown && (
-        <label htmlFor={id}>{labelContent}</label>
+        <S.StyledLabel
+          error={error}
+          htmlFor={id}
+        >
+          {labelContent}
+        </S.StyledLabel>
       )}
-      <StyledInput
+      <S.StyledInput
+        error={error}
         id={id}
         ref={ref}
         type={type}
