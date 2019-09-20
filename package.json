@@ -63,6 +63,7 @@
     "styled-theming": "^2.2.0",
     "uglifyjs-webpack-plugin": "^1.2.4",
     "webpack": "^4.4.1",
+    "webpack-bundle-analyzer": "^3.5.0",
     "webpack-dev-middleware": "^3.1.0",
     "webpack-hot-middleware": "^2.21.2",
     "webpack-merge": "^4.1.2"
