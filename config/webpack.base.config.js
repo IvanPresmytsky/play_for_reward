@@ -52,9 +52,10 @@ const baseWebpackConfig = {
           {
             loader: 'css-loader',
             options: {
-              modules: true,
+              modules: {
+                localIdentName: '[name]__[local]_[hash:base64:5]',
+              },
               importLoaders: 1,
-              localIdentName: '[name]__[local]_[hash:base64:5]',
             },
           },
           'postcss-loader',
@@ -65,7 +66,7 @@ const baseWebpackConfig = {
   resolve: {
     extensions: ['.js', '.jsx'],
     modules: [
-      project.paths.base('node_modules'),
+      'node_modules',
     ],
   },
   plugins: [
