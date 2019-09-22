@@ -35,6 +35,9 @@ const baseWebpackConfig = {
   module: {
     rules: [
       {
+        "sideEffects": false,
+      },
+      {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
