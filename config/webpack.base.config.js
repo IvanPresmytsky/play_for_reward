@@ -30,6 +30,7 @@ const baseWebpackConfig = {
     path: project.paths.dist(),
     publicPath: '/',
     filename:'[name].js',
+    chunkFilename: '[name].js',
   },
   module: {
     rules: [
