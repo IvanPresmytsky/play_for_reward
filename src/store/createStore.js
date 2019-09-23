@@ -6,17 +6,17 @@ import { routerMiddleware } from 'react-router-redux';
 
 import rootSaga from '~/sagas/root.saga';
 import createReducer from '~/reducers/root.reducer';
-
+import project from '../../config/project.config';
 
 function configureStore(initialState = {}, history) {
-  const isDev = process.env.NODE_ENV === 'development';
+  const { __DEV__ } = project.globals;
   const sagaMiddleware = createSagaMiddleware();
   const middlewares = [
     sagaMiddleware,
     routerMiddleware(history),
   ];
   
-  if (isDev) {
+  if (__DEV__) {
     const loggerMiddleware = createLogger();
     middlewares.push(loggerMiddleware);
   }
@@ -25,7 +25,7 @@ function configureStore(initialState = {}, history) {
     applyMiddleware(...middlewares),
   ];
 
-  if (isDev && window.__REDUX_DEVTOOLS_EXTENSION__) {
+  if (__DEV__ && window.__REDUX_DEVTOOLS_EXTENSION__) {
     enhancers.push(window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
   }
 

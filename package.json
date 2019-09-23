@@ -4,18 +4,21 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "build": "NODE_ENV=production webpack --config ./config/webpack.config.js",
+    "build": "npm run clean && NODE_ENV=production webpack --config ./config/webpack.config.js",
     "build:analyze": "NODE_ENV=production webpack --config ./config/webpack.config.js --profile --json > stats.json",
     "clean": "rimraf dist",
     "eslint": "eslint config source",
     "eslint:fix": "npm run eslint -- --fix",
     "lint": "npm run stylelint; npm run eslint",
     "start:dev": "NODE_ENV=development babel-node ./server/server.js",
+    "start:prod": "NODE_ENV=production babel-node ./server/server.js",
     "storybook": "start-storybook",
     "stylelint": "./node_modules/.bin/stylelint './src/**/**/*.css'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "sideEffects": false,
+  "sideEffects": [
+    "*.css"
+  ],
   "pre-push": [
     "lint"
   ],

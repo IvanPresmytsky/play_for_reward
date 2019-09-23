@@ -1,16 +1,17 @@
-import express from 'express';
-import path from 'path';
-import webpack from 'webpack';
-import webpackDevMiddleware from 'webpack-dev-middleware';
-import webpackHotMiddleware from 'webpack-hot-middleware';
-import project from '../config/project.config';
-import webpackConfig from '../config/webpack.config';
+const express = require('express');
+const path = require('path');
+const webpack = require('webpack');
+const webpackDevMiddleware = require('webpack-dev-middleware');
+const webpackHotMiddleware = require('webpack-hot-middleware');
+const project = require('../config/project.config');
+const webpackConfig = require('../config/webpack.config');
 
 const app = express();
 
 const compiler = webpack(webpackConfig);
+const { __DEV__, __PROD__ } = project.globals;
 
-if (process.env.NODE_ENV === 'development') {
+if (__DEV__) {
   app.use(webpackDevMiddleware(compiler, {
     hot: true,
     filename: webpackConfig.filename,
@@ -38,6 +39,14 @@ if (process.env.NODE_ENV === 'development') {
     });
   });
 }
+
+if (__PROD__) {
+  app.use(express.static(project.paths.dist()));
+  
+  app.get("*", (req, res) => {
+    res.sendFile(project.paths.dist('index.html'));
+  });
+} 
 
 const server = app.listen(project.server_port, () => {
   const { port } = server.address().port;
