@@ -17,6 +17,8 @@ const MiniCssExtractPluginConfig = new MiniCssExtractPlugin({
 
 const baseWebpackConfig = {
   optimization: {
+    providedExports: true,
+    usedExports: true,
     minimizer: [
       new UglifyJsPlugin({
         cache: true,
@@ -35,9 +37,9 @@ const baseWebpackConfig = {
   module: {
     rules: [
       // tree shaking for modules has't been worked yet. Should be fixed ASAP
-    /*  {
+      {
         "sideEffects": false,
-      }, */
+      },
       {
         test: /\.js$/,
         exclude: /node_modules/,

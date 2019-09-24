@@ -1,4 +1,3 @@
-import '@babel/polyfill';
 import createSagaMiddleware, { END } from 'redux-saga';
 import { createLogger } from 'redux-logger';
 import { applyMiddleware, compose, createStore } from 'redux';
@@ -6,17 +5,16 @@ import { routerMiddleware } from 'react-router-redux';
 
 import rootSaga from '~/sagas/root.saga';
 import createReducer from '~/reducers/root.reducer';
-import project from '../../config/project.config';
 
 function configureStore(initialState = {}, history) {
-  const { __DEV__ } = project.globals;
+  const isDev = process.env.NODE_ENV === 'development';
   const sagaMiddleware = createSagaMiddleware();
   const middlewares = [
     sagaMiddleware,
     routerMiddleware(history),
   ];
   
-  if (__DEV__) {
+  if (isDev) {
     const loggerMiddleware = createLogger();
     middlewares.push(loggerMiddleware);
   }
@@ -25,7 +23,7 @@ function configureStore(initialState = {}, history) {
     applyMiddleware(...middlewares),
   ];
 
-  if (__DEV__ && window.__REDUX_DEVTOOLS_EXTENSION__) {
+  if (isDev && window.__REDUX_DEVTOOLS_EXTENSION__) {
     enhancers.push(window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
   }
 

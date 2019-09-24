@@ -3,9 +3,10 @@
     [
       "@babel/env", {
         "modules": false,
+        "useBuiltIns": "usage",
+        "corejs": "3.2.1",
         "targets": {
-          "browsers": ["last 2 versions"],
-          "node": "current"
+          "esmodules": true
         }
       }
     ],
