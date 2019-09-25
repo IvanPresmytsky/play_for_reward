@@ -36,9 +36,8 @@ const baseWebpackConfig = {
   },
   module: {
     rules: [
-      // tree shaking for modules has't been worked yet. Should be fixed ASAP
       {
-        "sideEffects": false,
+        sideEffects: false,
       },
       {
         test: /\.js$/,
