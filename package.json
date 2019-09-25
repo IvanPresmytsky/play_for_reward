@@ -5,13 +5,13 @@
   "main": "app.js",
   "scripts": {
     "build": "npm run clean && NODE_ENV=production webpack --config ./config/webpack.config.js",
-    "build:analyze": "NODE_ENV=production webpack --config ./config/webpack.config.js --profile --json > stats.json",
+    "build:analyze": "NODE_ENV=analyze webpack --config ./config/webpack.config.js",
     "clean": "rimraf dist",
     "eslint": "eslint config source",
     "eslint:fix": "npm run eslint -- --fix",
     "lint": "npm run stylelint; npm run eslint",
-    "start:dev": "NODE_ENV=development babel-node ./server/server.js",
-    "start:prod": "NODE_ENV=production babel-node ./server/server.js",
+    "start:dev": "NODE_ENV=development node ./server/server.js",
+    "start:prod": "NODE_ENV=production node ./server/server.js",
     "storybook": "start-storybook",
     "stylelint": "./node_modules/.bin/stylelint './src/**/**/*.css'",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -72,7 +72,6 @@
   "devDependencies": {
     "@babel/cli": "^7.6.0",
     "@babel/core": "^7.6.0",
-    "@babel/node": "^7.6.1",
     "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
     "@babel/preset-env": "^7.6.0",

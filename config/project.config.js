@@ -7,6 +7,11 @@ const config = {
   // project server configuration
   server_host: ip.address(),
   server_port: process.env.PORT || 8080,
+  bundle_analyzer_options: {
+    analyzerPort: 8008,
+    openAnalyzer: true,
+    generateStatsFile: true,
+  },
 
   path_base: path.resolve(__dirname, '..'),
   dir_client: 'src',
@@ -24,6 +29,7 @@ config.globals = {
   NODE_ENV: config.env,
   __DEV__: config.env === 'development',
   __PROD__: config.env === 'production',
+  __ANALYZE__: config.env === 'analyze',
   __TEST__: config.env === 'test',
 };
 
@@ -32,7 +38,7 @@ config.globals = {
 // utility for project paths resolving
 function base() {
   const args = [config.path_base].concat([].slice.call(arguments));
-  return path.resolve(...args);
+  return path.resolve.apply(null, args);
 }
 
 config.paths = {
