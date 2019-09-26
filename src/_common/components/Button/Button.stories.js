@@ -34,7 +34,7 @@ storiesOf('Buttons', module)
   .add('default responsive Button', () => (
     <Button
       id="button"
-      modifiers={[RESPONSIVE]}
+      modifiers={[RESPONSIVE_X]}
     >
      Responsive button
     </Button>
@@ -60,7 +60,7 @@ storiesOf('Buttons', module)
     <Button
       id="button"
       isDisabled
-      modifiers={[CANCEL, RESPONSIVE]}
+      modifiers={[CANCEL, RESPONSIVE_X]}
     >
       Disabled and responsive cancel button
     </Button>

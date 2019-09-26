@@ -13,9 +13,12 @@ export const BUTTON_MODIFIERS = {
     }
   `,
 
-  [buttonMods.RESPONSIVE]: () => `
-    width: 100%
-    height: 100%
+  [buttonMods.RESPONSIVE_X]: () => `
+    width: 100%;
+  `,
+  [buttonMods.RESPONSIVE_FULL]: () => `
+    width: 100%;
+    height: 100%;
   `,
 };
 

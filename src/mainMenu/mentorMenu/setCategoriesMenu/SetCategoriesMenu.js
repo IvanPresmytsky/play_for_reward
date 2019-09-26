@@ -37,7 +37,7 @@ export const SetCategoriesMenu = ({ categories, categoriesAndGames }) => {
         <Button
           clickHandler={onSaveClick}
           id="save"
-          modifiers={[buttonMods.RESPONSIVE]}
+          modifiers={[buttonMods.RESPONSIVE_X]}
         >
           Save
         </Button>

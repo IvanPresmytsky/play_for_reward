@@ -22,7 +22,7 @@ const Form = ({
       <Button
         clickHandler={isValidForm ? onSubmit : null}
         isDisabled={!isValidForm}
-        modifiers={[buttonMods.RESPONSIVE]}
+        modifiers={[buttonMods.RESPONSIVE_X]}
       >
         submit
       </Button>

@@ -11,7 +11,7 @@ export const DigitsPanel = ({
 }) => {
   const {
     CANCEL,
-    RESPONSIVE,
+    RESPONSIVE_FULL,
   } = buttonMods;
 
   const digits = Array.from(Array(10).keys())
@@ -23,9 +23,9 @@ export const DigitsPanel = ({
         <Button
           clickHandler={digitBtnHandler}
           id={digit}
-          modifiers={[RESPONSIVE]}
+          modifiers={[RESPONSIVE_FULL]}
         >
-          {digit}
+          {`${digit}`}
         </Button>
       </div>
     ));
@@ -36,7 +36,7 @@ export const DigitsPanel = ({
       <div className={style.solveBtn} key="solveBtn">
         <Button
           clickHandler={solveBtnHandler}
-          modifiers={[RESPONSIVE]}
+          modifiers={[RESPONSIVE_FULL]}
         >
           Solve
         </Button>
@@ -44,7 +44,7 @@ export const DigitsPanel = ({
       <div className={style.removeBtn} key="removeBtn">
         <Button
           clickHandler={removeBtnClickHandler}
-          modifiers={[CANCEL, RESPONSIVE]}
+          modifiers={[CANCEL, RESPONSIVE_FULL]}
         >
           Remove
         </Button>

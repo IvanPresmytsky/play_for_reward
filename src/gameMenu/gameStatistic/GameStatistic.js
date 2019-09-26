@@ -45,7 +45,7 @@ export const GameStatistic = ({
         <Button
           clickHandler={onPlayBtnClick}
           id="playAgain"
-          modifiers={[buttonMods.RESPONSIVE]}
+          modifiers={[buttonMods.RESPONSIVE_X]}
         >
           Play again
         </Button>
@@ -53,7 +53,7 @@ export const GameStatistic = ({
           className={style.exitBtn}
           clickHandler={onExitBtnClick}
           id="exit"
-          modifiers={[buttonMods.RESPONSIVE]}
+          modifiers={[buttonMods.RESPONSIVE_X]}
         >
           Exit to user menu
         </Button>

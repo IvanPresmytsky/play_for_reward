@@ -12,9 +12,9 @@ storiesOf('Lists', module)
         { text: 'Item3' },
       ]}
       renderItem={(props) => (
-        <Button modifiers={[buttonMods.RESPONSIVE]} {...props} />
+        <Button modifiers={[buttonMods.RESPONSIVE_X]} {...props} />
       )}
     >
-      <Button modifiers={[buttonMods.RESPONSIVE]}>Child Item</Button>
+      <Button modifiers={[buttonMods.RESPONSIVE_X]}>Child Item</Button>
     </List>
   ));

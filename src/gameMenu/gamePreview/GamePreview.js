@@ -25,7 +25,7 @@ export const GamePreview = ({ games, match }) => {
       >
         <Button
           clickHandler={onStartGameBtnClick}
-          modifiers={[buttonMods.RESPONSIVE]}
+          modifiers={[buttonMods.RESPONSIVE_X]}
         >
           Start Game
         </Button>

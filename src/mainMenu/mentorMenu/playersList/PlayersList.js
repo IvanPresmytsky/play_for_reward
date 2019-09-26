@@ -37,14 +37,14 @@ export const PlayerList = ({ players, setCurrentPlayer }) => {
         <Button
           clickHandler={onPlayerRegisterClick}
           id="addPlayer"
-          modifiers={[buttonMods.RESPONSIVE]}
+          modifiers={[buttonMods.RESPONSIVE_X]}
         >
           Add a player
         </Button>
         <Button
           clickHandler={onBackClick}
           id="back"
-          modifiers={[buttonMods.RESPONSIVE]}
+          modifiers={[buttonMods.RESPONSIVE_X]}
         >
           Back
         </Button>

@@ -30,7 +30,7 @@ export const CategoriesMenu = ({ categories, getCurrentCategory }) => {
   );
 };
 
-CategoriesMenu.PropTypes = {
+CategoriesMenu.propTypes = {
   categories: PropTypes.array.isRequired,
 };
 

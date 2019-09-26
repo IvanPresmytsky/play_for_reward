@@ -3,11 +3,3 @@
   flex-flow: column nowrap;
   height: 100%;
 }
-
-.addition {
-  background: gold;
-}
-
-.subtraction {
-  background: pink;
-}

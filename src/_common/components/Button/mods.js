@@ -1,5 +1,6 @@
 export const buttonMods = {
-  RESPONSIVE: 'responsive',
+  RESPONSIVE_X: 'responsive_x',
+  RESPONSIVE_FULL: 'responsive_full',
   CANCEL: 'cancel',
 };
 

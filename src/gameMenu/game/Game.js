@@ -9,7 +9,7 @@ export const Game = ({ id, name, clickHandler }) => (
     <Button
       id={id}
       clickHandler={clickHandler}
-      modifiers={[buttonMods.RESPONSIVE]}
+      modifiers={[buttonMods.RESPONSIVE_X]}
     >
       {name}
     </Button>

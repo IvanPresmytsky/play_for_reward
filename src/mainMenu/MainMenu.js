@@ -11,7 +11,7 @@ const MainMenu = ({ menuItems }) => (
     <List
       items={menuItems}
       renderItem={props => (
-        <Button modifiers={[buttonMods.RESPONSIVE]} {...props} />
+        <Button modifiers={[buttonMods.RESPONSIVE_X]} {...props} />
       )}
     />
   </Menu>

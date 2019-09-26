@@ -14,7 +14,7 @@ const PlayerConfigurationMenu = ({ match, getMenuItems }) => {
       <List
         items={getMenuItems(player)}
         renderItem={props => (
-          <Button modifiers={[buttonMods.RESPONSIVE]} {...props} />
+          <Button modifiers={[buttonMods.RESPONSIVE_X]} {...props} />
         )}
       />
     </Menu>
