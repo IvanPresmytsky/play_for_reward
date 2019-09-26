@@ -1,5 +1,4 @@
 import createSagaMiddleware, { END } from 'redux-saga';
-import { createLogger } from 'redux-logger';
 import { applyMiddleware, compose, createStore } from 'redux';
 import { routerMiddleware } from 'react-router-redux';
 
@@ -15,6 +14,7 @@ function configureStore(initialState = {}, history) {
   ];
   
   if (isDev) {
+    const { createLogger } = require('redux-logger');
     const loggerMiddleware = createLogger();
     middlewares.push(loggerMiddleware);
   }
