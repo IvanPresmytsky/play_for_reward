@@ -5,7 +5,6 @@ import React from 'react';
 import { Button, buttonMods } from '~/_common/components/Button';
 import { navigateToGame } from '~/_common/_helpers/navigationHelper';
 import { getItemById } from '../_common/_helpers/mappingHelper';
-import style from './GamePreview.css';
 
 export const GamePreview = ({ games, match }) => {
   const {
@@ -18,7 +17,7 @@ export const GamePreview = ({ games, match }) => {
   const onStartGameBtnClick = () => navigateToGame(category, game);
 
   return (
-    <div className={style.gamePreview}>
+    <div>
       <Menu
         title={game}
         subTitle={gameDescription}

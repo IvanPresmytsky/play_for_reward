@@ -6,7 +6,6 @@ import React from 'react';
 import { navigateToGame, navigateToUserMenu } from '~/_common/_helpers/navigationHelper';
 
 import StatisticItem from './gameStatisticItem';
-import style from './GameStatistic.css';
 
 export const GameStatistic = ({
   currentUser,
@@ -34,8 +33,8 @@ export const GameStatistic = ({
   };
 
   return (
-    <div className={style.gameStatistic}>
-      <h3 className={style.title}>{`${game} statistic`}</h3>
+    <div>
+      <h3>{`${game} statistic`}</h3>
       <List
         items={gameStatistic}
         renderItem={props => (
@@ -50,7 +49,6 @@ export const GameStatistic = ({
           Play again
         </Button>
         <Button
-          className={style.exitBtn}
           clickHandler={onExitBtnClick}
           id="exit"
           modifiers={[buttonMods.RESPONSIVE_X]}

@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, buttonMods } from '~/_common/components/Button';
-import style from './Player.css';
 
 export const Player = ({ id, name, clickHandler }) => (
-  <div className={style.player}>
+  <div>
     <Button
       id={id}
       clickHandler={clickHandler}

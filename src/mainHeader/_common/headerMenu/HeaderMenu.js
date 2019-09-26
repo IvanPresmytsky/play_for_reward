@@ -1,9 +1,7 @@
 import React from 'react';
 
-import styles from './HeaderMenu.css';
-
 const HeaderMenu = () => (
-  <div className={styles.headerMenu}>
+  <div>
     <span>Menu</span>
   </div>
 );

@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, buttonMods } from '~/_common/components/Button';
-import style from './Category.css';
 
 export const Category = ({ id, name, clickHandler }) => (
-  <div className={style.category}>
+  <div>
     <Button
       id={id}
       clickHandler={clickHandler}

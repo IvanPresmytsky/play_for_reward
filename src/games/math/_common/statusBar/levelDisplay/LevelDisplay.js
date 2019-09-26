@@ -1,10 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import style from './LevelDisplay.css';
 
 export const LevelDisplay = ({ level }) => (
-  <div className={style.levelDisplay}>
-    <span className={style.levelText}>
+  <div>
+    <span>
       {`Level: ${level}`}
     </span>
   </div>
