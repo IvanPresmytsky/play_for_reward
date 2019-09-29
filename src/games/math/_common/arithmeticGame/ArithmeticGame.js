@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 import { navigateToGameStatistic } from '~/_common/_helpers/navigationHelper';
 
 import operations from '../constants/operations';
-import DigitsPanel from '../digitsPanel';
+import DigitsPanel from '../components/DigitsPanel';
 import GameDisplay from '../gameDisplay';
 import StatusBar from '../statusBar';
 

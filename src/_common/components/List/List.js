@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import * as S from './StyledList';
+
 
 const renderListItem = (item, index) => (
   <S.StyledListItem key={(item.props && item.props.id) || index}>
