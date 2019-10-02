@@ -1,6 +1,6 @@
 import React, { Suspense, lazy } from 'react';
 
-import { hot } from 'react-hot-loader';
+import PropTypes from 'prop-types';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
@@ -47,14 +47,17 @@ const {
   USER_PARAM,
 } = routes;
 
-const theme = {
-  light: '#fff',
+const themes = {
+  light: {
+    background: '#fff',
+    mainHeaderBackground: 'red',
+  },
 };
 
-export const App = () => (
+export const App = ({ theme }) => (
   <>
     <GlobalStyles />
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={themes[theme]}>
       <S.StyledApp>
         <MainHeader />
         <Suspense fallback={<Spinner />}>
@@ -81,4 +84,12 @@ export const App = () => (
   </>
 );
 
-export default hot(module)(App);
+App.defaultProps = {
+  theme: 'light',
+}
+
+App.propTypes = {
+  theme: PropTypes.string,
+};
+
+export default App;

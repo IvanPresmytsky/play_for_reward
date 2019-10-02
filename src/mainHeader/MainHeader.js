@@ -1,16 +1,15 @@
 import React from 'react';
+
 import Title from './_common/title';
 import HeaderMenu from './_common/headerMenu';
 
-import styles from './MainHeader.css';
+import * as S from './StyledMainHeader';
 
 const MainHeader = () => (
-  <header className={styles.mainHeader}>
-      <Title
-        text="Play for reward"
-      />
-      <HeaderMenu />
-  </header>
+  <S.StyledMainHeader>
+    <Title text="Play for reward" />
+    <HeaderMenu />
+  </S.StyledMainHeader>
 );
 
 export default MainHeader;

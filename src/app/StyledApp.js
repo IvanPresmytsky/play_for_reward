@@ -7,5 +7,5 @@ export const StyledApp = styled.div`
   margin: 0 auto;
   width: 100%;
 
-  background: ${(props) => props.theme.light}
+  background: ${(props) => props.theme.background}
 `;
