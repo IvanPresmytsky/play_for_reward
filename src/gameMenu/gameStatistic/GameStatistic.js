@@ -5,7 +5,8 @@ import React from 'react';
 
 import { navigateToGame, navigateToUserMenu } from '~/_common/_helpers/navigationHelper';
 
-import StatisticItem from './gameStatisticItem';
+import StatisticItem from './components/GameStatisticItem';
+import GameStatisticHeader from './components/GameStatisticHeader';
 
 export const GameStatistic = ({
   currentUser,
@@ -35,6 +36,7 @@ export const GameStatistic = ({
   return (
     <div>
       <h3>{`${game} statistic`}</h3>
+      <GameStatisticHeader />
       <List
         items={gameStatistic}
         renderItem={props => (

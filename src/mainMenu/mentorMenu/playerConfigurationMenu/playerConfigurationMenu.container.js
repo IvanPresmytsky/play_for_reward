@@ -8,4 +8,3 @@ const PlayerConfigurationMenuContainer = props => (
 );
 
 export default withRouter(PlayerConfigurationMenuContainer);
-

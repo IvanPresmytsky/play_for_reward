@@ -47,14 +47,7 @@ const {
   USER_PARAM,
 } = routes;
 
-const themes = {
-  light: {
-    background: '#fff',
-    mainHeaderBackground: 'red',
-  },
-};
-
-export const App = ({ theme }) => (
+export const App = ({ themes, theme }) => (
   <>
     <GlobalStyles />
     <ThemeProvider theme={themes[theme]}>
@@ -90,6 +83,7 @@ App.defaultProps = {
 
 App.propTypes = {
   theme: PropTypes.string,
+  themes: PropTypes.object.isRequired,
 };
 
 export default App;
