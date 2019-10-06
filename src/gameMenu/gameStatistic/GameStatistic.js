@@ -1,12 +1,16 @@
-import { Button, buttonMods } from '~/_common/components/Button';
-import List from '~/_common/components/List';
-import PropTypes from 'prop-types';
 import React from 'react';
 
+import PropTypes from 'prop-types';
+
+import List from '~/_common/components/List';
+import Title from '~/_common/components/Title';
+import { Button, buttonMods } from '~/_common/components/Button';
 import { navigateToGame, navigateToUserMenu } from '~/_common/_helpers/navigationHelper';
 
 import StatisticItem from './components/GameStatisticItem';
 import GameStatisticHeader from './components/GameStatisticHeader';
+
+import * as S from './StyledGameStatistic';
 
 export const GameStatistic = ({
   currentUser,
@@ -34,8 +38,8 @@ export const GameStatistic = ({
   };
 
   return (
-    <div>
-      <h3>{`${game} statistic`}</h3>
+    <S.StyledGameStatistic>
+      <Title text={`${game} statistic`} type="h3" />
       <GameStatisticHeader />
       <List
         items={gameStatistic}
@@ -53,12 +57,12 @@ export const GameStatistic = ({
         <Button
           clickHandler={onExitBtnClick}
           id="exit"
-          modifiers={[buttonMods.RESPONSIVE_X]}
+          modifiers={[buttonMods.RESPONSIVE_X, buttonMods.CANCEL]}
         >
           Exit to user menu
         </Button>
       </List>
-    </div>
+    </S.StyledGameStatistic>
   );
 };
 

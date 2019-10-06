@@ -5,7 +5,7 @@ import { Button, buttonMods } from './index';
 
 const {
   CANCEL,
-  RESPONSIVE,
+  RESPONSIVE_X,
 } = buttonMods;
 
 storiesOf('Buttons', module)
