@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import List from '~/_common/components/List';
-import Title from '~/_common/components/Title';
+import { Title, titleTypes } from '~/_common/components/Title';
 import { Button, buttonMods } from '~/_common/components/Button';
 import { navigateToGame, navigateToUserMenu } from '~/_common/_helpers/navigationHelper';
 
@@ -39,7 +39,7 @@ export const GameStatistic = ({
 
   return (
     <S.StyledGameStatistic>
-      <Title text={`${game} statistic`} type="h3" />
+      <Title text={`${game} statistic`} type={titleTypes.h3} />
       <GameStatisticHeader />
       <List
         items={gameStatistic}

@@ -33,6 +33,7 @@
   },
   "homepage": "https://github.com/IvanPresmytsky/play_for_reward#readme",
   "dependencies": {
+    "@storybook/addon-knobs": "^5.2.3",
     "@storybook/react": "^5.2.1",
     "classnames": "^2.2.5",
     "core-js": "^3.2.1",
