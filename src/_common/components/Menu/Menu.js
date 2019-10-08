@@ -1,15 +1,17 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 
+import PropTypes from 'prop-types';
+
+import { Title, titleTypes } from '~/_common/components/Title';
 import * as S from './StyledMenu';
 
 export const Menu = ({ title, subTitle, children }) => (
   <S.StyledMenu>
     {title && (
-      <h2>{title}</h2>
+      <Title text={title} type={titleTypes.h2}/>
     )}
     {subTitle && (
-      <h3>{subTitle}</h3>
+      <Title text={subTitle} type={titleTypes.h3} />
     )}
     {children}
   </S.StyledMenu>

@@ -1,7 +1,10 @@
+import React, { useEffect } from 'react';
+
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import React, { useEffect } from 'react';
+
 import { navigateToGameStatistic } from '~/_common/_helpers/navigationHelper';
+import { Title, titleTypes } from '~/_common/components/Title';
 
 import operations from '../constants/operations';
 import DigitsPanel from '../components/DigitsPanel';
@@ -58,7 +61,7 @@ export const ArithmeticGame = ({
 
   return (
     <div className={gameClasses}>
-      <h2>{game} game</h2>
+      <Title text={`${game} game`} type={titleTypes.h2} />
       <StatusBar
         isGameStarted={isGameStarted}
         isCorrectSolution={isCorrectSolution}

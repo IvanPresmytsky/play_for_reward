@@ -8,13 +8,14 @@ import {
   withKnobs,
 } from '@storybook/addon-knobs';
 
-import { Title, titleTypes, titleFontSizes } from './index';
+import { Title, titleTypes } from './index';
 
 storiesOf('Title', module)
   .addDecorator(withKnobs)
   .add('default Title', () => (
     <Title
-      fontSize={`${number('font size', 32)}px`}
+      fontSize={`${number('Font size')}px`}
+      paddingBottom={`${number('Padding bottom')}px`}
       text={text('Text', 'Default title')}
       type={select(
         'Title type',
