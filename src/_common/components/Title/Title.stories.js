@@ -1,14 +1,20 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
-import { withKnobs, text, select } from '@storybook/addon-knobs';
+import {
+  number,
+  text,
+  select,
+  withKnobs,
+} from '@storybook/addon-knobs';
 
-import { Title, titleTypes } from './index';
+import { Title, titleTypes, titleFontSizes } from './index';
 
 storiesOf('Title', module)
   .addDecorator(withKnobs)
   .add('default Title', () => (
     <Title
+      fontSize={`${number('font size', 32)}px`}
       text={text('Text', 'Default title')}
       type={select(
         'Title type',

@@ -5,4 +5,4 @@ export default {
   h4: '18px',
   h5: '16px',
   h6: '14px',
-}
+};
