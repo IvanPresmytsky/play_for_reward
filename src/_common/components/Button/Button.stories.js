@@ -1,67 +1,34 @@
 import React from 'react';
+
 import { storiesOf } from '@storybook/react';
+import {
+  boolean,
+  number,
+  optionsKnob as options,
+  text,
+  select,
+  withKnobs,
+} from '@storybook/addon-knobs'; 
 
 import { Button, buttonMods } from './index';
 
-const {
-  CANCEL,
-  RESPONSIVE_X,
-} = buttonMods;
-
-storiesOf('Buttons', module)
-  .add('default Button with text', () => (
+storiesOf('Button', module)
+  .addDecorator(withKnobs)
+  .add('default Button', () => (
     <Button
       id="button"
+      isDisabled={boolean('isDisabled', false)}
+      marginBottom={`${number('Margin bottom')}px`}
+      modifiers={[options(
+        'Modifiers',
+        buttonMods,
+        [buttonMods.RESPONSIVE_X, buttonMods.CANCEL],
+        { display: 'inline-check' },
+      )]}
     >
-      Hello Button
-    </Button>
-  ))
-  .add('default Button with html', () => (
-    <Button
-      id="button"
-    >
-      <span role="img">😀 😎 👍 💯</span>
-    </Button >
-  ))
-  .add('default disabled Button', () => (
-    <Button
-      id="button"
-      isDisabled
-    >
-      Disabled button
-    </Button >
-  ))
-  .add('default responsive Button', () => (
-    <Button
-      id="button"
-      modifiers={[RESPONSIVE_X]}
-    >
-     Responsive button
-    </Button>
-  ))
-  .add('CancelButton', () => (
-    <Button
-      id="button"
-      modifiers={[CANCEL]}
-    >
-      Cancel button
-    </Button>
-  ))
-  .add('CancelButton disabled', () => (
-    <Button
-      id="button"
-      isDisabled
-      modifiers={[CANCEL]}
-    >
-      Disabled cancel button
-    </Button>
-  ))
-  .add('CancelButton responsive disabled', () => (
-    <Button
-      id="button"
-      isDisabled
-      modifiers={[CANCEL, RESPONSIVE_X]}
-    >
-      Disabled and responsive cancel button
+      {select('text/children', ['text', 'children'], 'text') === 'text'
+        ? text('Text', 'Hello button')
+        : (<span role="img">😀 😎 👍 💯</span>)
+      }
     </Button>
   ));
