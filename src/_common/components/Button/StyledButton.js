@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { applyStyleModifiers } from 'styled-components-modifiers';
-import buttonMods from './mods';
+import buttonMods from './constants/mods.constants';
 
 export const BUTTON_MODIFIERS = {
   [buttonMods.CANCEL]: () => `

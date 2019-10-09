@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import getOperationSymbol from '../../_helpers/operationHelper';
+import getOperationSymbol from '../../../_common/_helpers/operationHelper';
 import style from './Operation.css';
 
 export const Operation = ({ operation }) => (

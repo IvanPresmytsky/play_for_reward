@@ -4,9 +4,9 @@ import React from 'react';
 import Digit from './digit';
 import Total from './total';
 import Operation from './operation';
-import operations from '../constants/operations';
+import operations from '../../_common/constants/operations';
 
-import style from './GameDisplay.css';
+import * as S from './StyledGameDisplay';
 
 export const GameDisplay = ({
   firstDigit,
@@ -14,13 +14,13 @@ export const GameDisplay = ({
   secondDigit,
   userInput,
 }) => (
-  <div className={style.gameDisplay}>
+  <S.StyledGameDisplay>
     <Digit digit={firstDigit} />
     <Operation operation={operation} />
     <Digit digit={secondDigit} />
     <Operation operation={operations.equality.name} />
     <Total total={userInput} />
-  </div>
+  </S.StyledGameDisplay>
 );
 
 GameDisplay.propTypes = {

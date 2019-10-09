@@ -11,7 +11,7 @@ import { routes } from '~/_common/constants';
 import GlobalStyles from './GlobalStyles';
 import * as S from './StyledApp';
 
-const ArithmeticGame = lazy(() => import(/* webpackChunkName: "ArithmeticGame" */'~/games/math/_common/arithmeticGame'));
+const ArithmeticGame = lazy(() => import(/* webpackChunkName: "ArithmeticGame" */'~/games/math/components/ArithmeticGame'));
 const AuthorizationMessage = lazy(() => import(/* webpackChunkName: "AuthorizationMessage" */'~/mainMenu/messages/authorizationMessage'));
 const CategoriesMenu = lazy(() => import(/* webpackChunkName: "CategoriesMenu" */'~/gameMenu/categoriesMenu'));
 const GamesMenu = lazy(() => import(/* webpackChunkName: "GamesMenu" */'~/gameMenu/gamesMenu'));

@@ -1,17 +1,16 @@
 import React, { useEffect } from 'react';
 
-import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
 import { navigateToGameStatistic } from '~/_common/_helpers/navigationHelper';
 import { Title, titleTypes } from '~/_common/components/Title';
 
-import operations from '../constants/operations';
-import DigitsPanel from '../components/DigitsPanel';
-import GameDisplay from '../gameDisplay';
-import StatusBar from '../statusBar';
+import operations from '../../_common/constants/operations';
+import DigitsPanel from '../DigitsPanel';
+import GameDisplay from '../GameDisplay';
+import StatusBar from '../StatusBar';
 
-import style from './ArithmeticGame.css';
+import * as S from './StyledArithmeticGame';
 
 export const ArithmeticGame = ({
   changeUserInput,
@@ -48,7 +47,7 @@ export const ArithmeticGame = ({
   };
 
   const onSolveClick = e => {
-    e.preventDefault();
+    e.preventDefault();game
     finishSession(userInput);
   };
 
@@ -57,10 +56,8 @@ export const ArithmeticGame = ({
     navigateToGameStatistic(category, game);
   };
 
-  const gameClasses = classNames(style.game, style[game]);
-
   return (
-    <div className={gameClasses}>
+    <S.StyledArithmeticGame>
       <Title text={`${game} game`} type={titleTypes.h2} />
       <StatusBar
         isGameStarted={isGameStarted}
@@ -77,7 +74,7 @@ export const ArithmeticGame = ({
         removeBtnClickHandler={onRemoveBtnClick}
         solveBtnHandler={onSolveClick}
       />
-    </div>
+    </S.StyledArithmeticGame>
   );
 };
 

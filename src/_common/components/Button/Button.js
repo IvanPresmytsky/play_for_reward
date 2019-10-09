@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import callAllCallbacks from '~/_common/_helpers/callAllCallbacks';
 
-import buttonMods from './mods';
+import buttonMods from './constants/mods.constants';
 import StyledButton from './StyledButton';
 
 const onClickDefault = e => e && e.preventDefault();
