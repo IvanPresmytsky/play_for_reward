@@ -19,7 +19,7 @@ export const StatusBar = ({
     <SessionTimer
       onTimerStarted={onTimerStarted}
       onTimerStopped={onTimerStopped}
-      initialTime={20}
+      initialTime={200}
     />
     <LevelDisplay level={level} />
     <SolutionDisplay

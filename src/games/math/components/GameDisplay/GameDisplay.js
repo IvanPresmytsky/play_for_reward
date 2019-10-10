@@ -1,9 +1,7 @@
-import PropTypes from 'prop-types';
 import React from 'react';
+import PropTypes from 'prop-types';
 
-import Digit from './digit';
-import Total from './total';
-import Operation from './operation';
+import getOperationSymbol from '../../_common/_helpers/operationHelper';
 import operations from '../../_common/constants/operations';
 
 import * as S from './StyledGameDisplay';
@@ -15,11 +13,11 @@ export const GameDisplay = ({
   userInput,
 }) => (
   <S.StyledGameDisplay>
-    <Digit digit={firstDigit} />
-    <Operation operation={operation} />
-    <Digit digit={secondDigit} />
-    <Operation operation={operations.equality.name} />
-    <Total total={userInput} />
+    <S.StyledLabel text={`${firstDigit}`} />
+    <S.StyledLabel text={getOperationSymbol(operation)} />
+    <S.StyledLabel text={`${secondDigit}`} />
+    <S.StyledLabel text={operations.equality.symbol} />
+    <S.StyledLabel text={`${userInput}`} />
   </S.StyledGameDisplay>
 );
 

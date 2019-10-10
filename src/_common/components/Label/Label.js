@@ -8,12 +8,16 @@ const Label = ({
   color,
   fontSize,
   fontWeight,
+  marginLeft,
+  marginRight,
   text,
 }) => text
   ? (<S.StyledLabel
       color={color}
       fontSize={fontSize}
       fontWeight={fontWeight}
+      marginLeft={marginLeft}
+      marginRight={marginRight}
     >
      {text}
     </S.StyledLabel>)
@@ -23,6 +27,8 @@ Label.propTypes = {
   color: PropTypes.string,
   fontSize: PropTypes.string,
   fontWeight: PropTypes.string,
+  marginLeft: PropTypes.string,
+  marginRight: PropTypes.string,
   text: PropTypes.string,
 };
 
