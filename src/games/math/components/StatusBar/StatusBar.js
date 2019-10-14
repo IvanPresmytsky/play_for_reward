@@ -3,7 +3,7 @@ import React from 'react';
 import ScoreDisplay from './scoreDisplay';
 import SessionTimer from './sessionTimer';
 import SolutionDisplay from './solutionDisplay';
-import LevelDisplay from './levelDisplay';
+import LevelDisplay from './components/LevelDisplay';
 
 import style from './StatusBar.css';
 

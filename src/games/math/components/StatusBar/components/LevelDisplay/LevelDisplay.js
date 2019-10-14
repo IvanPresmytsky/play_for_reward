@@ -1,11 +1,15 @@
-import PropTypes from 'prop-types';
 import React from 'react';
+import PropTypes from 'prop-types';
+
+import Label from '~/_common/components/Label';
 
 export const LevelDisplay = ({ level }) => (
   <div>
-    <span>
-      {`Level: ${level}`}
-    </span>
+    <Label
+      color="green"
+      fontSize="30px"
+      text={`Level: ${level}`}
+    />
   </div>
 );
 
