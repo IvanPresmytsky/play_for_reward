@@ -2,6 +2,7 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
+import Flex from '~/_common/components/Flex';
 import List from '~/_common/components/List';
 import { Title, titleTypes } from '~/_common/components/Title';
 import { Button, buttonMods } from '~/_common/components/Button';
@@ -10,7 +11,7 @@ import { navigateToGame, navigateToUserMenu } from '~/_common/_helpers/navigatio
 import StatisticItem from './components/GameStatisticItem';
 import GameStatisticHeader from './components/GameStatisticHeader';
 
-import * as S from './StyledGameStatistic';
+// import * as S from './StyledGameStatistic';
 
 export const GameStatistic = ({
   currentUser,
@@ -38,7 +39,7 @@ export const GameStatistic = ({
   };
 
   return (
-    <S.StyledGameStatistic>
+    <Flex direction="column" paddingLeft="10px" paddingRight="10px">
       <Title text={`${game} statistic`} type={titleTypes.h3} />
       <GameStatisticHeader />
       <List
@@ -62,7 +63,7 @@ export const GameStatistic = ({
           Exit to user menu
         </Button>
       </List>
-    </S.StyledGameStatistic>
+    </Flex>
   );
 };
 

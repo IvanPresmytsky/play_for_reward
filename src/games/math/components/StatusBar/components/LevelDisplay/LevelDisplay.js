@@ -2,15 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Label from '~/_common/components/Label';
+import Flex from '~/_common/components/Flex';
 
 export const LevelDisplay = ({ level }) => (
-  <div>
+  <Flex>
     <Label
       color="green"
       fontSize="30px"
       text={`Level: ${level}`}
     />
-  </div>
+  </Flex>
 );
 
 LevelDisplay.propTypes = {

@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Flex from '~/_common/components/Flex';
 import Label from '~/_common/components/Label';
-import style from './ScoreDisplay.css';
 
 export const ScoreDisplay = ({ score }) => (
-    <div className={style.scoreDisplay}>
+    <Flex alignItems="center">
       <Label
         color="green"
         fontSize="30px"
         text={`Score: ${score}`}
       />
-    </div>
+    </Flex>
 );
 
 ScoreDisplay.propTypes = {

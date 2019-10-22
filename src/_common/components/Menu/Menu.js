@@ -3,10 +3,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Title, titleTypes } from '~/_common/components/Title';
-import * as S from './StyledMenu';
+import Flex from '~/_common/components/Flex'
 
 export const Menu = ({ title, subTitle, children }) => (
-  <S.StyledMenu>
+  <Flex alignItems="center" direction="column" padding="10px">
     {title && (
       <Title text={title} type={titleTypes.h2}/>
     )}
@@ -14,7 +14,7 @@ export const Menu = ({ title, subTitle, children }) => (
       <Title text={subTitle} type={titleTypes.h3} />
     )}
     {children}
-  </S.StyledMenu>
+  </Flex>
 );
 
 Menu.defaultProps = {

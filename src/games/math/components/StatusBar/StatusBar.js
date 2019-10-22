@@ -1,6 +1,7 @@
-import PropTypes from 'prop-types';
 import React from 'react';
-import ScoreDisplay from './scoreDisplay';
+import PropTypes from 'prop-types';
+
+import ScoreDisplay from './components/ScoreDisplay';
 import SessionTimer from './sessionTimer';
 import SolutionDisplay from './solutionDisplay';
 import LevelDisplay from './components/LevelDisplay';
