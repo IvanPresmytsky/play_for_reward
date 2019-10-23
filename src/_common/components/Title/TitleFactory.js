@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import titleTypes from './constants/titleTypes.constants';
-import * as S from './StyledTitle';
+import * as S from './styled/Title.styled';
 
 const TitleFactory = ({
   fontSize,
@@ -11,7 +11,7 @@ const TitleFactory = ({
   text,
   type = titleTypes.h1,
 }) => {
-  const StyledTitle = S.StyledTitle(type);
+  const StyledTitle = S.Title(type);
 
   return (
     <StyledTitle

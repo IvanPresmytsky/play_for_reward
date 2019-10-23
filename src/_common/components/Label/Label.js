@@ -2,7 +2,7 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
-import * as S from './StyledLabel';
+import * as S from './styled/Label.styled';
 
 const Label = ({
   color,
@@ -12,7 +12,7 @@ const Label = ({
   marginRight,
   text,
 }) => text
-  ? (<S.StyledLabel
+  ? (<S.Label
       color={color}
       fontSize={fontSize}
       fontWeight={fontWeight}
@@ -20,7 +20,7 @@ const Label = ({
       marginRight={marginRight}
     >
      {text}
-    </S.StyledLabel>)
+    </S.Label>)
   : null;
 
 Label.propTypes = {

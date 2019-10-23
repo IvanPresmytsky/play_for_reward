@@ -1,7 +1,8 @@
-import PropTypes from 'prop-types';
 import React, { forwardRef, useState } from 'react';
+import PropTypes from 'prop-types';
+import Flex from '~/_common/components/Flex';
 
-import * as S from './StyledCheckboxInput';
+import * as S from './styled/Input.styled';
 
 const Checkbox = forwardRef(({
   checked,
@@ -17,8 +18,8 @@ const Checkbox = forwardRef(({
   };
 
   return (
-    <S.StyledInputWrapper>
-      <S.StyledInput
+    <Flex width="100%">
+      <S.Input
         checked={isChecked}
         id={id}
         name={name}
@@ -27,7 +28,7 @@ const Checkbox = forwardRef(({
         type="checkbox"
       />
       <label htmlFor={id}>{labelText}</label>
-    </S.StyledInputWrapper>
+    </Flex>
   );
 });
 

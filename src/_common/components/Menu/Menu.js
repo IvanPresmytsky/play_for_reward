@@ -2,8 +2,8 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
-import { Title, titleTypes } from '~/_common/components/Title';
 import Flex from '~/_common/components/Flex'
+import { Title, titleTypes } from '~/_common/components/Title';
 
 export const Menu = ({ title, subTitle, children }) => (
   <Flex alignItems="center" direction="column" padding="10px">

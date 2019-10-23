@@ -1,11 +1,9 @@
 import React from 'react';
-
 import PropTypes from 'prop-types';
-
 import callAllCallbacks from '~/_common/_helpers/callAllCallbacks';
 
 import buttonMods from './constants/mods.constants';
-import StyledButton from './StyledButton';
+import * as S from './styled/Button.styled';
 
 const onClickDefault = e => e && e.preventDefault();
 
@@ -19,7 +17,7 @@ export const Button = ({
   marginBottom,
   text,
 }) => (
-  <StyledButton
+  <S.Button
     className={className}
     isDisabled={isDisabled}
     modifiers={modifiers}
@@ -28,7 +26,7 @@ export const Button = ({
     onClick={!isDisabled ? callAllCallbacks(onClickDefault, clickHandler) : null}
   >
     {children || text}
-  </StyledButton>
+  </S.Button>
 );
 
 

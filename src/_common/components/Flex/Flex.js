@@ -14,6 +14,7 @@ const Flex = ({
   paddingLeft,
   paddingRight,
   paddingTop,
+  width,
 }) => (
   <S.Flex
     alignItems={alignItems}
@@ -24,6 +25,7 @@ const Flex = ({
     paddingLeft={paddingLeft}
     paddingRight={paddingRight}
     paddingTop={paddingTop}
+    width={width}
   >
     {children}
   </S.Flex>
@@ -39,6 +41,7 @@ Flex.propTypes = {
   paddingLeft: PropTypes.string,
   paddingRight: PropTypes.string,
   paddingTop: PropTypes.string,
-}
+  width: PropTypes.string,
+};
 
 export default Flex;

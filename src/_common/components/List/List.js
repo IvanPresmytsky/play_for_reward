@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import * as S from './StyledList';
+import * as S from './styled';
 
 
 const renderListItem = (item, index) => (
-  <S.StyledListItem key={(item.props && item.props.id) || index}>
+  <S.ListItem key={(item.props && item.props.id) || index}>
     {item}
-  </S.StyledListItem>
+  </S.ListItem>
 );
 
 const renderChildren = children => {
@@ -25,10 +25,10 @@ export const List = ({
   marginBottom,
   renderItem,
 }) => (
-  <S.StyledList marginBottom={marginBottom}>
+  <S.List marginBottom={marginBottom}>
     {items.map((item, index) => renderListItem(renderItem(item), index))}
     {renderChildren(children)}
-  </S.StyledList>
+  </S.List>
 );
 
 List.defaultProps = {

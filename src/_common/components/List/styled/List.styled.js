@@ -1,15 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledListItem = styled.li`
-  margin-bottom: 10px;
-  width: 100%;
-
-  &:last-child {
-    margin-bottom: 0;
-  }
-`;
-
-export const StyledList = styled.ul`
+export default styled.ul`
   align-items: center;
   display: flex;
   flex-direction: column;

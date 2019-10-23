@@ -1,7 +1,8 @@
 import React from 'react';
+import Flex from '~/_common/components/Flex';
 
 const Spinner = () => (
-  <div>Loading...</div>
+  <Flex>Loading...</Flex>
 );
 
 export default Spinner;

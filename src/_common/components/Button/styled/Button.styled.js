@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { applyStyleModifiers } from 'styled-components-modifiers';
-import buttonMods from './constants/mods.constants';
+import buttonMods from '../constants/mods.constants';
 
 export const BUTTON_MODIFIERS = {
   [buttonMods.CANCEL]: () => `
@@ -22,7 +22,7 @@ export const BUTTON_MODIFIERS = {
   `,
 };
 
-export default styled.button`
+export const Button =  styled.button`
   background: none;
   border: none;
   border: 2px solid green;

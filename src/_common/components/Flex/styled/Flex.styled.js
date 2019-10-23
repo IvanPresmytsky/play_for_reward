@@ -14,4 +14,5 @@ export const Flex = styled.div`
   }) => !!padding
     ? `${padding}`
     : `${paddingTop} ${paddingRight} ${paddingBottom} ${paddingLeft}`};
+  width: ${({ width = 'auto' }) => width}
 `;

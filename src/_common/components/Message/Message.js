@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useEffect } from 'react';
+import Flex from '~/_common/components/Flex';
 
 const Message = ({ message, redirect, timer }) => {
   useEffect(() => {
@@ -12,7 +13,7 @@ const Message = ({ message, redirect, timer }) => {
   if (!message) return null;
 
   return (
-    <div>{message}</div>
+    <Flex>{message}</Flex>
   );
 };
 
