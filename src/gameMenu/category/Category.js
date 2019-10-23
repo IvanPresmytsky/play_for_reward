@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
+import Flex from '~/_common/components/Flex';
 import { Button, buttonMods } from '~/_common/components/Button';
 
 export const Category = ({ id, name, clickHandler }) => (
-  <div>
+  <Flex>
     <Button
       id={id}
       clickHandler={clickHandler}
@@ -11,7 +13,7 @@ export const Category = ({ id, name, clickHandler }) => (
     >
       {name}
     </Button>
-  </div>
+  </Flex>
 );
 
 Category.defaultProps = {

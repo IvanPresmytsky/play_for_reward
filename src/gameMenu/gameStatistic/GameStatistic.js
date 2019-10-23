@@ -11,8 +11,6 @@ import { navigateToGame, navigateToUserMenu } from '~/_common/_helpers/navigatio
 import StatisticItem from './components/GameStatisticItem';
 import GameStatisticHeader from './components/GameStatisticHeader';
 
-// import * as S from './StyledGameStatistic';
-
 export const GameStatistic = ({
   currentUser,
   gameStatistic,

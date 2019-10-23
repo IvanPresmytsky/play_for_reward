@@ -1,10 +1,12 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+
+import Flex from '~/_common/components/Flex';
 import { Button, buttonMods } from '~/_common/components/Button';
 
 
 export const Game = ({ id, name, clickHandler }) => (
-  <div>
+  <Flex>
     <Button
       id={id}
       clickHandler={clickHandler}
@@ -12,7 +14,7 @@ export const Game = ({ id, name, clickHandler }) => (
     >
       {name}
     </Button>
-  </div>
+  </Flex>
 );
 
 Game.defaultProps = {

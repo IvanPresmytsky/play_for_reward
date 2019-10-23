@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
 export const Flex = styled.div`
-  display: flex;
   align-items: ${({ alignItems = 'stretch' }) => alignItems};
+  display: flex;
   flex-direction: ${({ direction = 'row' }) => direction};
+  height: ${({ height = 'auto' }) => height};
   justify-content: ${({ justifyContent = 'flex-start' }) => justifyContent};
   padding: ${({
     padding = 0,
@@ -14,5 +15,5 @@ export const Flex = styled.div`
   }) => !!padding
     ? `${padding}`
     : `${paddingTop} ${paddingRight} ${paddingBottom} ${paddingLeft}`};
-  width: ${({ width = 'auto' }) => width}
+  width: ${({ width = 'auto' }) => width};
 `;

@@ -1,6 +1,8 @@
-import PropTypes from 'prop-types';
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import Message from '~/_common/components/Message';
+import Spinner from '~/_common/components/Spinner';
 import { navigateToUserMenu, navigateToAuthorization } from '~/_common/_helpers/navigationHelper';
 import { statuses } from '~/_common/constants';
 
@@ -13,7 +15,7 @@ const AuthorizationMessage = ({ match, location }) => {
   } = statuses;
 
   if (status === PENDING) {
-    return <div>LOADING...</div>;
+    return <Spinner />;
   }
 
   const redirection = status === SUCCEED

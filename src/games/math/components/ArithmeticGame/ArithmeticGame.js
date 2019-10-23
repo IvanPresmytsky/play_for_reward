@@ -47,7 +47,7 @@ export const ArithmeticGame = ({
   };
 
   const onSolveClick = e => {
-    e.preventDefault();game
+    e.preventDefault();
     finishSession(userInput);
   };
 

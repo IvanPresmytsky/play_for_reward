@@ -8,6 +8,7 @@ const Flex = ({
   alignItems,
   children,
   direction,
+  height,
   justifyContent,
   padding,
   paddingBottom,
@@ -19,6 +20,7 @@ const Flex = ({
   <S.Flex
     alignItems={alignItems}
     direction={direction}
+    height={height}
     justifyContent={justifyContent}
     padding={padding}
     paddingBottom={paddingBottom}
@@ -36,6 +38,7 @@ Flex.propTypes = {
   children: PropTypes.node,
   direction: PropTypes.oneOf(['row', 'column', 'row-reverse', 'column-reverse']),
   justifyContent: PropTypes.oneOf(['flex-start', 'flex-end', 'center', 'space-between', 'space-around']),
+  height: PropTypes.string,
   padding: PropTypes.string,
   paddingBottom: PropTypes.string,
   paddingLeft: PropTypes.string,
