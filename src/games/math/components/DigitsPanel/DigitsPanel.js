@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
+import Flex from '~/_common/components/Flex';
 import { Button, buttonMods } from '~/_common/components/Button';
 
 import buttonIds from './constants/buttonIds.constants';
 import DigitsPanelItem from './components/DigitsPanelItem';
-
-import * as S from './StyledDigitsPanel';
 
 export const DigitsPanel = ({ items }) => {
   const {
@@ -33,9 +33,13 @@ export const DigitsPanel = ({ items }) => {
   });
 
   return (
-    <S.StyledDigitsPanel>
+    <Flex
+      justifyContent="space-between"
+      marginTop="auto"
+      wrap="wrap"
+    >
       {digits}
-    </S.StyledDigitsPanel>
+    </Flex>
   );
 };
 

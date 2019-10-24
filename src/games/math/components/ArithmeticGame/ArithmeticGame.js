@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-
 import PropTypes from 'prop-types';
 
+import Flex from '~/_common/components/Flex';
 import { navigateToGameStatistic } from '~/_common/_helpers/navigationHelper';
 import { Title, titleTypes } from '~/_common/components/Title';
 
@@ -9,8 +9,6 @@ import operations from '../../_common/constants/operations';
 import DigitsPanel from '../DigitsPanel';
 import GameDisplay from '../GameDisplay';
 import StatusBar from '../StatusBar';
-
-import * as S from './StyledArithmeticGame';
 
 export const ArithmeticGame = ({
   changeUserInput,
@@ -57,7 +55,12 @@ export const ArithmeticGame = ({
   };
 
   return (
-    <S.StyledArithmeticGame>
+    <Flex
+      direction="column"
+      height="100%"
+      paddingLeft="5px"
+      paddingRight="5px"
+    >
       <Title text={`${game} game`} type={titleTypes.h2} />
       <StatusBar
         isGameStarted={isGameStarted}
@@ -74,7 +77,7 @@ export const ArithmeticGame = ({
         removeBtnClickHandler={onRemoveBtnClick}
         solveBtnHandler={onSolveClick}
       />
-    </S.StyledArithmeticGame>
+    </Flex>
   );
 };
 

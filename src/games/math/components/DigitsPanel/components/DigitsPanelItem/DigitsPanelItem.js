@@ -1,10 +1,10 @@
 import React from 'react';
-import * as S from './StyledDigitsPanelItem';
+import Flex from '~/_common/components/Flex';
 
 const DigitsPanelItem = ({ children }) => (
-  <S.StyledDigitsPanelItems>
+  <Flex height="50px" marginBottom="0.33%" width="33%">
     {children}
-  </S.StyledDigitsPanelItems>
+  </Flex>
 );
 
 export default DigitsPanelItem;
