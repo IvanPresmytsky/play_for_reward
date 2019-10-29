@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Flex from '~/_common/components/Flex';
 import getOperationSymbol from '../../_common/_helpers/operationHelper';
 import operations from '../../_common/constants/operations';
-
-import * as S from './StyledGameDisplay';
+import StyledLabel from './components/StyledLabel';
 
 export const GameDisplay = ({
   firstDigit,
@@ -12,13 +12,19 @@ export const GameDisplay = ({
   secondDigit,
   userInput,
 }) => (
-  <S.StyledGameDisplay>
-    <S.StyledLabel text={`${firstDigit}`} />
-    <S.StyledLabel text={getOperationSymbol(operation)} />
-    <S.StyledLabel text={`${secondDigit}`} />
-    <S.StyledLabel text={operations.equality.symbol} />
-    <S.StyledLabel text={`${userInput}`} />
-  </S.StyledGameDisplay>
+  <Flex
+    alignItems="center"
+    border="4px solid green"
+    borderRadius="5px"
+    justifyContent="center"
+    width="100%"
+  >
+    <StyledLabel text={`${firstDigit}`} />
+    <StyledLabel text={getOperationSymbol(operation)} />
+    <StyledLabel text={`${secondDigit}`} />
+    <StyledLabel text={operations.equality.symbol} />
+    <StyledLabel text={`${userInput}`} />
+  </Flex>
 );
 
 GameDisplay.propTypes = {

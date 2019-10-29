@@ -1,7 +1,26 @@
 import styled from 'styled-components';
 
+const borderHandler = ({
+  border,
+  borderType,
+  borderWidth,
+  borderStyle,
+  borderColor,
+}) => {
+  if (!border && !borderWidth) return null;
+  const borderKey = borderType ? `border-${borderType}` : 'border'
+
+  return !!border
+    ? `${borderKey}: ${border};`
+    : `${borderKey}: ${borderWidth} ${borderStyle} ${borderColor};`
+};
+
 export const Flex = styled.div`
   align-items: ${({ alignItems = 'stretch' }) => alignItems};
+  ${props => borderHandler(props)}
+  border-radius: ${({
+   borderRadius = 0,
+  }) => borderRadius};
   display: flex;
   flex-direction: ${({ direction = 'row' }) => direction};
   flex-wrap: ${({ wrap = 'nowrap' }) => wrap};

@@ -1,16 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-import styled from 'styled-components';
 import Label from '~/_common/components/Label';
-
-export const StyledGameDisplay = styled.div`
-  align-items: center;
-  border: 4px solid green;
-  border-radius: 5px;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-`;
 
 export const StyledLabel = ({ text }) => (
   <Label
@@ -21,3 +12,9 @@ export const StyledLabel = ({ text }) => (
     text={text}
   />
 );
+
+StyledLabel.propTypes = {
+  text: PropTypes.string,
+};
+
+export default StyledLabel;

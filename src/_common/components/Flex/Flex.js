@@ -6,6 +6,12 @@ import * as S from './styled/Flex.styled';
 
 const Flex = ({
   alignItems,
+  border,
+  borderWidth,
+  borderStyle,
+  borderColor,
+  borderType,
+  borderRadius,
   children,
   direction,
   height,
@@ -25,6 +31,12 @@ const Flex = ({
 }) => (
   <S.Flex
     alignItems={alignItems}
+    border={border}
+    borderWidth={borderWidth}
+    borderStyle={borderStyle}
+    borderType={borderType}
+    borderColor={borderColor}
+    borderRadius={borderRadius}
     direction={direction}
     height={height}
     justifyContent={justifyContent}
@@ -47,6 +59,12 @@ const Flex = ({
 
 Flex.propTypes = {
   alignItems: PropTypes.oneOf(['stretch', 'center', 'flex-start', 'flex-end']),
+  border: PropTypes.string,
+  borderWidth: PropTypes.string,
+  borderStyle: PropTypes.oneOf(['none', 'hidden', 'dotted', 'dashed', 'solid', 'double', 'groove', 'ridge', 'inset', 'outset']),
+  borderColor: PropTypes.string,
+  borderType: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
+  borderRadius: PropTypes.string,
   children: PropTypes.node,
   direction: PropTypes.oneOf(['row', 'column', 'row-reverse', 'column-reverse']),
   height: PropTypes.string,
