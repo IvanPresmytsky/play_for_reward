@@ -22,6 +22,7 @@ const Checkbox = forwardRef(({
       <S.Input
         checked={isChecked}
         id={id}
+        marginRight="5px"
         name={name}
         onChange={onInputChange}
         ref={ref}

@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 import { applyStyleModifiers } from 'styled-components-modifiers';
+import {
+  marginHandler,
+} from '~/_common/_helpers/styledComponents';
+
 import buttonMods from '../constants/mods.constants';
 
 export const BUTTON_MODIFIERS = {
@@ -51,8 +55,5 @@ export const Button =  styled.button`
         color: grey;
       }
     `}
-  ${({ marginBottom }) => marginBottom
-    && `
-      margin-bottom: ${marginBottom}
-    `}
+  ${props => marginHandler(props)}
 `;

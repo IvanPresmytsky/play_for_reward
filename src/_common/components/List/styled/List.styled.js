@@ -1,5 +1,7 @@
 import styled from 'styled-components';
-
+import {
+  marginHandler,
+} from '~/_common/_helpers/styledComponents';
 export default styled.ul`
   align-items: center;
   display: flex;
@@ -7,8 +9,5 @@ export default styled.ul`
   list-style: none;
   margin: 0;
   width: 100%;
-
-  ${({ marginBottom }) => marginBottom && `
-    margin-bottom: ${marginBottom};
-  `}
+  ${props => marginHandler(props)}
 `;

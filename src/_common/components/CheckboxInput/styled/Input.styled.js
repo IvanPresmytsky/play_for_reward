@@ -1,5 +1,8 @@
 import styled from 'styled-components';
+import {
+  marginHandler,
+} from '~/_common/_helpers/styledComponents';
 
 export const Input = styled.input`
-  margin-right: 5px;
+  ${props => marginHandler(props)}
 `;
